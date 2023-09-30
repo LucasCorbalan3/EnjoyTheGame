@@ -32,6 +32,11 @@
   text-decoration: none;
 }
 
+#ListContentNav a:hover{
+    color: rgb(176, 92, 200);
+letter-spacing: 0.5px;
+}
+
 .iconsContent a {
   text-decoration: none;
   color: rgb(176, 92, 255);
