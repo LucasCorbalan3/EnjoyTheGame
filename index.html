@@ -15,39 +15,78 @@
             class="btn btn-dark"
             type="button"
             data-bs-toggle="offcanvas"
-            data-bs-target="#staticBackdrop"
-            aria-controls="staticBackdrop"
+            data-bs-target="#offcanvasWithBothOptions"
+            aria-controls="offcanvasWithBothOptions"
           >
-            <input type="checkbox" id="checkbox" />
-            <label for="checkbox" class="toggle">
+            <input id="checkbox" />
+            <div for="checkbox" class="toggle">
               <div class="bars" id="bar1"></div>
               <div class="bars" id="bar2"></div>
               <div class="bars" id="bar3"></div>
-            </label>
+            </div>
           </button>
           <div
             class="offcanvas offcanvas-start"
-            data-bs-backdrop="static"
+            data-bs-scroll="true"
             tabindex="-1"
-            id="staticBackdrop"
-            aria-labelledby="staticBackdropLabel"
+            id="offcanvasWithBothOptions"
+            aria-labelledby="offcanvasWithBothOptionsLabel"
           >
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="staticBackdropLabel">
-                Offcanvas
-              </h5>
+            <div class="offcanvas-header bg-dark btn-warning">
               <button
                 type="button"
                 class="btn-close"
                 data-bs-dismiss="offcanvas"
                 aria-label="Close"
-              ></button>
+              >
+                <input id="checkbox" />
+                <div for="checkbox" class="toggle">
+                  <div class="bars" id="bar1"></div>
+                  <div class="bars" id="bar2"></div>
+                  <div class="bars" id="bar3"></div>
+                </div>
+              </button>
             </div>
-            <div class="offcanvas-body">
-              <div>I will not close if you click outside of me.</div>
+            <div class="offcanvas-body bg-dark">
+              <ul class="nav flex-column my-4">
+                <li class="nav-item" id="ListContentNav">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="index.html"
+                    >Inicio</a
+                  >
+                </li>
+                <hr />
+                <li class="nav-item" id="ListContentNav">
+                  <a class="nav-link" href="#">Nosotros</a>
+                </li>
+                <hr />
+                <li class="nav-item" id="ListContentNav">
+                  <a class="nav-link" href="#">Soporte</a>
+                </li>
+                <hr />
+              </ul>
+            </div>
+            <div class="offcanvas-footer bg-dark">
+              <p class="text-white p-2">
+                © EnjoyTheGame Company. Todos los derechos reservados. Todas las
+                marcas registradas pertenecen a sus respectivos dueños en EE.
+                UU. y otros países.
+              </p>
+              <div class="d-flex justify-content-center iconsContent">
+                <a class="mx-2 my-4" href="#"
+                  ><i class="fa-brands fa-square-instagram iconsredes"></i
+                ></a>
+                <a class="mx-2 my-4" href="#"
+                  ><i class="fa-brands fa-square-x-twitter iconsredes"></i
+                ></a>
+                <a class="mx-2 my-4" href="#"
+                  ><i class="fa-brands fa-square-whatsapp iconsredes"></i
+                ></a>
+              </div>
             </div>
           </div>
-
           <a class="navbar-brand rounded mx-auto d-block" href="/index.html">
             <img
               src="/docs/5.3/assets/brand/bootstrap-logo.svg"
@@ -61,5 +100,9 @@
     </header>
     <main></main>
     <script src="js/bootstrap.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/7d2e342abf.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
