@@ -9,8 +9,8 @@
       content="Juegos Online, Web de Juegos, Juegos en linea"
     />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/style.css" />
     <title>Enjoy The Game</title>
   </head>
   <body>
@@ -212,8 +212,89 @@
         </div>
       </nav>
     </header>
-    <main></main>
-    <script src="js/bootstrap.min.js"></script>
+    <main class="BackgroundContainer">
+      <section class="container-fluid ContentRegisterItems">
+        <div class="containerBtnLogin bg-dark my-5 px-5">
+          <h1 class="text-light m-4 text-center">Crea Tu Usuario</h1>
+          <form id="FormLogin">
+            <div class="mb-1">
+              <label for="Nombre" class="form-label text-light">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="Nombre"
+                placeholder="Nombre"
+                maxlength="20"
+                required
+              />
+            </div>
+            <div class="mb-1">
+              <label for="Apellido" class="form-label text-light">Apellido</label>
+              <input
+                type="text"
+                class="form-control"
+                id="Apellido"
+                placeholder="Correo Electronico"
+                maxlength="20"
+                required
+              />
+            </div>
+            <div class="mb-1">
+              <label for="Email" class="form-label text-light">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="Email"
+                placeholder="Correo Electronico"
+                maxlength="50"
+                required
+                aria-describedby="emailHelp"
+              />
+              <div id="emailHelp" class="form-text text-light">
+                Nunca compartiremos su correo electrónico con nadie.
+              </div>
+              <div class="invalid-feedback text-light">Formáto de email inválido</div>
+            </div>
+            <div class="mb-1">
+              <label for="Contraseña" class="form-label text-light">Contraseña</label>
+              <input
+                type="password"
+                class="form-control"
+                id="Contraseña"
+                placeholder="**********"
+                maxlength="30"
+                required
+              />
+            </div>
+            <div class="mb-1">
+              <label for="Repetircontraseña" class="form-label text-light"
+                >Repetir Contraseña</label
+              >
+              <input
+                type="password"
+                class="form-control"
+                id="Repetircontraseña"
+                placeholder="**********"
+                maxlength="30"
+                required
+              />
+            </div>
+            <div class="mb-1 form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="exampleCheck1"
+              />
+              <label class="form-check-label text-light" for="exampleCheck1"
+                >No soy un Robot</label
+              >
+            </div>
+            <button type="submit" class="btn btn-primary">Registrarme!</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <script src="../js/bootstrap.min.js"></script>
     <script
       src="https://kit.fontawesome.com/7d2e342abf.js"
       crossorigin="anonymous"
