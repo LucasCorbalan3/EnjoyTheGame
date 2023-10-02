@@ -4,6 +4,19 @@
   box-sizing: border-box;
 }
 
+.TitleNav {
+  font-family: "Pixelify Sans", cursive;
+  color: #48e3f5ff;
+  font-size: 30px;
+  letter-spacing: 5px;
+}
+
+.TitleNavThe {font-family: "Pixelify Sans", cursive;
+  color: #f006b1ff;
+  font-size: 30px;
+  letter-spacing: 5px;
+}
+
 #checkbox {
   display: none;
 }
@@ -274,12 +287,12 @@ label {
 
 .containerBtnLogin {
   width: 50vh;
-  height: 75vh;
+  height: 120vh;
   border-radius: 50px;
 }
 
-.containerBtnRegiter{
-  height: 45vh;
+.containerBtnRegiter {
+  height: 60vh;
   border-radius: 50px;
 }
 
