@@ -11,12 +11,6 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@600&display=swap"
-      rel="stylesheet"
-    />
     <link
       rel="icon"
       href="assets/joystick-line-pop-removebg-preview.png"
@@ -26,10 +20,7 @@
   </head>
   <body>
     <header>
-      <nav
-        class="navbar navbar-expand-lg navbar-expand-sm bg-dark"
-        data-bs-theme="dark"
-      >
+      <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
         <div class="container-fluid">
           <button
             class="btn btn-dark"
@@ -87,7 +78,7 @@
                 </li>
                 <hr />
                 <li class="nav-item" id="ListContentNav">
-                  <a class="nav-link" href="Register.html">Registrese</a>
+                  <a class="nav-link" href="#">Registrese</a>
                 </li>
                 <hr />
                 <li>
@@ -228,76 +219,69 @@
         </div>
       </nav>
     </header>
-    <main class="container-fluid mt-5">
-      <section class="row my-5 mx-auto">
-        <div
-          class="col-sm-12 col-md-6 col-lg-6 text-light text-center d-flex flex-column justify-content-center align-items-center"
-        >
-          <h2 class="text-center card-title TitleNav">
-            <img
-              class="img-fluid"
-              width="100"
-              src="/assets/joystick-line-pop-removebg-preview.png"
-              alt="joistick.png"
-            />
-            Destacado <span class="TitleNavThe">del</span> momento
-          </h2>
-          <iframe
-            class="mx-auto d-block w-100 divs"
-            height="450"
-            src="https://www.youtube.com/embed/XhP3Xh4LMA8?si=mIfvbtLLjYBgsZiW"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-        </div>
-        <div
-          class="col-sm-12 col-md-6 col-lg-6 card-body bg-dark text-light text-center divs"
-        >
-          <h5 class="card-title">EA Sports FC</h5>
-          <p class="card-text">Disponible</p>
-          <img
-            class="w-100 mb-4"
-            src="/assets/EA-Sports-FC-24.jpg"
-            alt="EASports.jpg"
-          />
-          <p class="card-text">
-            EA Sports FC, el último lanzamiento de la exitosa franquicia,
-            redefine la simulación de fútbol. Con gráficos de vanguardia,
-            mecánicas de juego fluidas y una variedad de modos, desde carreras
-            de equipos hasta partidas en línea, ofrece una experiencia auténtica
-            y emocionante para los fanáticos del fútbol en todo el mundo.
-            Sumérgete en la acción y lleva a tu equipo a la victoria en este
-            emocionante simulador deportivo.
-          </p>
-          <a href="GameDetails.html" class="btn buttonDetails my-3">Ver más</a>
+    <main class="BackgroundContainer">
+      <section class="container-fluid ContentRegisterItems">
+        <div class="containerBtnLogin bg-dark my-5 px-5">
+          <h1 class="text-light m-4 text-center my-5">Agregar nuevo juego</h1>
+          <form id="FormNewGame">
+            <div class="my-3">
+              <label for="Nombre de juego" class="form-label text-light"
+                >Nombre del juego</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="Nombre"
+                placeholder="Nombre"
+                maxlength="20"
+                required
+              />
+            </div>
+            <div class="my-3">
+              <label for="Categoría" class="form-label text-light"
+                >Categoría</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="Categoría"
+                placeholder="Categoría"
+                maxlength="20"
+                required
+              />
+            </div>
+            <div class="my-3">
+              <label for="Descripción" class="form-label text-light"
+                >Descripción</label
+              >
+              <textarea
+                class="form-control"
+                id="Descripcion"
+                rows="6"
+                placeholder="Descripción"
+                maxlength="200"
+              ></textarea>
+            </div>
+            <div class="my-3 form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="exampleCheck1"
+              />
+              <label class="form-check-label text-light" for="exampleCheck1"
+                >Publicado</label
+              >
+            </div>
+            <button type="submit" class="btn element1 my-5 mx-auto text-center">
+              Agregar
+            </button>
+          </form>
         </div>
       </section>
-      <section class="my-5">
-        <section>
-          <h2 class="text-light text-center my-5">Novedades</h2>
-        </section>
-        <section>
-          <h2 class="text-light text-center my-5">Estrategia</h2>
-        </section>
-        <section><h2 class="text-light text-center my-5">Infantil</h2></section>
-        <section>
-          <h2 class="text-light text-center my-5">Deportes y carreras</h2>
-        </section>
-      </section>
-      <section class="text-center my-5">
-        <figure>
-          <img
-            src="/assets/joystick-line-pop-removebg-preview.png"
-            alt="final-joistick.jpg"
-            width="600"
-            class="img-fluid"
-          />
-          <p class="TitleNav">
-            ENJOY <span class="TitleNavThe">THE</span> GAME
-          </p>
-        </figure>
+      <section class="text-center">
+        <a href="admin.html"
+          ><button class="btn element2 mx-4 my-5">Volver</button></a
+        >
       </section>
     </main>
     <script src="js/bootstrap.min.js"></script>
