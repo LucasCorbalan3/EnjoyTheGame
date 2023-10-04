@@ -39,6 +39,7 @@ const ValidacionGeneral = (
   CampoContrasena,
   CampoRepetirContrasena
 ) => {
+  console.log('hola pibe');
   let alert = document.getElementById("mjeAlerta");
   if (
     CampoRequerido(CampoNombre) &&
@@ -54,7 +55,9 @@ const ValidacionGeneral = (
     alert.className = "alert alert-danger my-3";
     return false;
   }
+  
 };
+
 
 export {
   CampoRequerido,
