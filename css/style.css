@@ -7,14 +7,13 @@
 .TitleNav {
   font-family: "Pixelify Sans", cursive;
   color: #48e3f5ff;
-  font-size: 30px;
-  letter-spacing: 5px;
+  letter-spacing: 0.4vw;
 }
 
-.TitleNavThe {font-family: "Pixelify Sans", cursive;
+.TitleNavThe {
+  font-family: "Pixelify Sans", cursive;
   color: #f006b1ff;
-  font-size: 30px;
-  letter-spacing: 5px;
+  letter-spacing: 0.4vw;
 }
 
 #checkbox {
@@ -280,19 +279,15 @@ label {
 .ContentRegisterItems {
   display: grid;
   justify-content: center;
-  align-content: center;
-  align-items: center;
-  justify-items: center;
 }
 
 .containerBtnLogin {
-  width: 80vh;
-  height: 100vh;
+  display: grid;
   border-radius: 50px;
 }
 
 .containerBtnRegiter {
-  height: 60vh;
+  display: grid;
   border-radius: 50px;
 }
 
@@ -318,6 +313,14 @@ label {
 
 .FillRed {
   fill: #ea4335;
+}
+
+.FillWhite {
+  fill: #fff;
+}
+
+.FillOrange {
+  fill: #fbbc05;
 }
 
 .Filldark {
