@@ -23,7 +23,7 @@ const validarEmail = (input) => {
 
 const ValidarRepetirContrasena = (CampoContrasena) => {
   console.log("la contraseña no es la misma");
-  if ((CampoContrasena.value = CampoRepetirContrasena.value)) {
+  if ((CampoContrasena.value === CampoRepetirContrasena.value)) {
     input.className = "form-control is-valid";
     return true;
   } else {
@@ -62,3 +62,4 @@ export {
   ValidarRepetirContrasena,
   ValidacionGeneral,
 };
+
