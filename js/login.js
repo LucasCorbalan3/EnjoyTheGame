@@ -10,8 +10,8 @@ let CampoApellido = document.getElementById("Apellido");
 let CampoEmail = document.getElementById("Email");
 let CampoContrasena = document.getElementById("Contrasena");
 let CampoRepetirContrasena = document.getElementById("Repetircontrasena");
-let CampoCheckboxRobot = document.getElementById("checkboxRobot");
 let CampoFormLogin = document.getElementById("FormLogin");
+let UserExistente = false;
 
 CampoNombre.addEventListener("blur", () => {
   console.log("aqui estoy");
@@ -29,7 +29,7 @@ CampoEmail.addEventListener("blur", () => {
 });
 
 CampoContrasena.addEventListener("blur", () => {
-  console.log("aqui estoy3");
+  console.log("aqui estoy4");
   CampoRequerido(CampoContrasena);
 });
 
@@ -43,4 +43,22 @@ CampoRepetirContrasena.addEventListener("blur", () => {
 //   CampoRequerido(CampoCheckboxRobot);
 // });
 
-CampoFormLogin.addEventListener("submit", ValidacionGeneral);
+CampoFormLogin.addEventListener("submit", SaveUser);
+
+function SaveUser(e) {
+  e.PreventDefaut();
+  if (
+    ValidacionGeneral(
+      CampoNombre,
+      CampoApellido,
+      CampoEmail,
+      CampoContrasena,
+      CampoRepetirContrasena
+    )
+  ) {
+    if (!UserExistente) {
+      CreateUsuario();
+    } else {
+    }
+  }
+}
