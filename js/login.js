@@ -35,7 +35,7 @@ CampoContrasena.addEventListener("blur", () => {
 
 CampoRepetirContrasena.addEventListener("blur", () => {
   console.log("aqui estoy5");
-  CampoRequerido(CampoRepetirContrasena);
+  ValidarRepetirContrasena(CampoRepetirContrasena);
 });
 
 // CampoCheckboxRobot.addEventListener("click", () => {

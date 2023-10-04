@@ -21,14 +21,15 @@ const validarEmail = (input) => {
   }
 };
 
-const ValidarRepetirContrasena = (CampoContrasena) => {
-  console.log("la contraseña no es la misma");
-  if ((CampoContrasena.value === CampoRepetirContrasena.value)) {
+const ValidarRepetirContrasena = (input) => {
+  let contrasenaprimera = document.getElementById('Contrasena').value;
+  let contrasenasegunda = document.getElementById('Repetircontrasena').value;
+  if (contrasenaprimera === contrasenasegunda) {
     input.className = "form-control is-valid";
     return true;
   } else {
     input.className = "form-control is-invalid";
-    return false;
+    return true;
   }
 };
 
@@ -39,7 +40,7 @@ const ValidacionGeneral = (
   CampoContrasena,
   CampoRepetirContrasena
 ) => {
-  console.log('hola pibe');
+  console.log("hola pibe");
   let alert = document.getElementById("mjeAlerta");
   if (
     CampoRequerido(CampoNombre) &&
@@ -55,9 +56,7 @@ const ValidacionGeneral = (
     alert.className = "alert alert-danger my-3";
     return false;
   }
-  
 };
-
 
 export {
   CampoRequerido,
@@ -65,4 +64,3 @@ export {
   ValidarRepetirContrasena,
   ValidacionGeneral,
 };
-
