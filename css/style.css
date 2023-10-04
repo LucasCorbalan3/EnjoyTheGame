@@ -96,6 +96,21 @@ button {
   color: #f006b1ff;
 }
 
+.element1 {
+  color: rgb(255, 255, 255);
+  background-color: #f006b1ff;
+}
+
+.element2 {
+  color: rgb(0, 0, 0);
+  background-color: #0af7ff;
+}
+
+.element2:hover {
+  transform: scale(1.3);
+  transition: 0.4s;
+}
+
 button.learn-more {
   width: 12rem;
   height: auto;
@@ -173,6 +188,11 @@ button:hover .button-text {
 .buttonDetails:hover {
   transform: scale(1.3);
   color: white;
+  transition: 0.6s;
+}
+
+.divs:hover {
+  transform: scale(1.05);
   transition: 0.6s;
 }
 

@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Proyecto 2 de Rolling Code" />
     <meta
@@ -11,11 +12,19 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="icon"
+      href="assets/joystick-line-pop-removebg-preview.png"
+      type="image/png"
+    />
     <title>Enjoy The Game</title>
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+      <nav
+        class="navbar navbar-expand-lg navbar-expand-sm bg-dark"
+        data-bs-theme="dark"
+      >
         <div class="container-fluid">
           <button
             class="btn btn-dark"
@@ -60,6 +69,15 @@
                 </li>
                 <hr />
                 <li class="nav-item" id="ListContentNav">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="admin.html"
+                    >Administrador</a
+                  >
+                </li>
+                <hr />
+                <li class="nav-item" id="ListContentNav">
                   <a class="nav-link" href="#">Nosotros</a>
                 </li>
                 <hr />
@@ -68,7 +86,7 @@
                 </li>
                 <hr />
                 <li class="nav-item" id="ListContentNav">
-                  <a class="nav-link" href="#">Registrese</a>
+                  <a class="nav-link" href="Register.html">Registrese</a>
                 </li>
                 <hr />
                 <li>
@@ -209,92 +227,13 @@
         </div>
       </nav>
     </header>
-    <main class="BackgroundContainer">
-      <section class="container-fluid ContentRegisterItems">
-        <div class="containerBtnLogin bg-dark my-5 px-5">
-          <h1 class="text-light m-4 text-center">Crea Tu Usuario</h1>
-          <form id="FormLogin">
-            <div class="mb-1">
-              <label for="Nombre" class="form-label text-light">Nombre</label>
-              <input
-                type="text"
-                class="form-control"
-                id="Nombre"
-                placeholder="Nombre"
-                maxlength="20"
-                required
-              />
-            </div>
-            <div class="mb-1">
-              <label for="Apellido" class="form-label text-light"
-                >Apellido</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                id="Apellido"
-                placeholder="Correo Electronico"
-                maxlength="20"
-                required
-              />
-            </div>
-            <div class="mb-1">
-              <label for="Email" class="form-label text-light">Email</label>
-              <input
-                type="email"
-                class="form-control"
-                id="Email"
-                placeholder="Correo Electronico"
-                maxlength="50"
-                required
-                aria-describedby="emailHelp"
-              />
-              <div id="emailHelp" class="form-text text-light">
-                Nunca compartiremos su correo electrónico con nadie.
-              </div>
-              <div class="invalid-feedback text-light">
-                Formáto de email inválido
-              </div>
-            </div>
-            <div class="mb-1">
-              <label for="Contraseña" class="form-label text-light"
-                >Contraseña</label
-              >
-              <input
-                type="password"
-                class="form-control"
-                id="Contraseña"
-                placeholder="**********"
-                maxlength="30"
-                required
-              />
-            </div>
-            <div class="mb-1">
-              <label for="Repetircontraseña" class="form-label text-light"
-                >Repetir Contraseña</label
-              >
-              <input
-                type="password"
-                class="form-control"
-                id="Repetircontraseña"
-                placeholder="**********"
-                maxlength="30"
-                required
-              />
-            </div>
-            <div class="mb-1 form-check">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="exampleCheck1"
-              />
-              <label class="form-check-label text-light" for="exampleCheck1"
-                >No soy un Robot</label
-              >
-            </div>
-            <button type="submit" class="btn btn-primary">Registrarme!</button>
-          </form>
-        </div>
+    <main>
+      <section class="container-fluid text-center text-light my-5">
+        <h1>Administrar Productos</h1>
+        <a href="newGame.html"
+          ><button class="btn buttonDetails my-5">Nuevo +</button></a
+        >
+        <table></table>
       </section>
     </main>
     <script src="js/bootstrap.min.js"></script>

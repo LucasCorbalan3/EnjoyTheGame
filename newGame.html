@@ -56,7 +56,12 @@
             <div class="offcanvas-body bg-dark">
               <ul class="nav flex-column my-4">
                 <li class="nav-item" id="ListContentNav">
-                  <a class="nav-link active" href="index.html">Inicio</a>
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="index.html"
+                    >Inicio</a
+                  >
                 </li>
                 <hr />
                 <li class="nav-item" id="ListContentNav">
@@ -212,10 +217,12 @@
     <main class="BackgroundContainer">
       <section class="container-fluid ContentRegisterItems">
         <div class="containerBtnLogin bg-dark my-5 px-5">
-          <h1 class="text-light m-4 text-center">Crea Tu Usuario</h1>
-          <form id="FormLogin">
-            <div class="mb-1">
-              <label for="Nombre" class="form-label text-light">Nombre</label>
+          <h1 class="text-light m-4 text-center my-5">Agregar nuevo juego</h1>
+          <form id="FormNewGame">
+            <div class="my-3">
+              <label for="Nombre de juego" class="form-label text-light"
+                >Nombre del juego</label
+              >
               <input
                 type="text"
                 class="form-control"
@@ -225,76 +232,51 @@
                 required
               />
             </div>
-            <div class="mb-1">
-              <label for="Apellido" class="form-label text-light"
-                >Apellido</label
+            <div class="my-3">
+              <label for="Categoría" class="form-label text-light"
+                >Categoría</label
               >
               <input
                 type="text"
                 class="form-control"
-                id="Apellido"
-                placeholder="Correo Electronico"
+                id="Categoría"
+                placeholder="Categoría"
                 maxlength="20"
                 required
               />
             </div>
-            <div class="mb-1">
-              <label for="Email" class="form-label text-light">Email</label>
-              <input
-                type="email"
-                class="form-control"
-                id="Email"
-                placeholder="Correo Electronico"
-                maxlength="50"
-                required
-                aria-describedby="emailHelp"
-              />
-              <div id="emailHelp" class="form-text text-light">
-                Nunca compartiremos su correo electrónico con nadie.
-              </div>
-              <div class="invalid-feedback text-light">
-                Formáto de email inválido
-              </div>
-            </div>
-            <div class="mb-1">
-              <label for="Contraseña" class="form-label text-light"
-                >Contraseña</label
+            <div class="my-3">
+              <label for="Descripción" class="form-label text-light"
+                >Descripción</label
               >
-              <input
-                type="password"
+              <textarea
                 class="form-control"
-                id="Contraseña"
-                placeholder="**********"
-                maxlength="30"
-                required
-              />
+                id="Descripcion"
+                rows="6"
+                placeholder="Descripción"
+                maxlength="200"
+              ></textarea>
             </div>
-            <div class="mb-1">
-              <label for="Repetircontraseña" class="form-label text-light"
-                >Repetir Contraseña</label
-              >
-              <input
-                type="password"
-                class="form-control"
-                id="Repetircontraseña"
-                placeholder="**********"
-                maxlength="30"
-                required
-              />
-            </div>
-            <div class="mb-1 form-check">
+            <div class="my-3 form-check">
               <input
                 type="checkbox"
                 class="form-check-input"
                 id="exampleCheck1"
               />
               <label class="form-check-label text-light" for="exampleCheck1"
-                >No soy un Robot</label
+                >Publicado</label
               >
             </div>
-            <button type="submit" class="btn btn-primary">Registrarme!</button>
+            <button type="submit" class="btn element1 my-5 mx-auto text-center">
+              Agregar
+            </button>
           </form>
         </div>
+      </section>
+      <section class="text-center">
+        <a href="admin.html"
+          ><button class="btn element2 mx-4 my-5">Volver</button></a
+        >
       </section>
     </main>
     <script src="js/bootstrap.min.js"></script>
