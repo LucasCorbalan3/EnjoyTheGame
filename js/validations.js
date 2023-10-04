@@ -22,8 +22,8 @@ const validarEmail = (input) => {
 };
 
 const ValidarRepetirContrasena = (input) => {
-  let contrasenaprimera = document.getElementById('Contrasena').value;
-  let contrasenasegunda = document.getElementById('Repetircontrasena').value;
+  let contrasenaprimera = document.getElementById("Contrasena").value;
+  let contrasenasegunda = document.getElementById("Repetircontrasena").value;
   if (contrasenaprimera === contrasenasegunda) {
     input.className = "form-control is-valid";
     return true;
@@ -40,15 +40,13 @@ const ValidacionGeneral = (
   CampoContrasena,
   CampoRepetirContrasena
 ) => {
-  console.log("hola pibe");
   let alert = document.getElementById("mjeAlerta");
   if (
     CampoRequerido(CampoNombre) &&
     CampoRequerido(CampoApellido) &&
-    CampoRequerido(CampoEmail) &&
+    validarEmail(CampoEmail) &&
     CampoRequerido(CampoContrasena) &&
-    CampoRequerido(CampoRepetirContrasena) &&
-    CampoRequerido(CampoCheckboxRobot)
+    ValidarRepetirContrasena(CampoRepetirContrasena)
   ) {
     alert.className = "alert alert-danger my-3 d-none";
     return true;
