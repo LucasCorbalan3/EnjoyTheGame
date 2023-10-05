@@ -4,6 +4,18 @@
   box-sizing: border-box;
 }
 
+.TitleNav {
+  font-family: "Pixelify Sans", cursive;
+  color: #48e3f5ff;
+  letter-spacing: 0.4vw;
+}
+
+.TitleNavThe {
+  font-family: "Pixelify Sans", cursive;
+  color: #f006b1ff;
+  letter-spacing: 0.4vw;
+}
+
 #checkbox {
   display: none;
 }
@@ -55,6 +67,21 @@
   scale: 2;
 }
 
+body {
+  background: rgb(9, 0, 63);
+  background: linear-gradient(
+    180deg,
+    rgba(9, 0, 63, 1) 0%,
+    rgba(77, 2, 97, 1) 33%,
+    rgba(109, 3, 113, 1) 48%,
+    rgba(136, 4, 126, 1) 59%,
+    rgba(159, 4, 137, 1) 66%,
+    rgba(155, 3, 124, 1) 73%,
+    rgba(77, 2, 97, 1) 83%,
+    rgba(77, 2, 97, 1) 100%
+  );
+}
+
 button {
   position: relative;
   display: inline-block;
@@ -67,6 +94,30 @@ button {
   padding: 0;
   font-size: inherit;
   font-family: inherit;
+}
+
+.buttonDetails {
+  color: white;
+  background-color: #f006b1ff;
+}
+
+.element {
+  color: #f006b1ff;
+}
+
+.element1 {
+  color: rgb(255, 255, 255);
+  background-color: #f006b1ff;
+}
+
+.element2 {
+  color: rgb(0, 0, 0);
+  background-color: #0af7ff;
+}
+
+.element2:hover {
+  transform: scale(1.3);
+  transition: 0.4s;
 }
 
 button.learn-more {
@@ -141,6 +192,17 @@ button:hover .circle .icon.arrow {
 
 button:hover .button-text {
   color: #fff;
+}
+
+.buttonDetails:hover {
+  transform: scale(1.3);
+  color: white;
+  transition: 0.6s;
+}
+
+.divs:hover {
+  transform: scale(1.05);
+  transition: 0.6s;
 }
 
 .btn-container {
@@ -267,19 +329,15 @@ label {
 .ContentRegisterItems {
   display: grid;
   justify-content: center;
-  align-content: center;
-  align-items: center;
-  justify-items: center;
 }
 
 .containerBtnLogin {
-  width: 50vh;
-  height: 75vh;
+  display: grid;
   border-radius: 50px;
 }
 
-.containerBtnRegiter{
-  height: 45vh;
+.containerBtnRegiter {
+  display: grid;
   border-radius: 50px;
 }
 
@@ -305,6 +363,14 @@ label {
 
 .FillRed {
   fill: #ea4335;
+}
+
+.FillWhite {
+  fill: #fff;
+}
+
+.FillOrange {
+  fill: #fbbc05;
 }
 
 .Filldark {
