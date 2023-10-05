@@ -40,7 +40,7 @@ const ValidacionGeneral = (
   CampoContrasena,
   CampoRepetirContrasena
 ) => {
-  let alert = document.getElementById("mjeAlerta");
+  let alerta = document.getElementById("mjsAlerta");
   if (
     CampoRequerido(CampoNombre) &&
     CampoRequerido(CampoApellido) &&
@@ -48,10 +48,10 @@ const ValidacionGeneral = (
     CampoRequerido(CampoContrasena) &&
     ValidarRepetirContrasena(CampoRepetirContrasena)
   ) {
-    alert.className = "alert alert-danger my-3 d-none";
+    alerta.className = "alert alert-danger my-3 d-none";
     return true;
   } else {
-    alert.className = "alert alert-danger my-3";
+    alerta.className = "alert alert-danger my-3";
     return false;
   }
 };

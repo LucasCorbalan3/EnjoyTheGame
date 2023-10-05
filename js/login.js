@@ -10,8 +10,8 @@ let CampoApellido = document.getElementById("Apellido");
 let CampoEmail = document.getElementById("Email");
 let CampoContrasena = document.getElementById("Contrasena");
 let CampoRepetirContrasena = document.getElementById("Repetircontrasena");
+let CampoCheckboxRobot = document.getElementById("checkboxRobot");
 let CampoFormLogin = document.getElementById("FormLogin");
-let UserExistente = false;
 
 CampoNombre.addEventListener("blur", () => {
   console.log("aqui estoy");
@@ -29,7 +29,7 @@ CampoEmail.addEventListener("blur", () => {
 });
 
 CampoContrasena.addEventListener("blur", () => {
-  console.log("aqui estoy4");
+  console.log("aqui estoy3");
   CampoRequerido(CampoContrasena);
 });
 
@@ -38,15 +38,10 @@ CampoRepetirContrasena.addEventListener("blur", () => {
   ValidarRepetirContrasena(CampoRepetirContrasena);
 });
 
-// CampoCheckboxRobot.addEventListener("click", () => {
-//   console.log("aqui estoy6");
-//   CampoRequerido(CampoCheckboxRobot);
-// });
+CampoFormLogin.addEventListener("submit",CreateUser);
 
-CampoFormLogin.addEventListener("submit", SaveUser);
-
-function SaveUser(e) {
-  e.PreventDefaut();
+function CreateUser(e) {
+  e.preventDefault();
   if (
     ValidacionGeneral(
       CampoNombre,
@@ -56,9 +51,23 @@ function SaveUser(e) {
       CampoRepetirContrasena
     )
   ) {
-    if (!UserExistente) {
-      CreateUsuario();
-    } else {
-    }
+    Swal.fire("Bien Hecho!", "Creaste tu usuario con exito!", "success");
+    ClearForm();
+  } else {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Verifica el usuario o contraseña ya que no coinciden una u otra !",
+    });
   }
+}
+
+function ClearForm() {
+  CampoFormLogin.reset();
+  CampoNombre.className = "form-control";
+  CampoApellido.className = "form-control";
+  CampoEmail.className = "form-control";
+  CampoContrasena.className = "form-control";
+  CampoRepetirContrasena.className = "form-control";
+  CampoCheckboxRobot.className = "form-check";
 }
