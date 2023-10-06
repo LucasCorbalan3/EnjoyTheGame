@@ -1,4 +1,5 @@
 const CampoRequerido = (input) => {
+  git;
   if (input.value.trim().length > 0) {
     input.className = "form-control is-valid";
     return true;
@@ -39,7 +40,7 @@ const ValidacionGeneral = (
   CampoContrasena,
   CampoRepetirContrasena
 ) => {
-  let alerta = document.getElementById("mjsAlerta");
+  let alert = document.getElementById("mjeAlerta");
   if (
     CampoRequerido(CampoNombre) &&
     CampoRequerido(CampoApellido) &&
@@ -47,10 +48,10 @@ const ValidacionGeneral = (
     CampoRequerido(CampoContrasena) &&
     ValidarRepetirContrasena(CampoRepetirContrasena)
   ) {
-    alerta.className = "alert alert-danger my-3 d-none";
+    alert.className = "alert alert-danger my-3 d-none";
     return true;
   } else {
-    alerta.className = "alert alert-danger my-3";
+    alert.className = "alert alert-danger my-3";
     return false;
   }
 };
