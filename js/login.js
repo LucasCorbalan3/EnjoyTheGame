@@ -5,6 +5,8 @@ import {
   ValidacionGeneral,
 } from "./validations.js";
 
+import { Usuario } from "./UsuarioClass.js";
+
 let CampoNombre = document.getElementById("Nombre");
 let CampoApellido = document.getElementById("Apellido");
 let CampoEmail = document.getElementById("Email");
@@ -12,6 +14,9 @@ let CampoContrasena = document.getElementById("Contrasena");
 let CampoRepetirContrasena = document.getElementById("Repetircontrasena");
 let CampoCheckboxRobot = document.getElementById("checkboxRobot");
 let CampoFormLogin = document.getElementById("FormLogin");
+
+let UsuarioExistente = false;
+let ListaUsuario = [];
 
 CampoNombre.addEventListener("blur", () => {
   console.log("aqui estoy");
@@ -38,9 +43,9 @@ CampoRepetirContrasena.addEventListener("blur", () => {
   ValidarRepetirContrasena(CampoRepetirContrasena);
 });
 
-CampoFormLogin.addEventListener("submit",CreateUser);
+CampoFormLogin.addEventListener("submit", RegisterUser);
 
-function CreateUser(e) {
+function RegisterUser(e) {
   e.preventDefault();
   if (
     ValidacionGeneral(
@@ -51,8 +56,10 @@ function CreateUser(e) {
       CampoRepetirContrasena
     )
   ) {
-    Swal.fire("Bien Hecho!", "Creaste tu usuario con exito!", "success");
-    ClearForm();
+    if (!UsuarioExistente) {
+      CrearUsuario();
+      ClearForm();
+    }
   } else {
     Swal.fire({
       icon: "error",
@@ -70,4 +77,20 @@ function ClearForm() {
   CampoContrasena.className = "form-control";
   CampoRepetirContrasena.className = "form-control";
   CampoCheckboxRobot.className = "form-check";
+}
+
+function CrearUsuario() {
+  let UsuarioNuevo = new Usuario(
+    CampoNombre.value,
+    CampoApellido.value,
+    CampoEmail.value,
+    CampoContrasena.value
+  );
+  ListaUsuario.push(UsuarioNuevo);
+  guadarLocalStorage();
+  Swal.fire("Bien Hecho!", "Creaste Correctamente tu usuario!", "success");
+}
+
+function guadarLocalStorage() {
+  localStorage.setItem("keynuevo", JSON.stringify(ListaUsuario));
 }
