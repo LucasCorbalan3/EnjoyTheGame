@@ -47,7 +47,7 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" id="modalLogin">
           <section class="container-fluid ContentRegisterItems">
             <div class="containerBtnLogin bg-dark my-3">
               <form id="FormLogin">
@@ -146,7 +146,7 @@
             class="btn buttonDetails"
             data-bs-dismiss="modal"
           >
-            Close
+            Cerrar
           </button>
         </div>
       </div>
@@ -353,12 +353,12 @@
         </div>
       </nav>
     </header>
-    <main>
+    <main >
       <section class="container-fluid ContentRegisterItems">
         <div class="containerBtnRegiter bg-dark mt-5 px-5">
           <h1 class="text-light text-center m-4">Iniciar Sesion</h1>
           <div class="containerBtnItems">
-            <button
+            <a class="text-decoration-none" href="#modalLogin"><button
               type="button"
               class="btn btn-dark btn-sm"
               data-bs-toggle="modal"
@@ -370,8 +370,8 @@
                 alt="LogoEnjoyTheGame"
               />
               <span>Inicia Sesion con Enjoy The Game</span>
-            </button>
-            <button type="button" class="btn btn-dark btn-sm">
+            </button></a>
+            <a class="text-decoration-none" href="Error404.html"><button type="button" class="btn btn-dark btn-sm">
               <svg
                 viewBox="0 0 18 18"
                 fill="none"
@@ -384,8 +384,8 @@
                 ></path>
               </svg>
               <span>Inicio sesion con Facebook</span>
-            </button>
-            <button type="button" class="btn btn-dark btn-sm">
+            </button></a>
+            <a class="text-decoration-none" href="Error404.html"><button type="button" class="btn btn-dark btn-sm">
               <svg
                 viewBox="0 0 18 18"
                 xmlns="http://www.w3.org/2000/svg"
@@ -409,8 +409,8 @@
                 ></path>
               </svg>
               <span>Inicio sesion con Google</span>
-            </button>
-            <button type="button" class="btn btn-dark btn-sm">
+            </button></a>
+            <a class="text-decoration-none mb-3" href="Error404.html"><button type="button" class="btn btn-dark btn-sm">
               <svg
                 viewBox="0 0 18 23"
                 fill="none"
@@ -423,10 +423,10 @@
                 ></path>
               </svg>
               <span>Inicio sesion con Apple</span>
-            </button>
-            <span class="text-light text-center mx-2 my-4"
+            </button></a>
+            <span class="text-light text-center"
               >¿No tienen una cuenta en Enjoy The Game ?
-              <a class="text-decoration-none" href="../login.html"><span class="TitleNav ">Registrate!</span></a></span
+              <a class="text-decoration-none my-3" href="../login.html"><span class="TitleNav ">Registrate!</span></a></span
             >
           </div>
         </div>
