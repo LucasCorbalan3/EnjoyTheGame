@@ -1,11 +1,305 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Proyecto 2 de Rolling Code" />
+    <meta
+      name="keywords"
+      content="Juegos Online, Web de Juegos, Juegos en linea"
+    />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="assets/joystick-line-pop-removebg-preview.png"
+      type="image/png"
+    />
     <title>Enjoy The Game</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body class="bodycontact">
+    <header>
+      <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid">
+          <button
+            class="btn btn-dark"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasWithBothOptions"
+            aria-controls="offcanvasWithBothOptions"
+          >
+            <input id="checkbox" />
+            <div for="checkbox" class="toggle">
+              <div class="bars" id="bar1"></div>
+              <div class="bars" id="bar2"></div>
+              <div class="bars" id="bar3"></div>
+            </div>
+          </button>
+          <div
+            class="offcanvas offcanvas-start"
+            data-bs-scroll="true"
+            tabindex="-1"
+            id="offcanvasWithBothOptions"
+            aria-labelledby="offcanvasWithBothOptionsLabel"
+          >
+            <div class="offcanvas-header bg-dark btn-warning">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              >
+                <input id="checkbox" />
+                <div for="checkbox" class="toggle">
+                  <div class="bars" id="bar1"></div>
+                  <div class="bars" id="bar2"></div>
+                  <div class="bars" id="bar3"></div>
+                </div>
+              </button>
+            </div>
+            <div class="offcanvas-body bg-dark">
+              <ul class="nav flex-column my-4">
+                <li class="nav-item" id="ListContentNav">
+                  <a class="nav-link active" href="index.html">Inicio</a>
+                </li>
+                <hr />
+                <li class="nav-item" id="ListContentNav">
+                  <a class="nav-link" href="#">Nosotros</a>
+                </li>
+                <hr />
+                <li class="nav-item" id="ListContentNav">
+                  <a class="nav-link" href="#">Contacto</a>
+                </li>
+                <hr />
+                <li class="nav-item" id="ListContentNav">
+                  <a class="nav-link" href="#">Inicia Sesion</a>
+                </li>
+                <hr />
+                <li>
+                  <div class="btn-container">
+                    <svg
+                      viewBox="0 0 16 16"
+                      fill="currentColor"
+                      width="23"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
+                        color="red"
+                      ></path>
+                    </svg>
+                    <label class="switch btn-color-mode-switch">
+                      <input
+                        value="1"
+                        id="color_mode"
+                        name="color_mode"
+                        type="checkbox"
+                      />
+                      <label
+                        class="btn-color-mode-switch-inner"
+                        data-off="Light"
+                        data-on="Dark"
+                        for="color_mode"
+                      ></label>
+                    </label>
+                    <svg
+                      viewBox="0 0 16 16"
+                      class="bi bi-moon-stars-fill"
+                      fill="currentColor"
+                      width="23"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        class="FillOrange"
+                        d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"
+                      ></path>
+                      <path
+                        class="FillOrange"
+                        d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"
+                      ></path>
+                    </svg>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="offcanvas-footer bg-dark">
+              <p class="text-white p-2">
+                © EnjoyTheGame Company. Todos los derechos reservados. Todas las
+                marcas registradas pertenecen a sus respectivos dueños en EE.
+                UU. y otros países.
+              </p>
+              <div class="d-flex justify-content-center iconsContent">
+                <a class="mx-2 my-4" href="#"
+                  ><i class="fa-brands fa-square-instagram iconsredes"></i
+                ></a>
+                <a class="mx-2 my-4" href="#"
+                  ><i class="fa-brands fa-square-x-twitter iconsredes"></i
+                ></a>
+                <a class="mx-2 my-4" href="#"
+                  ><i class="fa-brands fa-square-whatsapp iconsredes"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <a
+            class="navbar-brand rounded mx-auto d-block d-flex"
+            href="/index.html"
+          >
+            <img
+              src="assets/joystick-line-pop-removebg-preview.png"
+              alt="LOGO_Enjoy_The_Game"
+              width="100"
+              height="100"
+            />
+            <p class="align-self-center TitleNav">
+              ENJOY <span class="TitleNavThe">THE</span> GAME
+            </p>
+          </a>
+          <div class="d-none d-lg-block">
+            <button class="learn-more ms-auto">
+              <a href="register.html">
+                <span class="circle" aria-hidden="true">
+                  <span class="icon arrow"></span>
+                </span>
+                <span class="button-text text-white">Inicia Sesion!</span>
+              </a>
+            </button>
+            <div class="btn-container">
+              <svg
+                viewBox="0 0 16 16"
+                class="bi bi-sun-fill"
+                fill="currentColor"
+                width="23"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  class="FillRed"
+                  d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
+                ></path>
+              </svg>
+              <label class="switch btn-color-mode-switch">
+                <input
+                  value="1"
+                  id="color_mode"
+                  name="color_mode"
+                  type="checkbox"
+                />
+                <label
+                  class="btn-color-mode-switch-inner"
+                  data-off="Light"
+                  data-on="Dark"
+                  for="color_mode"
+                ></label>
+              </label>
+              <svg
+                viewBox="0 0 16 16"
+                class="bi bi-moon-stars-fill"
+                fill="currentColor"
+                width="23"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  class="FillOrange"
+                  d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"
+                ></path>
+                <path
+                  class="FillOrange"
+                  d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="container my-3">
+        <h1 class="display-3 text-center TitleNav">CONTACTO</h1>
+        <article class="row">
+          <div class="col sm-12 col md-6">
+            <h4 class="py-4 TitleNav">DISFRUTA EL JUEGO</h4>
+            <img
+              class="imagecontact align-center"
+              src="assets/joystick-line-pop-removebg-preview.png"
+              alt="Logo DE la Pagina"
+            />
+          </div>
+          <div class="col sm-12 col md-6">
+            <h4 class="py-4 TitleNav">UBICACION</h4>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14241.246122940707!2d-65.204874!3d-26.830042!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94225c105a0628ab%3A0x6248e99149b6e7dd!2sCasa%20de%20Gobierno%20de%20Tucum%C3%A1n!5e0!3m2!1ses!2sar!4v1689549611556!5m2!1ses!2sar"
+              class="w-100 border border-0"
+              height="400"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </article>
+      </section>
+      <section class="container-fluid my-3">
+        <div class="row">
+          <div class="col sm-0 col md-2"></div>
+          <div class="col sm-12 col md-8">
+            <h4 class="text-center TitleNav">FORMULARIO DE CONTACTO</h4>
+            <form class="mb-3 TitleNav">
+              <div class="mb-3">
+                <label for="Nombre" class="font-label TitleNav"
+                  >NOMBRE Y APELLIDO <span class="text-danger">*</span></label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  id="Nombre"
+                  placeholder="name and surname"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="Email" class="font-label TitleNav"
+                  >EMAIL<span class="text-danger">*</span></label
+                >
+                <input
+                  class="form-control"
+                  type="text"
+                  id="Email"
+                  placeholder="example@gmail.com"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="observaciones" class="form-label TitleNav"
+                  >OBSERVACIONES <span class="text-danger">*</span></label
+                >
+                <textarea
+                  class="form-control"
+                  id="OBSERVACIONES Y CONSULTAS"
+                  placeholder="consultation"
+                ></textarea>
+              </div>
+              <div class="buttoncontact py-4">
+                <button type="submit" class="btn TitleNav">
+                  ENVIAR CONSULTA
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="col sm-0 col md-2"></div>
+        </div>
+      </section>
+    </main>
+    <script src="js/login.js" type="module"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/7d2e342abf.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
