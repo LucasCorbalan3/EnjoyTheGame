@@ -1,5 +1,4 @@
 const CampoRequerido = (input) => {
-  console.log(input.value);
   if (input.value.trim().length > 0) {
     input.className = "form-control is-valid";
     return true;

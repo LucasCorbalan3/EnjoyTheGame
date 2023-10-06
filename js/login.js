@@ -14,34 +14,24 @@ let CampoFormLogin = document.getElementById("FormLogin");
 let UserExistente = false;
 
 CampoNombre.addEventListener("blur", () => {
-  console.log("aqui estoy");
   CampoRequerido(CampoNombre);
 });
 
 CampoApellido.addEventListener("blur", () => {
-  console.log("aqui estoy2");
   CampoRequerido(CampoApellido);
 });
 
 CampoEmail.addEventListener("blur", () => {
-  console.log("aqui estoy3");
   validarEmail(CampoEmail);
 });
 
 CampoContrasena.addEventListener("blur", () => {
-  console.log("aqui estoy4");
   CampoRequerido(CampoContrasena);
 });
 
 CampoRepetirContrasena.addEventListener("blur", () => {
-  console.log("aqui estoy5");
   ValidarRepetirContrasena(CampoRepetirContrasena);
 });
-
-// CampoCheckboxRobot.addEventListener("click", () => {
-//   console.log("aqui estoy6");
-//   CampoRequerido(CampoCheckboxRobot);
-// });
 
 CampoFormLogin.addEventListener("submit", SaveUser);
 
