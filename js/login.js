@@ -81,21 +81,21 @@ if (campoFormJuego) {
   });
 }
 
-function registerUser(e) {
+CampoFormLogin.addEventListener("submit",CreateUser);
+
+function CreateUser(e) {
   e.preventDefault();
   if (
-    validacionGeneral(
-      campoNombre,
-      campoApellido,
-      campoEmail,
-      campoContrasena,
-      campoRepetirContrasena
+    ValidacionGeneral(
+      CampoNombre,
+      CampoApellido,
+      CampoEmail,
+      CampoContrasena,
+      CampoRepetirContrasena
     )
   ) {
-    if (!usuarioExistente) {
-      crearUsuario();
-      clearForm();
-    }
+    Swal.fire("Bien Hecho!", "Creaste tu usuario con exito!", "success");
+    ClearForm();
   } else {
     Swal.fire({
       icon: "error",
