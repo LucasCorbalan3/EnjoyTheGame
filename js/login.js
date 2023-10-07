@@ -29,6 +29,8 @@ let campoURL = document.getElementById("URL");
 let campoFormJuego = document.getElementById("FormNewGame");
 let checkeado;
 
+let juegoExistente = false;
+
 if (campoNombre) {
   campoNombre.addEventListener("blur", () => {
     campoRequerido(campoNombre);
@@ -78,15 +80,7 @@ if (campoPublicado) {
   checkeado = checkbox(campoPublicado);
 }
 if (campoFormJuego) {
-  campoFormJuego.addEventListener("submit", () => {
-    validarFormularioJuego(
-      event,
-      campoNombreJuego,
-      campoCategoria,
-      campoDescripcion,
-      campoURL
-    );
-  });
+  campoFormJuego.addEventListener("submit", agregarJuego);
 }
 
 if (campoFormLogin) {
@@ -141,4 +135,21 @@ function crearUsuario() {
 
 function guadarLocalStorage() {
   localStorage.setItem("keynuevo", JSON.stringify(listaUsuario));
+}
+
+function agregarJuego(event) {
+  event.preventDefault();
+  let botonAlerta = document.getElementById("btnAlerta");
+  if (
+    validarFormularioJuego(
+      campoNombreJuego,
+      campoCategoria,
+      campoDescripcion,
+      campoURL
+    )
+  ) {
+    botonAlerta.className = "alert alert-danger my-3 d-none";
+  } else {
+    botonAlerta.className = "alert alert-danger my-3";
+  }
 }
