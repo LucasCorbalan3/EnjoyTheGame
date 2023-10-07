@@ -1,64 +1,100 @@
 import {
-  CampoRequerido,
+  campoRequerido,
   validarEmail,
-  ValidarRepetirContrasena,
-  ValidacionGeneral,
+  validarRepetirContrasena,
+  validacionGeneral,
+  validarFormularioJuego,
+  checkbox,
 } from "./validations.js";
 
 import { Usuario } from "./UsuarioClass.js";
 
-let CampoNombre = document.getElementById("Nombre");
-let CampoApellido = document.getElementById("Apellido");
-let CampoEmail = document.getElementById("Email");
-let CampoContrasena = document.getElementById("Contrasena");
-let CampoRepetirContrasena = document.getElementById("Repetircontrasena");
-let CampoCheckboxRobot = document.getElementById("checkboxRobot");
-let CampoFormLogin = document.getElementById("FormLogin");
+let campoNombre = document.getElementById("Nombre");
+let campoApellido = document.getElementById("Apellido");
+let campoEmail = document.getElementById("Email");
+let campoContrasena = document.getElementById("Contrasena");
+let campoRepetirContrasena = document.getElementById("Repetircontrasena");
+let campoCheckboxRobot = document.getElementById("checkboxRobot");
+let campoFormLogin = document.getElementById("FormLogin");
 
-let UsuarioExistente = false;
-let ListaUsuario = [];
+let usuarioExistente = false;
+let listaUsuario = [];
 
-CampoNombre.addEventListener("blur", () => {
-  console.log("aqui estoy");
-  CampoRequerido(CampoNombre);
-});
+let campoNombreJuego = document.getElementById("NombreJuego");
+let campoCategoria = document.getElementById("Categoría");
+let campoDescripcion = document.getElementById("Descripcion");
+let campoPublicado = document.getElementById("Publicado");
+let campoFormJuego = document.getElementById("FormNewGame");
+let checkeado;
 
-CampoApellido.addEventListener("blur", () => {
-  console.log("aqui estoy2");
-  CampoRequerido(CampoApellido);
-});
+if (campoNombre) {
+  campoNombre.addEventListener("blur", () => {
+    campoRequerido(campoNombre);
+  });
+}
+if (campoApellido) {
+  campoApellido.addEventListener("blur", () => {
+    campoRequerido(campoApellido);
+  });
+}
+if (campoEmail) {
+  campoEmail.addEventListener("blur", () => {
+    validarEmail(campoEmail);
+  });
+}
+if (campoContrasena) {
+  campoContrasena.addEventListener("blur", () => {
+    campoRequerido(campoContrasena);
+  });
+}
+if (campoRepetirContrasena) {
+  campoRepetirContrasena.addEventListener("blur", () => {
+    validarRepetirContrasena(campoRepetirContrasena);
+  });
+}
+if (campoNombreJuego) {
+  campoNombreJuego.addEventListener("blur", () => {
+    campoRequerido(campoNombreJuego);
+  });
+}
+if (campoCategoria) {
+  campoCategoria.addEventListener("blur", () => {
+    campoRequerido(campoCategoria);
+  });
+}
+if (campoDescripcion) {
+  campoDescripcion.addEventListener("blur", () => {
+    campoRequerido(campoDescripcion);
+  });
+}
+if (campoPublicado) {
+  checkeado = checkbox();
+}
+if (campoFormJuego) {
+  campoFormJuego.addEventListener("submit", () => {
+    validarFormularioJuego(
+      event,
+      campoNombreJuego,
+      campoCategoria,
+      campoDescripcion
+    );
+  });
+}
 
-CampoEmail.addEventListener("blur", () => {
-  console.log("aqui estoy3");
-  validarEmail(CampoEmail);
-});
-
-CampoContrasena.addEventListener("blur", () => {
-  console.log("aqui estoy3");
-  CampoRequerido(CampoContrasena);
-});
-
-CampoRepetirContrasena.addEventListener("blur", () => {
-  console.log("aqui estoy5");
-  ValidarRepetirContrasena(CampoRepetirContrasena);
-});
-
-CampoFormLogin.addEventListener("submit", RegisterUser);
-
-function RegisterUser(e) {
+function registerUser(e) {
   e.preventDefault();
   if (
-    ValidacionGeneral(
-      CampoNombre,
-      CampoApellido,
-      CampoEmail,
-      CampoContrasena,
-      CampoRepetirContrasena
+    validacionGeneral(
+      campoNombre,
+      campoApellido,
+      campoEmail,
+      campoContrasena,
+      campoRepetirContrasena
     )
   ) {
-    if (!UsuarioExistente) {
-      CrearUsuario();
-      ClearForm();
+    if (!usuarioExistente) {
+      crearUsuario();
+      clearForm();
     }
   } else {
     Swal.fire({
@@ -69,28 +105,28 @@ function RegisterUser(e) {
   }
 }
 
-function ClearForm() {
-  CampoFormLogin.reset();
-  CampoNombre.className = "form-control";
-  CampoApellido.className = "form-control";
-  CampoEmail.className = "form-control";
-  CampoContrasena.className = "form-control";
-  CampoRepetirContrasena.className = "form-control";
-  CampoCheckboxRobot.className = "form-check";
+function clearForm() {
+  campoFormLogin.reset();
+  campoNombre.className = "form-control";
+  campoApellido.className = "form-control";
+  campoEmail.className = "form-control";
+  campoContrasena.className = "form-control";
+  campoRepetirContrasena.className = "form-control";
+  campoCheckboxRobot.className = "form-check";
 }
 
-function CrearUsuario() {
-  let UsuarioNuevo = new Usuario(
-    CampoNombre.value,
-    CampoApellido.value,
-    CampoEmail.value,
-    CampoContrasena.value
+function crearUsuario() {
+  let usuarioNuevo = new Usuario(
+    campoNombre.value,
+    campoApellido.value,
+    campoEmail.value,
+    campoContrasena.value
   );
-  ListaUsuario.push(UsuarioNuevo);
+  listaUsuario.push(usuarioNuevo);
   guadarLocalStorage();
   Swal.fire("Bien Hecho!", "Creaste Correctamente tu usuario!", "success");
 }
 
 function guadarLocalStorage() {
-  localStorage.setItem("keynuevo", JSON.stringify(ListaUsuario));
+  localStorage.setItem("keynuevo", JSON.stringify(listaUsuario));
 }

@@ -1,5 +1,4 @@
-const CampoRequerido = (input) => {
-  console.log(input.value);
+const campoRequerido = (input) => {
   if (input.value.trim().length > 0) {
     input.className = "form-control is-valid";
     return true;
@@ -21,7 +20,7 @@ const validarEmail = (input) => {
   }
 };
 
-const ValidarRepetirContrasena = (input) => {
+const validarRepetirContrasena = (input) => {
   let contrasenaprimera = document.getElementById("Contrasena").value;
   let contrasenasegunda = document.getElementById("Repetircontrasena").value;
   if (contrasenaprimera === contrasenasegunda) {
@@ -33,32 +32,58 @@ const ValidarRepetirContrasena = (input) => {
   }
 };
 
-const ValidacionGeneral = (
-  CampoNombre,
-  CampoApellido,
-  CampoEmail,
-  CampoContrasena,
-  CampoRepetirContrasena
+const validacionGeneral = (
+  campoNombre,
+  campoApellido,
+  campoEmail,
+  campoContrasena,
+  campoRepetirContrasena
 ) => {
-  let alerta = document.getElementById("mjsAlerta");
+  let alert = document.getElementById("mjeAlerta");
   if (
-    CampoRequerido(CampoNombre) &&
-    CampoRequerido(CampoApellido) &&
-    validarEmail(CampoEmail) &&
-    CampoRequerido(CampoContrasena) &&
-    ValidarRepetirContrasena(CampoRepetirContrasena)
+    campoRequerido(campoNombre) &&
+    campoRequerido(campoApellido) &&
+    validarEmail(campoEmail) &&
+    campoRequerido(campoContrasena) &&
+    validarRepetirContrasena(campoRepetirContrasena)
   ) {
-    alerta.className = "alert alert-danger my-3 d-none";
+    alert.className = "alert alert-danger my-3 d-none";
     return true;
   } else {
-    alerta.className = "alert alert-danger my-3";
+    alert.className = "alert alert-danger my-3";
+    return false;
+  }
+};
+
+const validarFormularioJuego = (event, nombre, categoria, descripcion) => {
+  let botonAlerta = document.getElementById("btnAlerta");
+  if (
+    campoRequerido(nombre) &&
+    campoRequerido(categoria) &&
+    campoRequerido(descripcion)
+  ) {
+    botonAlerta.className = "alert alert-danger my-3 d-none";
+    return true;
+  } else {
+    event.preventDefault();
+    botonAlerta.className = "alert alert-danger my-3";
+    return false;
+  }
+};
+
+const checkbox = (input) => {
+  if (input.checked) {
+    return true;
+  } else {
     return false;
   }
 };
 
 export {
-  CampoRequerido,
+  campoRequerido,
   validarEmail,
-  ValidarRepetirContrasena,
-  ValidacionGeneral,
+  validarRepetirContrasena,
+  validacionGeneral,
+  validarFormularioJuego,
+  checkbox,
 };
