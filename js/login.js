@@ -98,6 +98,10 @@ if (campoFormLogin) {
   campoFormLogin.addEventListener("submit", RegisterUser);
 }
 
+if (FormInicioSesion) {
+  FormInicioSesion.addEventListener('submit',InicioSesion)
+}
+
 function RegisterUser(e) {
   e.preventDefault();
   if (
@@ -152,22 +156,18 @@ function guardarJuegosEnLocalStorage (){
   localStorage.setItem("Juegos", JSON.stringify(listaUsuario));
 }
 
-function inicioSesion() {
-  const email = document.getElementById('emailLog').value
-  const contrasena = document.getElementById('contrasenaLog').value
-  const usuarioEncontrado = listaUsuario.find(
-    (usuario) =>
-      usuario.Useremail === email && usuario.contrasena === contrasena
-  );
 
-  if (!usuarioEncontrado) {
-    window.location.href = "/index.html";
-    console.log('todo bien');
-  } else {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Verifica el usuario o contraseña ya que no coinciden con un usuario ya registrado !",
-    });
-  }
+
+function InicioSesion (e) {
+const Usuario = document.getElementById('UsuarioLog').value
+const contrasena = document.getElementById('ContrasenaLog').value;
+const usuarioExistente = listaUsuarios.find(u => u.email === Usuario.email.value);
+if (!usuarioExistente || usuarioExistente.contrasena !== usuariocontrasena) {
+  e.preventDefault(); // Evita que se envíe el formulario
+  Swal.fire({
+    icon: "error",
+    title: "Oops...",
+    text: "El usuario o contraseña no conciden con un usuario registrado!",
+  });
+}
 }
