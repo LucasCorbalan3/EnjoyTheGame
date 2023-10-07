@@ -267,26 +267,41 @@
                 required
               ></textarea>
             </div>
+            <div class="my-3">
+              <label for="URL" class="form-label text-light">URL *</label>
+              <input
+                type="text"
+                class="form-control"
+                id="URL"
+                placeholder="https://www.google.com.ar/?&bih=651&biw=1366&hl=es"
+                maxlength="100"
+                required
+              />
+            </div>
             <div class="my-3 form-check">
               <input type="checkbox" class="form-check-input" id="Publicado" />
               <label class="form-check-label text-light" for="Publicado"
                 >Publicado</label
               >
             </div>
-            <button
-              id="botonAgregar"
-              type="submit"
-              class="btn element1 my-5 mx-auto text-center"
-            >
-              Agregar
-            </button>
+            <div class="text-center">
+              <button
+                id="botonAgregar"
+                type="submit"
+                class="btn element1 mt-5 mx-auto buttonDetails"
+              >
+                Agregar
+              </button>
+            </div>
           </form>
           <div class="alert alert-danger d-none" role="alert" id="btnAlerta">
             Debe completar todos los campos requeridos
           </div>
+          <div class="text-center">
             <a href="admin.html"
-              ><button class="btn buttonDetails">Volver</button></a
+              ><button class="btn buttonDetails my-5">Volver</button></a
             >
+          </div>
         </div>
       </section>
     </main>

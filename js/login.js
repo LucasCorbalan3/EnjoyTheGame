@@ -4,6 +4,7 @@ import {
   validarRepetirContrasena,
   validacionGeneral,
   validarFormularioJuego,
+  validarURL,
   checkbox,
 } from "./validations.js";
 
@@ -24,6 +25,7 @@ let campoNombreJuego = document.getElementById("NombreJuego");
 let campoCategoria = document.getElementById("Categoría");
 let campoDescripcion = document.getElementById("Descripcion");
 let campoPublicado = document.getElementById("Publicado");
+let campoURL = document.getElementById("URL");
 let campoFormJuego = document.getElementById("FormNewGame");
 let checkeado;
 
@@ -67,8 +69,13 @@ if (campoDescripcion) {
     campoRequerido(campoDescripcion);
   });
 }
+if (campoURL) {
+  campoURL.addEventListener("blur", () => {
+    validarURL(campoURL);
+  });
+}
 if (campoPublicado) {
-  checkeado = checkbox();
+  checkeado = checkbox(campoPublicado);
 }
 if (campoFormJuego) {
   campoFormJuego.addEventListener("submit", () => {
@@ -76,12 +83,15 @@ if (campoFormJuego) {
       event,
       campoNombreJuego,
       campoCategoria,
-      campoDescripcion
+      campoDescripcion,
+      campoURL
     );
   });
 }
 
-campoFormLogin.addEventListener("submit", RegisterUser);
+if (campoFormLogin) {
+  campoFormLogin.addEventListener("submit", RegisterUser);
+}
 
 function RegisterUser(e) {
   e.preventDefault();
