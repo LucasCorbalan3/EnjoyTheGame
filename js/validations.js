@@ -33,6 +33,17 @@ const validarRepetirContrasena = (input) => {
   }
 };
 
+const validarURL = (input) => {
+  let patron = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
+  if (patron.test(input.value)) {
+    input.className = "form-control is-valid";
+    return true;
+  } else {
+    input.className = "form-control is-invalid";
+    return false;
+  }
+};
+
 const validacionGeneral = (
   campoNombre,
   campoApellido,
@@ -56,12 +67,14 @@ const validacionGeneral = (
   }
 };
 
-const validarFormularioJuego = (event, nombre, categoria, descripcion) => {
+const validarFormularioJuego = (event, nombre, categoria, descripcion, url) => {
   let botonAlerta = document.getElementById("btnAlerta");
+  console.log("En la funcion");
   if (
     campoRequerido(nombre) &&
     campoRequerido(categoria) &&
-    campoRequerido(descripcion)
+    campoRequerido(descripcion) &&
+    validarURL(url)
   ) {
     botonAlerta.className = "alert alert-danger my-3 d-none";
     return true;
@@ -86,5 +99,6 @@ export {
   validarRepetirContrasena,
   validacionGeneral,
   validarFormularioJuego,
+  validarURL,
   checkbox,
 };
