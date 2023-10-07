@@ -18,8 +18,7 @@ let campoRepetirContrasena = document.getElementById("Repetircontrasena");
 let campoCheckboxRobot = document.getElementById("checkboxRobot");
 let campoFormLogin = document.getElementById("FormLogin");
 
-let usuarioExistente = false;
-let listaUsuario = [];
+let FormInicioSesion = document.getElementById("FormInicioSesion");
 
 let campoNombreJuego = document.getElementById("NombreJuego");
 let campoCategoria = document.getElementById("Categoría");
@@ -28,6 +27,12 @@ let campoPublicado = document.getElementById("Publicado");
 let campoURL = document.getElementById("URL");
 let campoFormJuego = document.getElementById("FormNewGame");
 let checkeado;
+
+let usuarioExistente = false;
+let listaUsuario = JSON.parse(localStorage.getItem("Usuarios") || []);
+let listaJuegos = JSON.parse(localStorage.getItem("Juegos") || []);
+
+
 
 if (campoNombre) {
   campoNombre.addEventListener("blur", () => {
@@ -140,5 +145,29 @@ function crearUsuario() {
 }
 
 function guadarLocalStorage() {
-  localStorage.setItem("keynuevo", JSON.stringify(listaUsuario));
+  localStorage.setItem("Usuarios", JSON.stringify(listaUsuario));
+}
+
+function guardarJuegosEnLocalStorage (){
+  localStorage.setItem("Juegos", JSON.stringify(listaUsuario));
+}
+
+function inicioSesion() {
+  const email = document.getElementById('emailLog').value
+  const contrasena = document.getElementById('contrasenaLog').value
+  const usuarioEncontrado = listaUsuario.find(
+    (usuario) =>
+      usuario.Useremail === email && usuario.contrasena === contrasena
+  );
+
+  if (!usuarioEncontrado) {
+    window.location.href = "/index.html";
+    console.log('todo bien');
+  } else {
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Verifica el usuario o contraseña ya que no coinciden con un usuario ya registrado !",
+    });
+  }
 }
