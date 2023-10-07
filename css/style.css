@@ -388,3 +388,20 @@ label {
   object-position: center;
   background-color: #e0e0e0;
 }
+
+
+.bodycontact {
+    display: block;
+    width: 100%;
+    height: 900px;
+    background-image: linear-gradient(rgba(77, 2, 97, 1),rgba(159, 4, 137, 1), rgba(159, 2, 137, 1), rgba(77, 2, 97, 1));
+}
+
+.buttoncontact {
+  display: flex;
+  justify-content: center;
+}
+
+.imagecontact {
+  width: 500px;
+}
