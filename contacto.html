@@ -22,6 +22,7 @@
       href="assets/joystick-line-pop-removebg-preview.png"
       type="image/png"
     />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Enjoy The Game</title>
   </head>
   <body class="bodycontact">
@@ -219,8 +220,8 @@
         </div>
       </nav>
     </header>
-    <main>
-      <section class="container my-3">
+    <main class="BackgroundContainer">
+      <section class="container ContentRegisterItems">
         <h1 class="display-3 text-center TitleNav">CONTACTO</h1>
         <article class="row">
           <div class="col sm-12 col md-6">
@@ -244,80 +245,91 @@
           </div>
         </article>
       </section>
-      <section class="container-fluid my-3">
-        <div class="row">
-          <div class="col sm-0 col md-2"></div>
-          <div class="col sm-12 col md-8">
-            <h4 class="text-center TitleNav">FORMULARIO DE CONTACTO</h4>
-            <form id="inquiryForm" class="mb-3 TitleNav" action="https://formsubmit.co/enjoythejuego@gmail.com" method="POST">
-              <div class="mb-3">
-                <label for="Nombre" class="font-label TitleNav"
-                  >NOMBRE Y APELLIDO <span class="text-danger">*</span></label
-                >
-                <input
-                  class="form-control"
-                  type="text"
-                  name="name"
-                  id="Nombre"
-                  placeholder="name and surname"
-                  maxlength="50"
-                  required
-                />
+      <section class="container-fluid ContentRegisterItems my-3">
+        <div class="containerBtnLogin bg-dark my-5 px-5">
+          <h4 class="text-center TitleNav my-3">FORMULARIO DE CONTACTO</h4>
+          <form
+            id="inquiryForm"
+            class="mb-3 TitleNav"
+            action="https://formsubmit.co/enjoythejuego@gmail.com"
+            method="POST"
+          >
+            <div class="mb-3">
+              <label for="Nombre" class="font-label TitleNav"
+                >NOMBRE Y APELLIDO <span class="text-danger">*</span></label
+              >
+              <input
+                class="form-control"
+                type="text"
+                name="name"
+                id="NombreApellido"
+                placeholder="name and surname"
+                maxlength="50"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="Email" class="font-label TitleNav"
+                >EMAIL<span class="text-danger">*</span></label
+              >
+              <input
+                class="form-control"
+                type="text"
+                name="email"
+                id="Email"
+                placeholder="example@gmail.com"
+                maxlength="50"
+                required
+              />
+              <div class="invalid-feedback text-light bg-danger bold fs-6">
+                Formáto de email inválido
               </div>
-              <div class="mb-3">
-                <label for="Email" class="font-label TitleNav"
-                  >EMAIL<span class="text-danger">*</span></label
-                >
-                <input
-                  class="form-control"
-                  type="text"
-                  name="email"
-                  id="Email"
-                  placeholder="example@gmail.com"
-                  maxlength="50"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label for="Asunto" class="font-label TitleNav"
-                  >ASUNTO <span class="text-danger">*</span></label
-                >
-                <input
-                  class="form-control"
-                  type="text"
-                  name="suject"
-                  id="Asunto"
-                  placeholder="Affair"
-                  maxlength="80"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label for="Observaciones" class="form-label TitleNav"
-                  >OBSERVACIONES <span class="text-danger">*</span></label
-                >
-                <textarea
-                  class="form-control"
-                  name="coments"
-                  id="Observaciones"
-                  placeholder="consultation"
-                  maxlength="250"
-                  required
-                ></textarea>
-              </div>
-              <input type="hidden" name="_next" value="http://127.0.0.1:5500/contacto.html">
-              <input type="hidden" name="_captcha" value="false">
-              <div class="buttoncontact py-4">
-                <button type="submit" class="btn TitleNav">
-                  ENVIAR CONSULTA
-                </button>
-              </div>
-              <div class="alert alert-danger my-3 d-none" role="alert" id="mensajeAlert">
-                Debe Completar Todos los Campos Requeridos
-              </div>
-            </form>
-          </div>
-          <div class="col sm-0 col md-2"></div>
+            </div>
+            <div class="mb-3">
+              <label for="Asunto" class="font-label TitleNav"
+                >ASUNTO <span class="text-danger">*</span></label
+              >
+              <input
+                class="form-control"
+                type="text"
+                name="suject"
+                id="Asunto"
+                placeholder="Affair"
+                maxlength="80"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="Observaciones" class="form-label TitleNav"
+                >OBSERVACIONES <span class="text-danger">*</span></label
+              >
+              <textarea
+                class="form-control"
+                name="coments"
+                id="Observaciones"
+                placeholder="consultation"
+                maxlength="250"
+                required
+              ></textarea>
+            </div>
+            <input
+              type="hidden"
+              name="_next"
+              value="http://127.0.0.1:5500/contacto.html"
+            />
+            <input type="hidden" name="_captcha" value="false" />
+            <div class="buttoncontact py-4">
+              <button type="submit" class="btn buttonDetails">
+                ENVIAR CONSULTA
+              </button>
+            </div>
+            <div
+              class="alert alert-danger my-3 d-none"
+              role="alert"
+              id="mensajeAlert"
+            >
+              Debe Completar Todos los Campos Requeridos
+            </div>
+          </form>
         </div>
       </section>
     </main>

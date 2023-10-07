@@ -1,30 +1,28 @@
-let campoNombreApellido = document.getElementById("Nombre");
+import { validarEmail, campoRequerido } from "./validations.js";
+
+let campoNombreApellido = document.getElementById("NombreApellido");
 let campoAsunto = document.getElementById("Asunto");
 let campoEmail = document.getElementById("Email");
 let campoObservaciones = document.getElementById("Observaciones");
-let inquiryForm = document.getElementById('inquiryForm');
+let inquiryForm = document.getElementById("inquiryForm");
 
-const requiredField = (input) => {
-  if (input.value.length > 0) {
-    input.className = "form-control is-Valid";
-    return true;
-  } else {
-    input.className = "form-control is-invalid";
-    return false;
-  }
-};
+campoNombreApellido.addEventListener("blur", () => {
+  campoRequerido(campoNombreApellido);
+});
 
-const validateEmail = (input) => {
-  let patron =
-    /^(?:[^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*|"[^\n"]+")@(?:[^<>()[\].,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,63}$/;
-  if (patron.test(input.value)) {
-    input.className = "form-control is-valid";
-    return true;
-  } else {
-    input.className = "form-control is-invalid";
-    return false;
-  }
-};
+campoAsunto.addEventListener("blur", () => {
+  campoRequerido(campoAsunto);
+});
+
+campoEmail.addEventListener("blur", () => {
+  validarEmail(campoEmail);
+});
+
+campoObservaciones.addEventListener("blur", () => {
+  campoRequerido(campoObservaciones);
+});
+
+inquiryForm.addEventListener("submit", generalValidation);
 
 const generalValidation = (
   campoNombreApellido,
@@ -32,35 +30,20 @@ const generalValidation = (
   campoEmail,
   campoObservaciones
 ) => {
-    let alert = document.querySelector('#mensajeAlert')
+  let alert = document.querySelector("#mensajeAlert");
+  Swal.fire(
+    "Bien Hecho!",
+    "Tu consulta fue enviada al administrador!",
+    "success"
+  );
   if (
-    requiredField(campoNombreApellido) &&
-    requiredField(campoAsunto) &&
-    requiredField(campoObservaciones) &&
-    validateEmail(campoEmail)
+    campoRequerido(campoNombreApellido) &&
+    campoRequerido(campoAsunto) &&
+    campoRequerido(campoObservaciones) &&
+    validarEmail(campoEmail)
   ) {
-    alert.className = "alert alert-danger my-3 d-none"
-    return true;
-  }else{
-    alert.className = "alert alert-danger my-3"
+  } else {
+    alert.className = "alert alert-danger my-3";
     return false;
   }
 };
-
-campoNombreApellido.addEventListener("blur", () => {
-  requiredField(campoNombreApellido);
-});
-
-campoAsunto.addEventListener("blur", () => {
-  requiredField(campoAsunto);
-});
-
-campoEmail.addEventListener("blur", () => {
-  validateEmail(campoEmail);
-});
-
-campoObservaciones.addEventListener("blur", () => {
-  requiredField(campoObservaciones);
-});
-
-inquiryForm.addEventListener('submit', generalValidation);
