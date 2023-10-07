@@ -39,7 +39,7 @@ const validacionGeneral = (
   campoContrasena,
   campoRepetirContrasena
 ) => {
-  let alert = document.getElementById("mjeAlerta");
+  let alert = document.getElementById("mjsAlerta");
   if (
     campoRequerido(campoNombre) &&
     campoRequerido(campoApellido) &&

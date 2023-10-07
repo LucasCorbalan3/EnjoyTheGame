@@ -81,27 +81,29 @@ if (campoFormJuego) {
   });
 }
 
-CampoFormLogin.addEventListener("submit",CreateUser);
+campoFormLogin.addEventListener("submit", RegisterUser);
 
-function CreateUser(e) {
+function RegisterUser(e) {
   e.preventDefault();
   if (
-    ValidacionGeneral(
-      CampoNombre,
-      CampoApellido,
-      CampoEmail,
-      CampoContrasena,
-      CampoRepetirContrasena
+    validacionGeneral(
+      campoNombre,
+      campoApellido,
+      campoEmail,
+      campoContrasena,
+      campoRepetirContrasena
     )
   ) {
-    Swal.fire("Bien Hecho!", "Creaste tu usuario con exito!", "success");
-    ClearForm();
-  } else {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Verifica el usuario o contraseña ya que no coinciden una u otra !",
-    });
+    if (!usuarioExistente) {
+      clearForm();
+      crearUsuario();
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Verifica el usuario o contraseña ya que no coinciden una u otra !",
+      });
+    }
   }
 }
 
