@@ -438,9 +438,12 @@ label {
   font-weight: 1200;
   letter-spacing: 20px;
   background: url(/assets/backgroundmMain.png) center no-repeat;
+  new-items-login-validations
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
+  
+>>>>>> development
 }
 
 .a404 {

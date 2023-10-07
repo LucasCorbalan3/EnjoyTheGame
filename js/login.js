@@ -18,8 +18,7 @@ let campoRepetirContrasena = document.getElementById("Repetircontrasena");
 let campoCheckboxRobot = document.getElementById("checkboxRobot");
 let campoFormLogin = document.getElementById("FormLogin");
 
-let usuarioExistente = false;
-let listaUsuario = [];
+let FormInicioSesion = document.getElementById("FormInicioSesion");
 
 let campoNombreJuego = document.getElementById("NombreJuego");
 let campoCategoria = document.getElementById("Categoría");
@@ -28,6 +27,10 @@ let campoPublicado = document.getElementById("Publicado");
 let campoURL = document.getElementById("URL");
 let campoFormJuego = document.getElementById("FormNewGame");
 let checkeado;
+
+let usuarioExistente = false;
+let listaUsuario = JSON.parse(localStorage.getItem("Usuarios") || []);
+let listaJuegos = JSON.parse(localStorage.getItem("Juegos") || []);
 
 let juegoExistente = false;
 
@@ -87,6 +90,10 @@ if (campoFormLogin) {
   campoFormLogin.addEventListener("submit", RegisterUser);
 }
 
+if (FormInicioSesion) {
+  FormInicioSesion.addEventListener("submit", InicioSesion);
+}
+
 function RegisterUser(e) {
   e.preventDefault();
   if (
@@ -134,7 +141,27 @@ function crearUsuario() {
 }
 
 function guadarLocalStorage() {
-  localStorage.setItem("keynuevo", JSON.stringify(listaUsuario));
+  localStorage.setItem("Usuarios", JSON.stringify(listaUsuario));
+}
+
+function guardarJuegosEnLocalStorage() {
+  localStorage.setItem("Juegos", JSON.stringify(listaUsuario));
+}
+
+function InicioSesion(e) {
+  const Usuario = document.getElementById("UsuarioLog").value;
+  const contrasena = document.getElementById("ContrasenaLog").value;
+  const usuarioExistente = listaUsuarios.find(
+    (u) => u.email === Usuario.email.value
+  );
+  if (!usuarioExistente || usuarioExistente.contrasena !== usuariocontrasena) {
+    e.preventDefault(); // Evita que se envíe el formulario
+    Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "El usuario o contraseña no conciden con un usuario registrado!",
+    });
+  }
 }
 
 function agregarJuego(event) {

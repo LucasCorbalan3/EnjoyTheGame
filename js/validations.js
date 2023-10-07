@@ -20,6 +20,7 @@ const validarEmail = (input) => {
   }
 };
 
+
 const validarRepetirContrasena = (input) => {
   let contrasenaprimera = document.getElementById("Contrasena").value;
   let contrasenasegunda = document.getElementById("Repetircontrasena").value;
