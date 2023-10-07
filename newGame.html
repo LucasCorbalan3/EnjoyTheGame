@@ -225,8 +225,8 @@
           <h1 class="text-light m-4 text-center my-5">Agregar nuevo juego</h1>
           <form id="FormNewGame">
             <div class="my-3">
-              <label for="Nombre de juego" class="form-label text-light"
-                >Nombre del juego</label
+              <label for="NombreJuego" class="form-label text-light"
+                >Nombre del juego *</label
               >
               <input
                 type="text"
@@ -239,7 +239,7 @@
             </div>
             <div class="my-3">
               <label for="Categoría" class="form-label text-light"
-                >Categoría</label
+                >Categoría *</label
               >
               <input
                 type="text"
@@ -252,7 +252,7 @@
             </div>
             <div class="my-3">
               <label for="Descripción" class="form-label text-light"
-                >Descripción</label
+                >Descripción *</label
               >
               <textarea
                 class="form-control"
@@ -260,22 +260,26 @@
                 rows="6"
                 placeholder="Descripción"
                 maxlength="200"
+                required
               ></textarea>
             </div>
             <div class="my-3 form-check">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="exampleCheck1"
-              />
-              <label class="form-check-label text-light" for="exampleCheck1"
+              <input type="checkbox" class="form-check-input" id="Publicado" />
+              <label class="form-check-label text-light" for="Publicado"
                 >Publicado</label
               >
             </div>
-            <button type="submit" class="btn element1 my-5 mx-auto text-center">
+            <button
+              id="botonAgregar"
+              type="submit"
+              class="btn element1 my-5 mx-auto text-center"
+            >
               Agregar
             </button>
           </form>
+          <div class="alert alert-danger d-none" role="alert" id="btnAlerta">
+            Debe completar todos los campos requeridos
+          </div>
         </div>
       </section>
       <section class="text-center">
@@ -284,6 +288,7 @@
         >
       </section>
     </main>
+    <script src="js/login.js" type="module"></script>
     <script src="js/bootstrap.min.js"></script>
     <script
       src="https://kit.fontawesome.com/7d2e342abf.js"
