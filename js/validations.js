@@ -32,17 +32,6 @@ const validarRepetirContrasena = (input) => {
   }
 };
 
-const validarURL = (input) => {
-  let patron = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
-  if (patron.test(input.value)) {
-    input.className = "form-control is-valid";
-    return true;
-  } else {
-    input.className = "form-control is-invalid";
-    return false;
-  }
-};
-
 const validacionGeneral = (
   campoNombre,
   campoApellido,
@@ -66,24 +55,9 @@ const validacionGeneral = (
   }
 };
 
-const validarFormularioJuego = (nombre, categoria, descripcion, url) => {
-  if (
-    campoRequerido(nombre) &&
-    campoRequerido(categoria) &&
-    campoRequerido(descripcion) &&
-    validarURL(url)
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
 export {
   campoRequerido,
   validarEmail,
   validarRepetirContrasena,
   validacionGeneral,
-  validarFormularioJuego,
-  validarURL,
 };
