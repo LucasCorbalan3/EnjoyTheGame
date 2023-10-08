@@ -20,7 +20,6 @@ const validarEmail = (input) => {
   }
 };
 
-
 const validarRepetirContrasena = (input) => {
   let contrasenaprimera = document.getElementById("Contrasena").value;
   let contrasenasegunda = document.getElementById("Repetircontrasena").value;
@@ -80,14 +79,6 @@ const validarFormularioJuego = (nombre, categoria, descripcion, url) => {
   }
 };
 
-const checkbox = (input) => {
-  if (input.checked) {
-    return true;
-  } else {
-    return false;
-  }
-};
-
 export {
   campoRequerido,
   validarEmail,
@@ -95,5 +86,4 @@ export {
   validacionGeneral,
   validarFormularioJuego,
   validarURL,
-  checkbox,
 };
