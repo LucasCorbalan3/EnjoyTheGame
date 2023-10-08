@@ -20,7 +20,6 @@ const validarEmail = (input) => {
   }
 };
 
-
 const validarRepetirContrasena = (input) => {
   let contrasenaprimera = document.getElementById("Contrasena").value;
   let contrasenasegunda = document.getElementById("Repetircontrasena").value;
@@ -67,26 +66,13 @@ const validacionGeneral = (
   }
 };
 
-const validarFormularioJuego = (event, nombre, categoria, descripcion, url) => {
-  let botonAlerta = document.getElementById("btnAlerta");
-  console.log("En la funcion");
+const validarFormularioJuego = (nombre, categoria, descripcion, url) => {
   if (
     campoRequerido(nombre) &&
     campoRequerido(categoria) &&
     campoRequerido(descripcion) &&
     validarURL(url)
   ) {
-    botonAlerta.className = "alert alert-danger my-3 d-none";
-    return true;
-  } else {
-    event.preventDefault();
-    botonAlerta.className = "alert alert-danger my-3";
-    return false;
-  }
-};
-
-const checkbox = (input) => {
-  if (input.checked) {
     return true;
   } else {
     return false;
@@ -100,5 +86,4 @@ export {
   validacionGeneral,
   validarFormularioJuego,
   validarURL,
-  checkbox,
 };
