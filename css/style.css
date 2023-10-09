@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .TitleNav {
   font-family: "Pixelify Sans", cursive;
   color: #48e3f5ff;
@@ -438,12 +442,9 @@ label {
   font-weight: 1200;
   letter-spacing: 20px;
   background: url(/assets/backgroundmMain.png) center no-repeat;
-  new-items-login-validations
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  
->>>>>> development
 }
 
 .a404 {
@@ -461,3 +462,4 @@ label {
 .a404 :hover {
   background: #b5ebed;
 }
+
