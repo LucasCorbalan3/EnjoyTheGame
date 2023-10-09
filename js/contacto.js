@@ -36,12 +36,14 @@ const generalValidation = (
     "Tu consulta fue enviada al administrador!",
     "success"
   );
+  
   if (
     campoRequerido(campoNombreApellido) &&
     campoRequerido(campoAsunto) &&
     campoRequerido(campoObservaciones) &&
     validarEmail(campoEmail)
-  ) {
+    ) {
+    
   } else {
     alert.className = "alert alert-danger my-3";
     return false;
