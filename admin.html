@@ -11,13 +11,14 @@
     />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@600&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="css/style.css" />
     <link
       rel="icon"
       href="assets/joystick-line-pop-removebg-preview.png"
@@ -182,7 +183,9 @@
                 <span class="circle" aria-hidden="true">
                   <span class="icon arrow"></span>
                 </span>
-                <span class="button-text text-white" id="Titulo">Regístrate!</span>
+                <span class="button-text text-white" id="Titulo"
+                  >Regístrate!</span
+                >
               </a>
             </button>
             <div class="btn-container">
@@ -236,9 +239,15 @@
     <main>
       <section class="container-fluid text-center text-light mt-5">
         <h1 class="azul">Administrar Productos</h1>
-        <a href="newGame.html"
-          ><button class="btn buttonDetails my-5">Nuevo +</button></a
+        <!-- <a href="newGame.html" -->
+        <button
+          class="btn buttonDetails my-5"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
         >
+          Nuevo +
+        </button>
+        <!--</a>-->
       </section>
       <section class="mx-4 table-responsive">
         <table class="table mx-auto text-light text-center">
@@ -256,8 +265,112 @@
         </table>
       </section>
     </main>
-    <script src="js/loginGame.js" type="module"></script>
-    <script src="js/login.js" type="module"></script>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content BackgroundContainer">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close bg-light"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <section class="container-fluid ContentRegisterItems">
+              <div class="containerBtnLogin bg-dark my-5 px-5">
+                <form id="FormNewGame">
+                  <div class="my-3">
+                    <label for="NombreJuego" class="form-label text-light"
+                      >Nombre del juego *</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="NombreJuego"
+                      placeholder="Nombre"
+                      maxlength="20"
+                      required
+                    />
+                  </div>
+                  <div class="my-3">
+                    <label for="Categoría" class="form-label text-light"
+                      >Categoría *</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="Categoría"
+                      placeholder="Categoría"
+                      maxlength="20"
+                      required
+                    />
+                  </div>
+                  <div class="my-3">
+                    <label for="Descripción" class="form-label text-light"
+                      >Descripción *</label
+                    >
+                    <textarea
+                      class="form-control"
+                      id="Descripcion"
+                      rows="6"
+                      placeholder="Descripción"
+                      maxlength="200"
+                      required
+                    ></textarea>
+                  </div>
+                  <div class="my-3">
+                    <label for="URL" class="form-label text-light">URL *</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="URL"
+                      placeholder="https://www.google.com.ar/?&bih=651&biw=1366&hl=es"
+                      maxlength="100"
+                      required
+                    />
+                  </div>
+                  <div class="my-3 form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="Publicado"
+                    />
+                    <label class="form-check-label text-light" for="Publicado"
+                      >Publicado</label
+                    >
+                  </div>
+                  <div class="text-center">
+                    <button
+                      id="botonAgregar"
+                      type="submit"
+                      class="btn element1 mt-5 mx-auto buttonDetails mb-5"
+                      data-bs-dismiss="modal"
+                    >
+                      Agregar
+                    </button>
+                  </div>
+                </form>
+                <div
+                  class="alert alert-danger d-none"
+                  role="alert"
+                  id="btnAlerta"
+                >
+                  Debe completar todos los campos requeridos
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/admin.js" type="module"></script>
     <script src="js/bootstrap.min.js"></script>
     <script
       src="https://kit.fontawesome.com/7d2e342abf.js"

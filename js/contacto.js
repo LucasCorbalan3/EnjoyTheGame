@@ -1,4 +1,8 @@
-import { validarEmail, campoRequerido } from "./validations.js";
+import {
+  validarEmail,
+  campoRequerido,
+  generalValidation,
+} from "./validations.js";
 
 let campoNombreApellido = document.getElementById("NombreApellido");
 let campoAsunto = document.getElementById("Asunto");
@@ -23,27 +27,3 @@ campoObservaciones.addEventListener("blur", () => {
 });
 
 inquiryForm.addEventListener("submit", generalValidation);
-
-const generalValidation = (
-  campoNombreApellido,
-  campoAsunto,
-  campoEmail,
-  campoObservaciones
-) => {
-  let alert = document.querySelector("#mensajeAlert");
-  Swal.fire(
-    "Bien Hecho!",
-    "Tu consulta fue enviada al administrador!",
-    "success"
-  );
-  if (
-    campoRequerido(campoNombreApellido) &&
-    campoRequerido(campoAsunto) &&
-    campoRequerido(campoObservaciones) &&
-    validarEmail(campoEmail)
-  ) {
-  } else {
-    alert.className = "alert alert-danger my-3";
-    return false;
-  }
-};
