@@ -106,17 +106,37 @@ function guadarLocalStorage() {
 }
 
 function InicioSesion(e) {
-  const Usuario = document.getElementById("UsuarioLog").value;
+  e.preventDefault();
+  const usuarioAdmin = "admin123@gmail";
+  const contrasenaAdmin = "123";
+  const email = document.getElementById("UsuarioLog").value;
   const contrasena = document.getElementById("ContrasenaLog").value;
-  const usuarioExistente = listaUsuarios.find(
-    (u) => u.email === Usuario.email.value
-  );
-  if (!usuarioExistente || usuarioExistente.contrasena !== usuariocontrasena) {
-    e.preventDefault(); // Evita que se envíe el formulario
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "El usuario o contraseña no conciden con un usuario registrado!",
-    });
+  if (email === usuarioAdmin && contrasena === contrasenaAdmin) {
+    window.location.href = "admin.html";
+    cambiarTitulo()
+  } else {
+    const usuariosGuardados =
+      JSON.parse(localStorage.getItem("Usuarios")) || [];
+    const usuarioExistente = usuariosGuardados.find(
+      (Usuario) =>
+        Usuario.email === usuario.email && usuario.contrasena === contrasena
+    );
+    if (usuarioExistente) {
+      window.location.href = "index.html";
+    } else {
+      alert("Verifica los datos ingresados. Usuario no encontrado.");
+    }
   }
 }
+
+const cambiarTitulo = () => {
+  let Titulo = document.querySelector("#Titulo");
+  //   let btnCambiar = document.getElementById("btnCambiar");
+  if (Titulo.className === "text-white") {
+    Titulo.innerHTML = "Cerrar Sesion!";
+    Titulo.className = "text-light";
+  } else {
+    Titulo.innerHTML = "Cerrar Sesion!";
+    Titulo.className = "text-white";
+  }
+};
