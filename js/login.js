@@ -107,13 +107,13 @@ function guadarLocalStorage() {
 
 function InicioSesion(e) {
   e.preventDefault();
-  const usuarioAdmin = "admin123@gmail";
+  const usuarioAdmin = "admin123@gmail.com";
   const contrasenaAdmin = "123";
   const email = document.getElementById("UsuarioLog").value;
   const contrasena = document.getElementById("ContrasenaLog").value;
   if (email === usuarioAdmin && contrasena === contrasenaAdmin) {
     window.location.href = "admin.html";
-    cambiarTitulo()
+    cambiarTitulo();
   } else {
     const usuariosGuardados =
       JSON.parse(localStorage.getItem("Usuarios")) || [];
