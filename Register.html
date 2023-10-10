@@ -3,18 +3,157 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="" />
+    <meta name="description" content="Proyecto 2 de Rolling Code" />
     <meta
       name="keywords"
       content="Juegos Online, Web de Juegos, Juegos en linea"
     />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="assets/joystick-line-pop-removebg-preview.png"
+      type="image/png"
+    />
     <title>Enjoy The Game</title>
   </head>
-  <body>
-    <header>
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-light border-rounded-3">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">
+            Ingresa tu usuario Enjoy the Game
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body" id="modalLogin">
+          <section class="container-fluid ContentRegisterItems">
+            <div class="containerBtnLogin bg-dark my-3">
+              <form id="FormInicioSesion">
+                <div class="mb-1">
+                  <label for="UsuarioLog" class="form-label text-light"
+                    >Email</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="UsuarioLog"
+                    placeholder="Usuario Enjoy The Game"
+                    maxlength="20"
+                    required
+                  />
+                </div>
+                <div class="mb-1">
+                  <label for="ContrasenaLog" class="form-label text-light"
+                    >Contraseña</label
+                  >
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="ContrasenaLog"
+                    placeholder="**********"
+                    maxlength="30"
+                    required
+                  />
+                </div>
+                <button type="submit" class="btn buttonDetails my-3" onclick="cambiarTitulo()">
+                  Ingresar!
+                </button>
+              </form>
+              <div class="d-flex">
+                <span class="text-light text-center mx-2 my-4"
+                  >¿Olvidaste tu contraseña?</span
+                >
+                <button
+                  class="learn-more ms-auto"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#offcanvasTop"
+                  aria-controls="offcanvasTop"
+                >
+                  <span class="circle" aria-hidden="true">
+                    <span class="icon arrow"></span>
+                  </span>
+                  <span class="button-text align-self-center text-white">
+                    Hace Click Aqui!</span
+                  >
+                </button>
+              </div>
+              <div
+                class="offcanvas offcanvas-top bg-dark container my-3"
+                tabindex="-1"
+                id="offcanvasTop"
+                aria-labelledby="offcanvasTopLabel"
+              >
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasTopLabel">
+                    Recuperación de Contraseña
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="offcanvas"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="offcanvas-body">
+                  <p>
+                    Escribe el correo electrónico de la cuenta que no puedes
+                    acceder. Te enviaremos un mensaje con intrucciones para
+                    restablecer tu contraseña.
+                  </p>
+                  <input
+                    type="email "
+                    class="form-control"
+                    id="floatingPassword"
+                    placeholder="Escribe tu Dirección de Correo"
+                  />
+                  <button
+                    type="button"
+                    class="btn buttonDetails my-3"
+                    data-bs-dismiss="modal"
+                  >
+                    Enviar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn buttonDetails"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <body class="BackgroundContainer">
+    <header class="sticky-top">
       <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
         <div class="container-fluid">
           <button
@@ -73,7 +212,7 @@
                 </li>
                 <hr />
                 <li class="nav-item" id="ListContentNav">
-                  <a class="nav-link" href="#">Registrese</a>
+                  <a class="nav-link" href="#">Inicia Sesion</a>
                 </li>
                 <hr />
                 <li>
@@ -153,7 +292,9 @@
               width="100"
               height="100"
             />
-            <p class="align-self-center">ENJOY THE GAME</p>
+            <p class="align-self-center TitleNav">
+              ENJOY <span class="TitleNavThe">THE</span> GAME
+            </p>
           </a>
           <div class="d-none d-lg-block">
             <button class="learn-more ms-auto">
@@ -161,7 +302,7 @@
                 <span class="circle" aria-hidden="true">
                   <span class="icon arrow"></span>
                 </span>
-                <span class="button-text text-white">Regístrate!</span>
+                <span class="button-text text-white" id="ItemLogin">Inicia Sesion!</span>
               </a>
             </button>
             <div class="btn-container">
@@ -212,20 +353,25 @@
         </div>
       </nav>
     </header>
-    <main class="BackgroundContainer">
+    <main >
       <section class="container-fluid ContentRegisterItems">
-        <div class="containerBtnRegiter bg-dark my-5">
+        <div class="containerBtnRegiter bg-dark mt-5 px-5">
           <h1 class="text-light text-center m-4">Iniciar Sesion</h1>
           <div class="containerBtnItems">
-            <button type="button" class="btn btn-dark btn-sm ">
+            <a class="text-decoration-none" href="#modalLogin"><button
+              type="button"
+              class="btn btn-dark btn-sm"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+            >
               <img
                 class="ListItems img-fluid"
                 src="assets/joystick-line-pop-removebg-preview.png"
-                alt=""
+                alt="LogoEnjoyTheGame"
               />
               <span>Inicia Sesion con Enjoy The Game</span>
-            </button>
-            <button type="button" class="btn btn-dark btn-sm ">
+            </button></a>
+            <a class="text-decoration-none" href="Error404.html"><button type="button" class="btn btn-dark btn-sm">
               <svg
                 viewBox="0 0 18 18"
                 fill="none"
@@ -238,8 +384,8 @@
                 ></path>
               </svg>
               <span>Inicio sesion con Facebook</span>
-            </button>
-            <button type="button" class="btn btn-dark btn-sm ">
+            </button></a>
+            <a class="text-decoration-none" href="Error404.html"><button type="button" class="btn btn-dark btn-sm">
               <svg
                 viewBox="0 0 18 18"
                 xmlns="http://www.w3.org/2000/svg"
@@ -263,8 +409,8 @@
                 ></path>
               </svg>
               <span>Inicio sesion con Google</span>
-            </button>
-            <button type="button" class="btn btn-dark btn-sm ">
+            </button></a>
+            <a class="text-decoration-none mb-3" href="Error404.html"><button type="button" class="btn btn-dark btn-sm">
               <svg
                 viewBox="0 0 18 23"
                 fill="none"
@@ -277,16 +423,17 @@
                 ></path>
               </svg>
               <span>Inicio sesion con Apple</span>
-            </button>
-            <span class="text-light text-center mx-2"
+            </button></a>
+            <span class="text-light text-center"
               >¿No tienen una cuenta en Enjoy The Game ?
-              <a href="../login.html">Registrate!</a></span
+              <a class="text-decoration-none my-3" href="../login.html"><span class="TitleNav ">Registrate!</span></a></span
             >
           </div>
         </div>
       </section>
     </main>
-    <script src="../js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/login.js" ></script>
     <script
       src="https://kit.fontawesome.com/7d2e342abf.js"
       crossorigin="anonymous"
