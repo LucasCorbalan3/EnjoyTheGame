@@ -120,24 +120,35 @@ function validarRegistro(e) {
 
 function InicioSesion(e) {
   e.preventDefault();
-  const usuarioAdmin = "admin123@gmail";
-  const contrasenaAdmin = "123";
-  const email = document.getElementById("UsuarioLog").value;
-  const contrasena = document.getElementById("ContrasenaLog").value;
-  if (email === usuarioAdmin && contrasena === contrasenaAdmin) {
+  // Obtiene el valor del campo de correo electrónico del formulario de inicio de sesión
+  var emailInicioSesion = document.getElementById("UsuarioLog").value;
+  var contrasenaInisionSesion = document.getElementById("ContrasenaLog").value;
+  var usuarioAdmin = "admin123@gmail";
+  var contrasenaAdmin = "123";
+  // Obtiene los usuarios del localStorage
+  var usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+  // Valida si el usuario es un administrador
+  if (
+    emailInicioSesion === usuarioAdmin &&
+    contrasenaInisionSesion === contrasenaAdmin
+  ) {
+    // Redirige al administrador a admin.html
     window.location.href = "admin.html";
-    cambiarTitulo()
   } else {
-    const usuariosGuardados =
-      JSON.parse(localStorage.getItem("Usuarios")) || [];
-    const usuarioExistente = usuariosGuardados.find(
-      (Usuario) =>
-        Usuario.email === usuario.email && usuario.contrasena === contrasena
-    );
+    // Valida si el usuario existe en el localStorage
+    var usuarioExistente = usuarios.find(function (usuario) {
+      return usuario.email === emailInicioSesion;
+    });
+
+    // Si el usuario existe, redirige a index.html
+    // Si no existe, muestra una alerta con SweetAlert
     if (usuarioExistente) {
       window.location.href = "index.html";
     } else {
-      alert("Verifica los datos ingresados. Usuario no encontrado.");
+      // Muestra una alerta con SweetAlert indicando que el usuario no existe
+      alert("El usuario con este correo electrónico no está registrado.");
+
     }
   }
 }
