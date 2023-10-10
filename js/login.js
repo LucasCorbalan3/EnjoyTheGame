@@ -3,6 +3,7 @@ import {
   validarEmail,
   validarRepetirContrasena,
   generalValidation,
+  cerrarSesion,
 } from "./validations.js";
 
 import { Usuario } from "./UsuarioClass.js";
@@ -120,34 +121,27 @@ function validarRegistro(e) {
 
 function InicioSesion(e) {
   e.preventDefault();
-  // Obtiene el valor del campo de correo electrónico del formulario de inicio de sesión
   var emailInicioSesion = document.getElementById("UsuarioLog").value;
   var contrasenaInisionSesion = document.getElementById("ContrasenaLog").value;
-  var usuarioAdmin = "administrador@enjoythegame.com";
+  var usuarioAdmin = "admin@enjoythegame.com";
   var contrasenaAdmin = "admin2023";
-  // Obtiene los usuarios del localStorage
   var usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-  // Valida si el usuario es un administrador
   if (
     emailInicioSesion === usuarioAdmin &&
     contrasenaInisionSesion === contrasenaAdmin
   ) {
-    // Redirige al administrador a admin.html
     window.location.href = "admin.html";
   } else {
-    // Valida si el usuario existe en el localStorage
     var usuarioExiste = usuarios.find(function (usuario) {
       return usuario.email === emailInicioSesion;
     });
-
-    // Si el usuario existe, redirige a index.html
-    // Si no existe, muestra una alerta con SweetAlert
     if (usuarioExiste) {
       window.location.href = "index.html";
     } else {
-      // Muestra una alerta con SweetAlert indicando que el usuario no existe
-      alert("El usuario con este correo electrónico no está registrado.");
+      alert("El usuario debe ser aceptado por un administrador, te avisaremos por mail cuando este realizado.");
     }
   }
 }
+
+

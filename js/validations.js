@@ -80,6 +80,12 @@ const generalValidation = (
   }
 };
 
+const cerrarSesion = () => {
+  localStorage.removeItem("usuario");
+
+  window.location.href = "login.html";
+};
+
 export {
   campoRequerido,
   validarEmail,
@@ -87,4 +93,5 @@ export {
   validarURL,
   validarFormularioJuego,
   generalValidation,
+  cerrarSesion,
 };
