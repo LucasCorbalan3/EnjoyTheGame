@@ -9,6 +9,7 @@
       name="keywords"
       content="Juegos Online, Web de Juegos, Juegos en linea"
     />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
 
@@ -177,8 +178,11 @@
                 <span class="circle" aria-hidden="true">
                   <span class="icon arrow"></span>
                 </span>
-                <span class="button-text text-white" id="Titulo"
-                  >Regístrate!</span
+                <span
+                  class="button-text text-white"
+                  id="CerrarSesion"
+                  onclick="cerrarSesion()"
+                  >Cerrar Sesión!</span
                 >
               </a>
             </button>

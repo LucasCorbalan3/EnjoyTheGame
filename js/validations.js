@@ -50,7 +50,23 @@ const validacionGeneral = (
   campoContrasena,
   campoRepetirContrasena
 ) => {
-  let alerta = document.getElementById("mjsAlerta");
+  let alert = document.getElementById("mjsAlerta");
+  if (
+    campoRequerido(campoNombre) &&
+    campoRequerido(campoApellido) &&
+    validarEmail(campoEmail) &&
+    campoRequerido(campoContrasena) &&
+    validarRepetirContrasena(campoRepetirContrasena)
+  ) {
+    alert.className = "alert alert-danger my-3 d-none";
+    return true;
+  } else {
+    alert.className = "alert alert-danger my-3";
+    return false;
+  }
+};
+
+const validarFormularioJuego = (nombre, categoria, descripcion, url) => {
   if (
     campoRequerido(nombre) &&
     campoRequerido(categoria) &&
@@ -65,12 +81,18 @@ const validacionGeneral = (
   }
 };
 
+const cerrarSesion = () => {
+  localStorage.removeItem("usuario");
+
+  window.location.href = "login.html";
+};
+
 export {
   campoRequerido,
   validarEmail,
   validarRepetirContrasena,
-  validacionGeneral,
   validarURL,
   validarFormularioJuego,
   generalValidation,
+  cerrarSesion,
 };
