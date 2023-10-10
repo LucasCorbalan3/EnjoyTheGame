@@ -36,6 +36,8 @@ campoURL.addEventListener("blur", () => {
 
 campoFormJuego.addEventListener("submit", agregarJuego);
 
+cargaInicial();
+
 function limpiarForm() {
   campoFormJuego.reset();
   campoNombreJuego.className = "form-control";
@@ -48,8 +50,6 @@ function limpiarForm() {
 function guardarJuegosEnLocalStorage() {
   localStorage.setItem("Juegos", JSON.stringify(listaJuegos));
 }
-
-const numeroAleatorio = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
 
 function agregarJuego(event) {
   event.preventDefault();
@@ -81,8 +81,10 @@ function agregarJuego(event) {
 }
 
 function crearJuego() {
+  let numeroAleatorio = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
+  let codigo = numeroAleatorio.toString();
   let juegoNuevo = new Game(
-    numeroAleatorio,
+    codigo,
     campoNombreJuego.value,
     campoCategoria.value,
     campoDescripcion.value,
@@ -93,32 +95,65 @@ function crearJuego() {
   limpiarForm();
   juegoExistente = false;
   guardarJuegosEnLocalStorage();
+  Swal.fire({
+    icon: "success",
+    title: "Juego agregado",
+    showConfirmButton: false,
+    timer: 1500,
+  });
   crearFila(juegoNuevo);
 }
 
 function crearFila(juegoNuevo) {
   let tablaJuegos = document.getElementById("tablaJuegos");
-  let fila = document.createElement("tr");
-  let celda1 = document.createElement("th");
-  let celda2 = document.createElement("th");
-  let celda3 = document.createElement("th");
-  let celda4 = document.createElement("th");
-  let celda5 = document.createElement("th");
-  let celda6 = document.createElement("th");
-  celda1.innerHTML = `${juegoNuevo.codigo}`;
-  celda2.innerHTML = `${juegoNuevo.nombre}`;
-  celda3.innerHTML = `${juegoNuevo.categoria}`;
-  celda4.innerHTML = `${juegoNuevo.descripcion}`;
-  celda5.innerHTML = `${juegoNuevo.publicado}`;
-  celda6.innerHTML = ``;
-  fila.appendChild(celda1);
-  fila.appendChild(celda2);
-  fila.appendChild(celda3);
-  fila.appendChild(celda4);
-  fila.appendChild(celda5);
-  fila.appendChild(celda6);
-
-  tablaJuegos.appendChild(fila);
+  tablaJuegos.innerHTML += `<tr>
+  <td>${juegoNuevo.codigo}</td>
+  <td>${juegoNuevo.nombre}</td>
+  <td>${juegoNuevo.categoria}</td>
+  <td>${juegoNuevo.descripcion}</td>
+  <td>${juegoNuevo.publicado}</td>
+  <td><button class="btn btn-warning"
+  id="Modificar" data-bs-toggle="modal"
+  data-bs-target="#exampleModal" onclick="prepararJuego(${juegoNuevo.codigo})">Modificar</button>
+<button
+  class="btn btn-danger"
+  id="Eliminar" onclick="eliminarJuego()">
+  Eliminar
+</button><button
+class="btn btn-primary"
+id="Destacar" onclick="destacarJuego()">
+Destacar
+</button></td>
+</tr>`;
 }
 
-function modificarJuego() {}
+function cargaInicial() {
+  if (listaJuegos.length > 0) {
+    listaJuegos.map((itemJuego) => crearFila(itemJuego));
+  }
+}
+
+window.prepararJuego = function (claveUnica) {
+  let clave = claveUnica.toString();
+  let juegoBuscado = listaJuegos.find(
+    (itemJuego) => itemJuego.codigo === clave
+  );
+  console.log(juegoBuscado);
+  campoNombreJuego.value = juegoBuscado.nombre;
+  campoCategoria.value = juegoBuscado.categoria;
+  campoDescripcion.value = juegoBuscado.descripcion;
+  campoPublicado.value = juegoBuscado.publicado;
+  campoURL.value = juegoBuscado.url;
+
+  juegoExistente = true;
+};
+
+function modificarJuego() {
+  let juegoBuscado = listaJuegos.find(
+    (itemJuego) => itemJuego.nombre === campoNombreJuego.value
+  );
+
+  let indiceJuego = listaJuegos.findIndex(
+    (itemJuego) => itemJuego.nombre === campoNombreJuego.value
+  );
+}
