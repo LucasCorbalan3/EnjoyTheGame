@@ -117,3 +117,27 @@ function validarRegistro(e) {
   Swal.fire("Bien Hecho!", "Creaste Correctamente tu usuario!", "success");
   return true;
 }
+
+function InicioSesion(e) {
+  e.preventDefault();
+  const usuarioAdmin = "admin123@gmail";
+  const contrasenaAdmin = "123";
+  const email = document.getElementById("UsuarioLog").value;
+  const contrasena = document.getElementById("ContrasenaLog").value;
+  if (email === usuarioAdmin && contrasena === contrasenaAdmin) {
+    window.location.href = "admin.html";
+    cambiarTitulo()
+  } else {
+    const usuariosGuardados =
+      JSON.parse(localStorage.getItem("Usuarios")) || [];
+    const usuarioExistente = usuariosGuardados.find(
+      (Usuario) =>
+        Usuario.email === usuario.email && usuario.contrasena === contrasena
+    );
+    if (usuarioExistente) {
+      window.location.href = "index.html";
+    } else {
+      alert("Verifica los datos ingresados. Usuario no encontrado.");
+    }
+  }
+}
