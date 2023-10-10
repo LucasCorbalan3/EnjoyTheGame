@@ -39,7 +39,7 @@ campoFormJuego.addEventListener("submit", agregarJuego);
 
 cargaInicial();
 
-cerrarsesion.addEventListener('click',cerrarSesion)
+cerrarsesion.addEventListener("click", cerrarSesion);
 
 function limpiarForm() {
   campoFormJuego.reset();
@@ -136,7 +136,6 @@ function cargaInicial() {
   }
 }
 
-
 window.prepararJuego = function (claveUnica) {
   let clave = claveUnica.toString();
   let juegoBuscado = listaJuegos.find(
@@ -161,5 +160,3 @@ function modificarJuego() {
     (itemJuego) => itemJuego.nombre === campoNombreJuego.value
   );
 }
-function modificarJuego() {}
-
