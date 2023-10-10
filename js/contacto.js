@@ -27,3 +27,4 @@ campoObservaciones.addEventListener("blur", () => {
 });
 
 inquiryForm.addEventListener("submit", generalValidation);
+}
