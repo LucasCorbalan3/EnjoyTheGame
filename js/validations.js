@@ -1,4 +1,4 @@
-const CampoRequerido = (input) => {
+const campoRequerido = (input) => {
   if (input.value.trim().length > 0) {
     input.className = "form-control is-valid";
     return true;
@@ -43,29 +43,6 @@ const validarURL = (input) => {
   }
 };
 
-const validacionGeneral = (
-  campoNombre,
-  campoApellido,
-  campoEmail,
-  campoContrasena,
-  campoRepetirContrasena
-) => {
-  let alert = document.getElementById("mjsAlerta");
-  if (
-    campoRequerido(campoNombre) &&
-    campoRequerido(campoApellido) &&
-    validarEmail(campoEmail) &&
-    campoRequerido(campoContrasena) &&
-    validarRepetirContrasena(campoRepetirContrasena)
-  ) {
-    alert.className = "alert alert-danger my-3 d-none";
-    return true;
-  } else {
-    alert.className = "alert alert-danger my-3";
-    return false;
-  }
-};
-
 const validarFormularioJuego = (nombre, categoria, descripcion, url) => {
   if (
     campoRequerido(nombre) &&
@@ -77,6 +54,30 @@ const validarFormularioJuego = (nombre, categoria, descripcion, url) => {
     return true;
   } else {
     alerta.className = "alert alert-danger my-3";
+    return false;
+  }
+};
+
+const generalValidation = (
+  campoNombreApellido,
+  campoAsunto,
+  campoEmail,
+  campoObservaciones
+) => {
+  let alert = document.querySelector("#mensajeAlert");
+  Swal.fire(
+    "Bien Hecho!",
+    "Tu consulta fue enviada al administrador!",
+    "success"
+  );
+  if (
+    campoRequerido(campoNombreApellido) &&
+    campoRequerido(campoAsunto) &&
+    campoRequerido(campoObservaciones) &&
+    validarEmail(campoEmail)
+  ) {
+  } else {
+    alert.className = "alert alert-danger my-3";
     return false;
   }
 };
