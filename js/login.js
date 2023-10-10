@@ -101,30 +101,19 @@ function guadarLocalStorage() {
 
 function validarRegistro(e) {
   e.preventDefault();
-  // Lógica de validación para el formulario de registro
-  // Puedes implementar validaciones adicionales según tus necesidades
-
-  // Obtiene los valores de los campos del formulario de registro
   var nombre = document.getElementById("Nombre").value;
   var email = document.getElementById("Email").value;
-  // Valida si el usuario ya existe en el localStorage
   var usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
   var usuarioExistente = usuarios.find(function (usuario) {
     return usuario.email === email && usuario.nombre === nombre;
   });
-  // Si el usuario ya existe, muestra una alerta y previene el envío del formulario
   if (usuarioExistente) {
     alert("El usuario con este correo electrónico ya está registrado.");
     return false;
   }
-
-  // Si el usuario no existe, agrega el nuevo usuario al localStorage
   crearUsuario();
   guadarLocalStorage();
   clearForm();
   Swal.fire("Bien Hecho!", "Creaste Correctamente tu usuario!", "success");
-  // Continúa con el envío del formulario
   return true;
 }
-
-
