@@ -14,7 +14,7 @@ let campoPublicado = document.getElementById("Publicado");
 let campoURL = document.getElementById("URL");
 let campoFormJuego = document.getElementById("FormNewGame");
 let check;
-let cerrarsesion = document.getElementById('cerrarsesion')
+let cerrarsesion = document.getElementById("cerrarsesion");
 let juegoExistente = false;
 
 let listaJuegos = JSON.parse(localStorage.getItem("Juegos")) || [];
@@ -37,7 +37,7 @@ campoURL.addEventListener("blur", () => {
 
 campoFormJuego.addEventListener("submit", agregarJuego);
 
-cerrarsesion.addEventListener('click',cerrarSesion)
+cerrarsesion.addEventListener("click", cerrarSesion);
 
 function limpiarForm() {
   campoFormJuego.reset();
@@ -125,4 +125,3 @@ function crearFila(juegoNuevo) {
 }
 
 function modificarJuego() {}
-
