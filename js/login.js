@@ -104,10 +104,10 @@ function validarRegistro(e) {
   var nombre = document.getElementById("Nombre").value;
   var email = document.getElementById("Email").value;
   var usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-  var usuarioExistente = usuarios.find(function (usuario) {
+  var usuarioExiste = usuarios.find(function (usuario) {
     return usuario.email === email && usuario.nombre === nombre;
   });
-  if (usuarioExistente) {
+  if (usuarioExiste) {
     alert("El usuario con este correo electrónico ya está registrado.");
     return false;
   }
@@ -137,13 +137,13 @@ function InicioSesion(e) {
     window.location.href = "admin.html";
   } else {
     // Valida si el usuario existe en el localStorage
-    var usuarioExistente = usuarios.find(function (usuario) {
+    var usuarioExiste = usuarios.find(function (usuario) {
       return usuario.email === emailInicioSesion;
     });
 
     // Si el usuario existe, redirige a index.html
     // Si no existe, muestra una alerta con SweetAlert
-    if (usuarioExistente) {
+    if (usuarioExiste) {
       window.location.href = "index.html";
     } else {
       // Muestra una alerta con SweetAlert indicando que el usuario no existe
