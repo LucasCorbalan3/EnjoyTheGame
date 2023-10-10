@@ -2,7 +2,6 @@ import {
   campoRequerido,
   validarEmail,
   validarRepetirContrasena,
-  validacionGeneral,
   generalValidation,
 } from "./validations.js";
 
@@ -52,7 +51,7 @@ if (campoRepetirContrasena) {
 }
 
 if (campoFormLogin) {
-  campoFormLogin.addEventListener("submit", RegisterUser);
+  campoFormLogin.addEventListener("submit", validarRegistro);
 }
 
 if (FormInicioSesion) {
@@ -73,24 +72,6 @@ campoObservaciones.addEventListener("blur", () => {
 
 inquiryForm.addEventListener("submit", generalValidation);
 
-function RegisterUser(e) {
-  e.preventDefault();
-  if (
-    validacionGeneral(
-      campoNombre,
-      campoApellido,
-      campoEmail,
-      campoContrasena,
-      campoRepetirContrasena
-    )
-  ) {
-    if (!usuarioExistente) {
-      crearUsuario();
-    } else {
-      return false;
-    }
-  }
-}
 function crearUsuario() {
   let usuarioNuevo = new Usuario(
     campoNombre.value,
@@ -101,7 +82,6 @@ function crearUsuario() {
   listaUsuario.push(usuarioNuevo);
   clearForm();
   guadarLocalStorage();
-  Swal.fire("Bien Hecho!", "Creaste Correctamente tu usuario!", "success");
 }
 
 function clearForm() {
@@ -119,25 +99,32 @@ function guadarLocalStorage() {
   localStorage.setItem("Usuarios", JSON.stringify(listaUsuario));
 }
 
-function InicioSesion(e) {
+function validarRegistro(e) {
   e.preventDefault();
-  const usuarioAdmin = "admin123@gmail.com";
-  const contrasenaAdmin = "123";
-  const email = document.getElementById("UsuarioLog").value;
-  const contrasena = document.getElementById("ContrasenaLog").value;
-  if (email === usuarioAdmin && contrasena === contrasenaAdmin) {
-    window.location.href = "admin.html";
-  } else {
-    const usuariosGuardados =
-      JSON.parse(localStorage.getItem("Usuarios")) || [];
-    const usuarioExistente = usuariosGuardados.find(
-      (Usuario) =>
-        Usuario.email === usuario.email && usuario.contrasena === contrasena
-    );
-    if (usuarioExistente) {
-      window.location.href = "index.html";
-    } else {
-      alert("Verifica los datos ingresados. Usuario no encontrado.");
-    }
+  // Lógica de validación para el formulario de registro
+  // Puedes implementar validaciones adicionales según tus necesidades
+
+  // Obtiene los valores de los campos del formulario de registro
+  var nombre = document.getElementById("Nombre").value;
+  var email = document.getElementById("Email").value;
+  // Valida si el usuario ya existe en el localStorage
+  var usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  var usuarioExistente = usuarios.find(function (usuario) {
+    return usuario.email === email && usuario.nombre === nombre;
+  });
+  // Si el usuario ya existe, muestra una alerta y previene el envío del formulario
+  if (usuarioExistente) {
+    alert("El usuario con este correo electrónico ya está registrado.");
+    return false;
   }
+
+  // Si el usuario no existe, agrega el nuevo usuario al localStorage
+  crearUsuario();
+  guadarLocalStorage();
+  clearForm();
+  Swal.fire("Bien Hecho!", "Creaste Correctamente tu usuario!", "success");
+  // Continúa con el envío del formulario
+  return true;
 }
+
+

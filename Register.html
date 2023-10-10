@@ -50,7 +50,7 @@
         <div class="modal-body" id="modalLogin">
           <section class="container-fluid ContentRegisterItems">
             <div class="containerBtnLogin bg-dark my-3">
-              <form id="FormInicioSesion">
+              <form id="FormInicioSesion" onsubmit="return iniciarSesion()" >
                 <div class="mb-1">
                   <label for="UsuarioLog" class="form-label text-light"
                     >Email</label
@@ -77,7 +77,7 @@
                     required
                   />
                 </div>
-                <button type="submit" class="btn buttonDetails my-3" onclick="cambiarTitulo()">
+                <button type="submit" class="btn buttonDetails my-3">
                   Ingresar!
                 </button>
               </form>

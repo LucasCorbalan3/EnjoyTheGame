@@ -43,29 +43,6 @@ const validarURL = (input) => {
   }
 };
 
-const validacionGeneral = (
-  campoNombre,
-  campoApellido,
-  campoEmail,
-  campoContrasena,
-  campoRepetirContrasena
-) => {
-  let alert = document.getElementById("mjsAlerta");
-  if (
-    campoRequerido(campoNombre) &&
-    campoRequerido(campoApellido) &&
-    validarEmail(campoEmail) &&
-    campoRequerido(campoContrasena) &&
-    validarRepetirContrasena(campoRepetirContrasena)
-  ) {
-    alert.className = "alert alert-danger my-3 d-none";
-    return true;
-  } else {
-    alert.className = "alert alert-danger my-3";
-    return false;
-  }
-};
-
 const validarFormularioJuego = (nombre, categoria, descripcion, url) => {
   if (
     campoRequerido(nombre) &&
@@ -107,7 +84,6 @@ export {
   campoRequerido,
   validarEmail,
   validarRepetirContrasena,
-  validacionGeneral,
   validarURL,
   validarFormularioJuego,
   generalValidation,
