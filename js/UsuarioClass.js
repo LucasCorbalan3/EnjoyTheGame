@@ -1,41 +1,45 @@
 export class Usuario {
-  constructor(Nombre, Apellido, Email, Contrasena) 
-  {
-    this.UserNombre = Nombre;
-    this.UserApellido = Apellido;
-    this.UserEmail = Email;
-    this.UserContrasena = Contrasena;
+  constructor(
+    parametroNombre,
+    parametroApellido,
+    parametroEmail,
+    parametroContrasena
+  ) {
+    this.Nombre = parametroNombre;
+    this.Apellido = parametroApellido;
+    this.Email = parametroEmail;
+    this.Contrasena = parametroContrasena;
   }
 
-  get Nombre() {
+  get mostrarNombre() {
     return this.Nombre;
   }
 
-  get Apellido() {
+  get mostrarApellido() {
     return this.Apellido;
   }
 
-  get Email() {
+  get mostrarEmail() {
     return this.Email;
   }
 
-  get Contrasena() {
+  get mostrarContrasena() {
     return this.Contrasena;
   }
 
-  set UsuarioNombre(NuevoNombre) {
+  set setNombre(NuevoNombre) {
     this.Nombre = NuevoNombre;
   }
 
-  set UsuarioEmail(NuevoEmail) {
+  set setEmail(NuevoEmail) {
     this.Email = NuevoEmail;
   }
 
-  set UsuarioApellido(NuevoApellido) {
+  set setApellido(NuevoApellido) {
     this.Apellido = NuevoApellido;
   }
 
-  set UsuarioContrasena(NuevoConstrasena) {
+  set setContrasena(NuevoConstrasena) {
     this.Nombre = NuevoConstrasena;
   }
 }

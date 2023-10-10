@@ -3,6 +3,7 @@ import {
   validarEmail,
   validarRepetirContrasena,
   validacionGeneral,
+  generalValidation,
 } from "./validations.js";
 
 import { Usuario } from "./UsuarioClass.js";
@@ -14,8 +15,11 @@ let campoContrasena = document.getElementById("Contrasena");
 let campoRepetirContrasena = document.getElementById("Repetircontrasena");
 let campoCheckboxRobot = document.getElementById("checkboxRobot");
 let campoFormLogin = document.getElementById("FormLogin");
-
 let FormInicioSesion = document.getElementById("FormInicioSesion");
+let campoNombreApellido = document.getElementById("NombreApellido");
+let campoAsunto = document.getElementById("Asunto");
+let campoObservaciones = document.getElementById("Observaciones");
+let inquiryForm = document.getElementById("inquiryForm");
 
 let usuarioExistente = false;
 
@@ -55,6 +59,20 @@ if (FormInicioSesion) {
   FormInicioSesion.addEventListener("submit", InicioSesion);
 }
 
+campoNombreApellido.addEventListener("blur", () => {
+  campoRequerido(campoNombreApellido);
+});
+
+campoAsunto.addEventListener("blur", () => {
+  campoRequerido(campoAsunto);
+});
+
+campoObservaciones.addEventListener("blur", () => {
+  campoRequerido(campoObservaciones);
+});
+
+inquiryForm.addEventListener("submit", generalValidation);
+
 function RegisterUser(e) {
   e.preventDefault();
   if (
@@ -67,16 +85,23 @@ function RegisterUser(e) {
     )
   ) {
     if (!usuarioExistente) {
-      clearForm();
       crearUsuario();
     } else {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Verifica el usuario o contraseña ya que no coinciden una u otra !",
-      });
+      return false;
     }
   }
+}
+function crearUsuario() {
+  let usuarioNuevo = new Usuario(
+    campoNombre.value,
+    campoApellido.value,
+    campoEmail.value,
+    campoContrasena.value
+  );
+  listaUsuario.push(usuarioNuevo);
+  clearForm();
+  guadarLocalStorage();
+  Swal.fire("Bien Hecho!", "Creaste Correctamente tu usuario!", "success");
 }
 
 function clearForm() {
@@ -87,18 +112,7 @@ function clearForm() {
   campoContrasena.className = "form-control";
   campoRepetirContrasena.className = "form-control";
   campoCheckboxRobot.className = "form-check";
-}
-
-function crearUsuario() {
-  let usuarioNuevo = new Usuario(
-    campoNombre.value,
-    campoApellido.value,
-    campoEmail.value,
-    campoContrasena.value
-  );
-  listaUsuario.push(usuarioNuevo);
-  guadarLocalStorage();
-  Swal.fire("Bien Hecho!", "Creaste Correctamente tu usuario!", "success");
+  usuarioExistente = false;
 }
 
 function guadarLocalStorage() {
@@ -113,7 +127,6 @@ function InicioSesion(e) {
   const contrasena = document.getElementById("ContrasenaLog").value;
   if (email === usuarioAdmin && contrasena === contrasenaAdmin) {
     window.location.href = "admin.html";
-    cambiarTitulo();
   } else {
     const usuariosGuardados =
       JSON.parse(localStorage.getItem("Usuarios")) || [];
@@ -128,15 +141,3 @@ function InicioSesion(e) {
     }
   }
 }
-
-const cambiarTitulo = () => {
-  let Titulo = document.querySelector("#Titulo");
-  //   let btnCambiar = document.getElementById("btnCambiar");
-  if (Titulo.className === "text-white") {
-    Titulo.innerHTML = "Cerrar Sesion!";
-    Titulo.className = "text-light";
-  } else {
-    Titulo.innerHTML = "Cerrar Sesion!";
-    Titulo.className = "text-white";
-  }
-};
