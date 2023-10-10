@@ -86,6 +86,21 @@ body {
   );
 }
 
+
+.table-responsive{
+  background: rgb(9, 0, 63);
+  background: linear-gradient(
+    180deg,
+    rgba(9, 0, 63, 1) 0%,
+    rgba(77, 2, 97, 1) 33%,
+    rgba(109, 3, 113, 1) 48%,
+    rgba(136, 4, 126, 1) 59%,
+    rgba(159, 4, 137, 1) 66%,
+    rgba(77, 2, 97, 1) 83%,
+    rgba(155, 3, 124, 1) 100%
+  );
+}
+
 button {
   position: relative;
   display: inline-block;
@@ -463,4 +478,8 @@ label {
 .a404 :hover {
   background: #b5ebed;
 }
->>>>>>>>> Temporary merge branch 2
+
+.cardJuegos{
+  width: 18rem;
+}
+
