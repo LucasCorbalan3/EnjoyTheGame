@@ -123,8 +123,8 @@ function InicioSesion(e) {
   // Obtiene el valor del campo de correo electrónico del formulario de inicio de sesión
   var emailInicioSesion = document.getElementById("UsuarioLog").value;
   var contrasenaInisionSesion = document.getElementById("ContrasenaLog").value;
-  var usuarioAdmin = "admin123@gmail";
-  var contrasenaAdmin = "123";
+  var usuarioAdmin = "administrador@enjoythegame.com";
+  var contrasenaAdmin = "admin2023";
   // Obtiene los usuarios del localStorage
   var usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
@@ -148,7 +148,6 @@ function InicioSesion(e) {
     } else {
       // Muestra una alerta con SweetAlert indicando que el usuario no existe
       alert("El usuario con este correo electrónico no está registrado.");
-
     }
   }
 }
