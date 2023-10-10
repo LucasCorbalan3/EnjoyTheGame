@@ -2,6 +2,7 @@ import {
   campoRequerido,
   validarFormularioJuego,
   validarURL,
+  cerrarSesion,
 } from "./validations.js";
 
 import { Game } from "./gameClass.js";
@@ -13,7 +14,7 @@ let campoPublicado = document.getElementById("Publicado");
 let campoURL = document.getElementById("URL");
 let campoFormJuego = document.getElementById("FormNewGame");
 let check;
-
+let cerrarsesion = document.getElementById('cerrarsesion')
 let juegoExistente = false;
 
 let listaJuegos = JSON.parse(localStorage.getItem("Juegos")) || [];
@@ -37,6 +38,9 @@ campoURL.addEventListener("blur", () => {
 campoFormJuego.addEventListener("submit", agregarJuego);
 
 cargaInicial();
+
+cerrarsesion.addEventListener('click',cerrarSesion)
+
 
 function limpiarForm() {
   campoFormJuego.reset();
@@ -133,6 +137,7 @@ function cargaInicial() {
   }
 }
 
+
 window.prepararJuego = function (claveUnica) {
   let clave = claveUnica.toString();
   let juegoBuscado = listaJuegos.find(
@@ -157,3 +162,6 @@ function modificarJuego() {
     (itemJuego) => itemJuego.nombre === campoNombreJuego.value
   );
 }
+function modificarJuego() {}
+
+
