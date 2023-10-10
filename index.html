@@ -25,7 +25,7 @@
     <title>Enjoy The Game</title>
   </head>
   <body>
-    <header>
+    <header class="sticky-top">
       <nav
         class="navbar navbar-expand-lg navbar-expand-sm bg-dark"
         data-bs-theme="dark"
@@ -177,7 +177,7 @@
                 <span class="circle" aria-hidden="true">
                   <span class="icon arrow"></span>
                 </span>
-                <span class="button-text text-white">Inicia Sesion!</span>
+                <span class="button-text text-white" id="ItemLogin">Inicia Sesion!</span>
               </a>
             </button>
             <div class="btn-container">
@@ -299,7 +299,7 @@
         </section>
       </section>
       <section class="container my-1">
-        <div class="row d-flex text-center">
+        <div class="row d-flex text-center" id="div123">
           <figure>
             <img
               src="/assets/joystick-line-pop-removebg-preview.png"
@@ -313,6 +313,7 @@
         </div>
       </section>
     </main>
+    <script src="js/login.js" type="module"></script>
     <script src="js/bootstrap.min.js"></script>
     <script
       src="https://kit.fontawesome.com/7d2e342abf.js"

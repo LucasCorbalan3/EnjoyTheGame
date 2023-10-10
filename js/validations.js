@@ -1,5 +1,4 @@
 const CampoRequerido = (input) => {
-  git;
   if (input.value.trim().length > 0) {
     input.className = "form-control is-valid";
     return true;
@@ -21,7 +20,7 @@ const validarEmail = (input) => {
   }
 };
 
-const ValidarRepetirContrasena = (input) => {
+const validarRepetirContrasena = (input) => {
   let contrasenaprimera = document.getElementById("Contrasena").value;
   let contrasenasegunda = document.getElementById("Repetircontrasena").value;
   if (contrasenaprimera === contrasenasegunda) {
@@ -33,32 +32,45 @@ const ValidarRepetirContrasena = (input) => {
   }
 };
 
-const ValidacionGeneral = (
-  CampoNombre,
-  CampoApellido,
-  CampoEmail,
-  CampoContrasena,
-  CampoRepetirContrasena
-) => {
-  let alert = document.getElementById("mjeAlerta");
-  if (
-    CampoRequerido(CampoNombre) &&
-    CampoRequerido(CampoApellido) &&
-    validarEmail(CampoEmail) &&
-    CampoRequerido(CampoContrasena) &&
-    ValidarRepetirContrasena(CampoRepetirContrasena)
-  ) {
-    alert.className = "alert alert-danger my-3 d-none";
+const validarURL = (input) => {
+  let patron = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
+  if (patron.test(input.value)) {
+    input.className = "form-control is-valid";
     return true;
   } else {
-    alert.className = "alert alert-danger my-3";
+    input.className = "form-control is-invalid";
+    return false;
+  }
+};
+
+const validacionGeneral = (
+  campoNombre,
+  campoApellido,
+  campoEmail,
+  campoContrasena,
+  campoRepetirContrasena
+) => {
+  let alerta = document.getElementById("mjsAlerta");
+  if (
+    campoRequerido(nombre) &&
+    campoRequerido(categoria) &&
+    campoRequerido(descripcion) &&
+    validarURL(url)
+  ) {
+    alerta.className = "alert alert-danger my-3 d-none";
+    return true;
+  } else {
+    alerta.className = "alert alert-danger my-3";
     return false;
   }
 };
 
 export {
-  CampoRequerido,
+  campoRequerido,
   validarEmail,
-  ValidarRepetirContrasena,
-  ValidacionGeneral,
+  validarRepetirContrasena,
+  validacionGeneral,
+  validarURL,
+  validarFormularioJuego,
+  generalValidation,
 };

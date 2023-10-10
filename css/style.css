@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .TitleNav {
   font-family: "Pixelify Sans", cursive;
   color: #48e3f5ff;
@@ -113,6 +117,15 @@ button {
 .element2 {
   color: rgb(0, 0, 0);
   background-color: #0af7ff;
+}
+
+.element3 {
+  color: #0af7ff;
+}
+
+.azul {
+  text-shadow: 0 0 5px #0af7ff, 0 0 10px #0af7ff, 0 0 20px #0af7ff,
+    0 0 40px #0af7ff, 0 0 80px #0af7ff, 0 0 100px #0af7ff;
 }
 
 .element2:hover {
@@ -321,7 +334,7 @@ label {
 
 .BackgroundContainer {
   background-image: url(/assets/backgroundmMain.png);
-  background-size:cover;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -341,7 +354,7 @@ label {
   border-radius: 50px;
 }
 
-.containerBtnItems a{
+.containerBtnItems a {
   display: grid;
 }
 
@@ -379,3 +392,75 @@ label {
   object-position: center;
   background-color: #e0e0e0;
 }
+
+.bodycontact {
+  display: block;
+  width: 100%;
+  height: 900px;
+  background-image: linear-gradient(
+    rgba(77, 2, 97, 1),
+    rgba(159, 4, 137, 1),
+    rgba(159, 2, 137, 1),
+    rgba(77, 2, 97, 1)
+  );
+}
+
+.buttoncontact {
+  display: flex;
+  justify-content: center;
+}
+
+.imagecontact {
+  width: 500px;
+}
+
+.container404 {
+  margin: 0;
+  padding: 0;
+  font-family: "Pixelify Sans", cursive;
+  min-height: 100vh;
+  background-image: linear-gradient(
+    rgba(77, 2, 97, 1),
+    rgba(159, 4, 137, 1),
+    rgba(159, 2, 137, 1),
+    rgba(77, 2, 97, 1)
+  );
+}
+
+.m404 {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: #0af7ff;
+}
+
+.h1404 {
+  font-size: 200px;
+  margin: 0;
+  font-weight: 1200;
+  letter-spacing: 20px;
+  background: url(/assets/backgroundmMain.png) center no-repeat;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  
+}
+
+.a404 {
+  text-decoration: none;
+  background: #0af7ff;
+  color: #5d8384;
+  padding: 12px 24px;
+  display: inline-block;
+  border-radius: 25px;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: 0.4s;
+}
+
+.a404 :hover {
+  background: #b5ebed;
+}
+>>>>>>>>> Temporary merge branch 2

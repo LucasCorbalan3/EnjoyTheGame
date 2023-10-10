@@ -1,22 +1,25 @@
 import {
-  CampoRequerido,
+  campoRequerido,
   validarEmail,
-  ValidarRepetirContrasena,
-  ValidacionGeneral,
+  validarRepetirContrasena,
+  validacionGeneral,
 } from "./validations.js";
 
 import { Usuario } from "./UsuarioClass.js";
 
-let CampoNombre = document.getElementById("Nombre");
-let CampoApellido = document.getElementById("Apellido");
-let CampoEmail = document.getElementById("Email");
-let CampoContrasena = document.getElementById("Contrasena");
-let CampoRepetirContrasena = document.getElementById("Repetircontrasena");
-let CampoCheckboxRobot = document.getElementById("checkboxRobot");
-let CampoFormLogin = document.getElementById("FormLogin");
+let campoNombre = document.getElementById("Nombre");
+let campoApellido = document.getElementById("Apellido");
+let campoEmail = document.getElementById("Email");
+let campoContrasena = document.getElementById("Contrasena");
+let campoRepetirContrasena = document.getElementById("Repetircontrasena");
+let campoCheckboxRobot = document.getElementById("checkboxRobot");
+let campoFormLogin = document.getElementById("FormLogin");
 
-let UsuarioExistente = false;
-let ListaUsuario = [];
+let FormInicioSesion = document.getElementById("FormInicioSesion");
+
+let usuarioExistente = false;
+
+let listaUsuario = JSON.parse(localStorage.getItem("Usuarios")) || [];
 
 CampoNombre.addEventListener("blur", () => {
   CampoRequerido(CampoNombre);
@@ -38,57 +41,90 @@ CampoRepetirContrasena.addEventListener("blur", () => {
   ValidarRepetirContrasena(CampoRepetirContrasena);
 });
 
-// CampoCheckboxRobot.addEventListener("click", () => {
-//   console.log("aqui estoy6");
-//   CampoRequerido(CampoCheckboxRobot);
-// });
+CampoFormLogin.addEventListener("submit", RegisterUser);
 
 function RegisterUser(e) {
   e.preventDefault();
   if (
-    ValidacionGeneral(
-      CampoNombre,
-      CampoApellido,
-      CampoEmail,
-      CampoContrasena,
-      CampoRepetirContrasena
+    validacionGeneral(
+      campoNombre,
+      campoApellido,
+      campoEmail,
+      campoContrasena,
+      campoRepetirContrasena
     )
   ) {
-    if (!UsuarioExistente) {
-      CrearUsuario();
-      ClearForm();
+    if (!usuarioExistente) {
+      clearForm();
+      crearUsuario();
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Verifica el usuario o contraseña ya que no coinciden una u otra !",
+      });
     }
-  } else {
-    Swal.fire({
-      icon: "error",
-      title: "Oops...",
-      text: "Verifica el usuario o contraseña ya que no coinciden una u otra !",
-    });
   }
 }
 
-function ClearForm() {
-  CampoFormLogin.reset();
-  CampoNombre.className = "form-control";
-  CampoApellido.className = "form-control";
-  CampoEmail.className = "form-control";
-  CampoContrasena.className = "form-control";
-  CampoRepetirContrasena.className = "form-control";
-  CampoCheckboxRobot.className = "form-check";
+function clearForm() {
+  campoFormLogin.reset();
+  campoNombre.className = "form-control";
+  campoApellido.className = "form-control";
+  campoEmail.className = "form-control";
+  campoContrasena.className = "form-control";
+  campoRepetirContrasena.className = "form-control";
+  campoCheckboxRobot.className = "form-check";
 }
 
-function CrearUsuario() {
-  let UsuarioNuevo = new Usuario(
-    CampoNombre.value,
-    CampoApellido.value,
-    CampoEmail.value,
-    CampoContrasena.value
+function crearUsuario() {
+  let usuarioNuevo = new Usuario(
+    campoNombre.value,
+    campoApellido.value,
+    campoEmail.value,
+    campoContrasena.value
   );
-  ListaUsuario.push(UsuarioNuevo);
+  listaUsuario.push(usuarioNuevo);
   guadarLocalStorage();
   Swal.fire("Bien Hecho!", "Creaste Correctamente tu usuario!", "success");
 }
 
 function guadarLocalStorage() {
-  localStorage.setItem("keynuevo", JSON.stringify(ListaUsuario));
+  localStorage.setItem("Usuarios", JSON.stringify(listaUsuario));
 }
+
+function InicioSesion(e) {
+  e.preventDefault();
+  const usuarioAdmin = "admin123@gmail.com";
+  const contrasenaAdmin = "123";
+  const email = document.getElementById("UsuarioLog").value;
+  const contrasena = document.getElementById("ContrasenaLog").value;
+  if (email === usuarioAdmin && contrasena === contrasenaAdmin) {
+    window.location.href = "admin.html";
+    cambiarTitulo();
+  } else {
+    const usuariosGuardados =
+      JSON.parse(localStorage.getItem("Usuarios")) || [];
+    const usuarioExistente = usuariosGuardados.find(
+      (Usuario) =>
+        Usuario.email === usuario.email && usuario.contrasena === contrasena
+    );
+    if (usuarioExistente) {
+      window.location.href = "index.html";
+    } else {
+      alert("Verifica los datos ingresados. Usuario no encontrado.");
+    }
+  }
+}
+
+const cambiarTitulo = () => {
+  let Titulo = document.querySelector("#Titulo");
+  //   let btnCambiar = document.getElementById("btnCambiar");
+  if (Titulo.className === "text-white") {
+    Titulo.innerHTML = "Cerrar Sesion!";
+    Titulo.className = "text-light";
+  } else {
+    Titulo.innerHTML = "Cerrar Sesion!";
+    Titulo.className = "text-white";
+  }
+};
