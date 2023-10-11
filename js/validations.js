@@ -82,9 +82,8 @@ const generalValidation = (
 
 const cerrarSesion = () => {
   localStorage.removeItem("usuario");
-
   window.location.href = "login.html";
-};
+}
 
 export {
   campoRequerido,

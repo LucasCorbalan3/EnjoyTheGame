@@ -7,6 +7,7 @@ import {
 } from "./validations.js";
 
 import { Usuario } from "./UsuarioClass.js";
+cargarUsuario();
 
 let campoNombre = document.getElementById("Nombre");
 let campoApellido = document.getElementById("Apellido");
@@ -16,10 +17,6 @@ let campoRepetirContrasena = document.getElementById("Repetircontrasena");
 let campoCheckboxRobot = document.getElementById("checkboxRobot");
 let campoFormLogin = document.getElementById("FormLogin");
 let FormInicioSesion = document.getElementById("FormInicioSesion");
-let campoNombreApellido = document.getElementById("NombreApellido");
-let campoAsunto = document.getElementById("Asunto");
-let campoObservaciones = document.getElementById("Observaciones");
-let inquiryForm = document.getElementById("inquiryForm");
 
 let usuarioExistente = false;
 
@@ -60,20 +57,6 @@ if (FormInicioSesion) {
   FormInicioSesion.addEventListener("submit", InicioSesion);
 }
 
-campoNombreApellido.addEventListener("blur", () => {
-  campoRequerido(campoNombreApellido);
-});
-
-campoAsunto.addEventListener("blur", () => {
-  campoRequerido(campoAsunto);
-});
-
-campoObservaciones.addEventListener("blur", () => {
-  campoRequerido(campoObservaciones);
-});
-
-inquiryForm.addEventListener("submit", generalValidation);
-
 function crearUsuario() {
   let usuarioNuevo = new Usuario(
     campoNombre.value,
@@ -81,6 +64,7 @@ function crearUsuario() {
     campoEmail.value,
     campoContrasena.value
   );
+
   listaUsuario.push(usuarioNuevo);
   clearForm();
   guadarLocalStorage();
@@ -129,7 +113,7 @@ function InicioSesion(e) {
   var contrasenaInisionSesion = document.getElementById("ContrasenaLog").value;
   var usuarioAdmin = "admin@enjoythegame.com";
   var contrasenaAdmin = "admin2023";
-  var usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  var usuarios = JSON.parse(localStorage.getItem("usuarios"));
 
   if (
     emailInicioSesion === usuarioAdmin &&
@@ -152,6 +136,43 @@ function InicioSesion(e) {
   }
 }
 
+function cargarUsuario() {
+  const datos = [
+    {
+      nombre: "Admin",
+      apellido: "Admin",
+      email: "admin@enjoythegame.com",
+      contraseña: "admin2023",
+      isAdmin: true,
+    },
+    {
+      nombre: "lucas",
+      apellido: "corbalan",
+      email: "lucas.corbalan.23@gmail.com",
+      contraseña: "luca2938",
+      isAdmin: false,
+    },
+    {
+      nombre: "nico",
+      apellido: "torregrosa",
+      email: "nico.torregrosa@gmail.com",
+      contraseña: "nico8383",
+      isAdmin: false,
+    },
+    {
+      nombre: "gerardo",
+      apellido: "rosales",
+      email: "gerardo.rosales@gmail.com",
+      contraseña: "gerardoasdqwd",
+      isAdmin: false,
+    },
+  ];
+
+  if (!localStorage.getItem("Usuarios")) {
+    localStorage.setItem("Usuarios", JSON.stringify(datos));
+    listaUsuario = datos;
+  }
+}
 function addcontainerNav() {
   let containerNav = document.getElementById("containerNav");
   containerNav.innerHTML += `<button class="learn-more ms-auto d-none">
