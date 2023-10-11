@@ -349,7 +349,6 @@ label {
 .BackgroundContainer {
   background-image: url(/assets/backgroundmMain.png);
   background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
 }
 
