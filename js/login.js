@@ -24,6 +24,7 @@ let inquiryForm = document.getElementById("inquiryForm");
 let usuarioExistente = false;
 
 let listaUsuario = JSON.parse(localStorage.getItem("Usuarios")) || [];
+let usuarioLog = JSON.parse(localStorage.getItem("userLog")) || [];
 
 if (campoNombre) {
   campoNombre.addEventListener("blur", () => {
@@ -99,6 +100,9 @@ function clearForm() {
 function guadarLocalStorage() {
   localStorage.setItem("Usuarios", JSON.stringify(listaUsuario));
 }
+function guardarUserLogLocalStorage() {
+  localStorage.setItem("userLog", JSON.stringify({ usuarioLog }));
+}
 
 function validarRegistro(e) {
   e.preventDefault();
@@ -132,6 +136,8 @@ function InicioSesion(e) {
     contrasenaInisionSesion === contrasenaAdmin
   ) {
     window.location.href = "admin.html";
+    guardarUserLogLocalStorage();
+    addcontainerNav();
   } else {
     var usuarioExiste = usuarios.find(function (usuario) {
       return usuario.email === emailInicioSesion;
@@ -139,9 +145,26 @@ function InicioSesion(e) {
     if (usuarioExiste) {
       window.location.href = "index.html";
     } else {
-      alert("El usuario debe ser aceptado por un administrador, te avisaremos por mail cuando este realizado.");
+      alert(
+        "El usuario debe ser aceptado por un administrador, te avisaremos por mail cuando este realizado."
+      );
     }
   }
 }
 
-
+function addcontainerNav() {
+  let containerNav = document.getElementById("containerNav");
+  containerNav.innerHTML += `<button class="learn-more ms-auto d-none">
+  <a href="register.html">
+    <span class="circle" aria-hidden="true">
+      <span class="icon arrow"></span>
+    </span>
+    <span
+      class="button-text text-white"
+      id="CerrarSesion"
+      onclick="cerrarSesion()"
+      >Administrar Pagina!</span
+    >
+  </a>
+</button>`;
+}

@@ -27,7 +27,10 @@
   </head>
   <body class="bodycontact">
     <header class="sticky-top">
-      <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+      <nav
+        class="navbar navbar-expand-lg navbar-expand-sm bg-dark"
+        data-bs-theme="dark"
+      >
         <div class="container-fluid">
           <button
             class="btn btn-dark"
@@ -68,7 +71,12 @@
             <div class="offcanvas-body bg-dark">
               <ul class="nav flex-column my-4">
                 <li class="nav-item" id="ListContentNav">
-                  <a class="nav-link active" href="index.html">Inicio</a>
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="index.html"
+                    >Inicio</a
+                  >
                 </li>
                 <hr />
                 <li class="nav-item" id="ListContentNav">
@@ -79,10 +87,9 @@
                   <a class="nav-link" href="contacto.html">Contacto</a>
                 </li>
                 <hr />
-                <li class="nav-item" id="ListContentNav">
-                  <a class="nav-link" href="Register.html">Inicia Sesion</a>
+                <li class="nav-item" id="ListContentNav" onclick="cerrarSesion()">
+                  <a class="nav-link" href="Register.html">Cerrar Sesión!</a>
                 </li>
-                
               </ul>
             </div>
             <div class="offcanvas-footer bg-dark">
@@ -124,10 +131,14 @@
                 <span class="circle" aria-hidden="true">
                   <span class="icon arrow"></span>
                 </span>
-                <span class="button-text text-white" id="ItemLogin">Inicia Sesion!</span>
+                <span
+                  class="button-text text-white"
+                  id="CerrarSesion"
+                  onclick="cerrarSesion()"
+                  >Cerrar Sesión!</span
+                >
               </a>
             </button>
-            
           </div>
         </div>
       </nav>
