@@ -7,6 +7,7 @@ import {
 
 import { Game } from "./gameClass.js";
 
+let campoCodigo = document.getElementById("codigo");
 let campoNombreJuego = document.getElementById("NombreJuego");
 let campoCategoria = document.getElementById("Categoría");
 let campoDescripcion = document.getElementById("Descripcion");
@@ -17,7 +18,10 @@ let check;
 let cerrarsesion = document.getElementById("cerrarsesion");
 let juegoExistente = false;
 
+let boton = document.getElementById("NuevoJuego");
+
 let listaJuegos = JSON.parse(localStorage.getItem("Juegos")) || [];
+let listaCodigos = JSON.parse(localStorage.getItem("Codigos")) || [];
 
 campoNombreJuego.addEventListener("blur", () => {
   campoRequerido(campoNombreJuego);
@@ -35,11 +39,15 @@ campoURL.addEventListener("blur", () => {
   validarURL(campoURL);
 });
 
+boton.addEventListener("click", () => {
+  limpiarForm();
+});
+
 campoFormJuego.addEventListener("submit", agregarJuego);
 
 cargaInicial();
 
-cerrarsesion.addEventListener("click", cerrarSesion);
+//cerrarsesion.addEventListener("click", cerrarSesion);
 
 function limpiarForm() {
   campoFormJuego.reset();
@@ -47,11 +55,16 @@ function limpiarForm() {
   campoCategoria.className = "form-control";
   campoDescripcion.className = "form-control";
   campoURL.className = "form-control";
-  campoPublicado.className = "form-check-input";
+
+  juegoExistente = false;
 }
 
 function guardarJuegosEnLocalStorage() {
   localStorage.setItem("Juegos", JSON.stringify(listaJuegos));
+}
+
+function guardarCodigosEnLocalStorage() {
+  localStorage.setItem("Codigos", JSON.stringify(listaCodigos));
 }
 
 function agregarJuego(event) {
@@ -83,9 +96,20 @@ function agregarJuego(event) {
   }
 }
 
+function generarCodigoUnico() {
+  let numeroAleatorio;
+  let numeroAleatorioConvertido;
+  while (true) {
+    numeroAleatorio = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
+    numeroAleatorioConvertido = numeroAleatorio.toString();
+    if (!listaCodigos.includes(numeroAleatorioConvertido)) {
+      return numeroAleatorioConvertido;
+    }
+  }
+}
+
 function crearJuego() {
-  let numeroAleatorio = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
-  let codigo = numeroAleatorio.toString();
+  let codigo = generarCodigoUnico();
   let juegoNuevo = new Game(
     codigo,
     campoNombreJuego.value,
@@ -94,9 +118,11 @@ function crearJuego() {
     check,
     campoURL.value
   );
+  listaCodigos.push(juegoNuevo.codigo);
   listaJuegos.push(juegoNuevo);
   limpiarForm();
   juegoExistente = false;
+  guardarCodigosEnLocalStorage();
   guardarJuegosEnLocalStorage();
   Swal.fire({
     icon: "success",
@@ -120,7 +146,7 @@ function crearFila(juegoNuevo) {
   data-bs-target="#exampleModal" onclick="prepararJuego(${juegoNuevo.codigo})">Modificar</button>
 <button
   class="btn btn-danger"
-  id="Eliminar" onclick="eliminarJuego()">
+  id="Eliminar" onclick="eliminarJuego(${juegoNuevo.codigo})">
   Eliminar
 </button><button
 class="btn btn-primary"
@@ -141,7 +167,7 @@ window.prepararJuego = function (claveUnica) {
   let juegoBuscado = listaJuegos.find(
     (itemJuego) => itemJuego.codigo === clave
   );
-  console.log(juegoBuscado);
+  campoCodigo.value = juegoBuscado.codigo;
   campoNombreJuego.value = juegoBuscado.nombre;
   campoCategoria.value = juegoBuscado.categoria;
   campoDescripcion.value = juegoBuscado.descripcion;
@@ -152,11 +178,47 @@ window.prepararJuego = function (claveUnica) {
 };
 
 function modificarJuego() {
-  let juegoBuscado = listaJuegos.find(
-    (itemJuego) => itemJuego.nombre === campoNombreJuego.value
+  let indiceJuego = listaJuegos.findIndex(
+    (itemJuego) => itemJuego.codigo === campoCodigo.value
   );
 
-  let indiceJuego = listaJuegos.findIndex(
-    (itemJuego) => itemJuego.nombre === campoNombreJuego.value
-  );
+  listaJuegos[indiceJuego].nombre = campoNombreJuego.value;
+  listaJuegos[indiceJuego].categoria = campoCategoria.value;
+  listaJuegos[indiceJuego].descripcion = campoDescripcion.value;
+  listaJuegos[indiceJuego].publicado = campoPublicado.value;
+  listaJuegos[indiceJuego].url = campoURL.value;
+
+  guardarJuegosEnLocalStorage();
+  borrarTabla();
+  cargaInicial();
+  limpiarForm();
+
+  Swal.fire({
+    icon: "success",
+    title: "Juego modificado",
+    showConfirmButton: false,
+    timer: 1500,
+  });
 }
+
+function borrarTabla() {
+  let tablaJuegos = document.getElementById("tablaJuegos");
+  tablaJuegos.innerHTML = "";
+}
+
+window.eliminarJuego = function (claveUnica) {
+  let clave = claveUnica.toString();
+  let nuevaListaJuegos = listaJuegos.filter(
+    (itemJuego) => itemJuego.codigo !== clave
+  );
+  listaJuegos = [...nuevaListaJuegos];
+  guardarJuegosEnLocalStorage();
+  borrarTabla();
+  cargaInicial();
+  Swal.fire({
+    icon: "success",
+    title: "Juego eliminado",
+    showConfirmButton: false,
+    timer: 1500,
+  });
+};
