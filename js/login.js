@@ -4,10 +4,13 @@ import {
   validarRepetirContrasena,
   generalValidation,
   cerrarSesion,
+  usuarioisAdmin,
 } from "./validations.js";
 
 import { Usuario } from "./UsuarioClass.js";
 cargarUsuario();
+
+// import { usuarioisAdmin } from "./ComprobarusuarioLog.js";
 
 let campoNombre = document.getElementById("Nombre");
 let campoApellido = document.getElementById("Apellido");
@@ -111,28 +114,22 @@ function InicioSesion(e) {
   e.preventDefault();
   var emailInicioSesion = document.getElementById("UsuarioLog").value;
   var contrasenaInisionSesion = document.getElementById("ContrasenaLog").value;
-  var usuarioAdmin = "admin@enjoythegame.com";
-  var contrasenaAdmin = "admin2023";
-  var usuarios = JSON.parse(localStorage.getItem("usuarios"));
-
+  let listaUsuario = JSON.parse(localStorage.getItem("Usuarios")) || [];
   if (
-    emailInicioSesion === usuarioAdmin &&
-    contrasenaInisionSesion === contrasenaAdmin
+    listaUsuario?.some(
+      (usuario) =>
+        usuario.email === emailInicioSesion &&
+        listaUsuario?.some(
+          (usuario) => usuario.contraseña === contrasenaInisionSesion
+        )
+    )
   ) {
     window.location.href = "admin.html";
-    guardarUserLogLocalStorage();
-    addcontainerNav();
+    usuarioisAdmin();
   } else {
-    var usuarioExiste = usuarios.find(function (usuario) {
-      return usuario.email === emailInicioSesion;
-    });
-    if (usuarioExiste) {
-      window.location.href = "index.html";
-    } else {
-      alert(
-        "El usuario debe ser aceptado por un administrador, te avisaremos por mail cuando este realizado."
-      );
-    }
+    alert(
+      "El usuario no se encuentra registrado, porfavor registrate antes de iniciar sesion"
+    );
   }
 }
 
