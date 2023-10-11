@@ -22,6 +22,7 @@ let boton = document.getElementById("NuevoJuego");
 
 let listaJuegos = JSON.parse(localStorage.getItem("Juegos")) || [];
 let listaCodigos = JSON.parse(localStorage.getItem("Codigos")) || [];
+let destacado = JSON.parse(localStorage.getItem("Destacado")) || [];
 
 campoNombreJuego.addEventListener("blur", () => {
   campoRequerido(campoNombreJuego);
@@ -65,6 +66,10 @@ function guardarJuegosEnLocalStorage() {
 
 function guardarCodigosEnLocalStorage() {
   localStorage.setItem("Codigos", JSON.stringify(listaCodigos));
+}
+
+function guardarDestacadoEnLocalStorage() {
+  localStorage.setItem("Destacado", JSON.stringify(destacado));
 }
 
 function agregarJuego(event) {
@@ -141,7 +146,7 @@ function crearFila(juegoNuevo) {
   <td>${juegoNuevo.categoria}</td>
   <td>${juegoNuevo.descripcion}</td>
   <td>${juegoNuevo.publicado}</td>
-  <td><button class="btn btn-warning"
+  <td><button class="btn btn-success"
   id="Modificar" data-bs-toggle="modal"
   data-bs-target="#exampleModal" onclick="prepararJuego(${juegoNuevo.codigo})">Modificar</button>
 <button
@@ -150,7 +155,7 @@ function crearFila(juegoNuevo) {
   Eliminar
 </button><button
 class="btn btn-primary"
-id="Destacar" onclick="destacarJuego()">
+id="Destacar" onclick="destacarJuego(${juegoNuevo.codigo})">
 Destacar
 </button></td>
 </tr>`;
@@ -218,6 +223,23 @@ window.eliminarJuego = function (claveUnica) {
   Swal.fire({
     icon: "success",
     title: "Juego eliminado",
+    showConfirmButton: false,
+    timer: 1500,
+  });
+};
+
+window.destacarJuego = function (claveUnica) {
+  let clave = claveUnica.toString();
+  let juegoBuscado = listaJuegos.find(
+    (itemJuego) => itemJuego.codigo === clave
+  );
+  console.log(juegoBuscado);
+  destacado.push(juegoBuscado);
+  guardarDestacadoEnLocalStorage();
+  destacado.shift();
+  Swal.fire({
+    icon: "success",
+    title: "Juego Destacado",
     showConfirmButton: false,
     timer: 1500,
   });
