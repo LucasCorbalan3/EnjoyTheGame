@@ -26,7 +26,139 @@
   </head>
   <body>
 
-    <script src="js/contacto.js" type="module"></script>
+    <header class="sticky-top">
+      <nav
+        class="navbar navbar-expand-lg navbar-expand-sm bg-dark"
+        data-bs-theme="dark"
+      >
+        <div class="container-fluid">
+          <button
+            class="btn btn-dark"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasWithBothOptions"
+            aria-controls="offcanvasWithBothOptions"
+          >
+            <input id="checkbox" />
+            <div for="checkbox" class="toggle">
+              <div class="bars" id="bar1"></div>
+              <div class="bars" id="bar2"></div>
+              <div class="bars" id="bar3"></div>
+            </div>
+          </button>
+          <div
+            class="offcanvas offcanvas-start"
+            data-bs-scroll="true"
+            tabindex="-1"
+            id="offcanvasWithBothOptions"
+            aria-labelledby="offcanvasWithBothOptionsLabel"
+          >
+            <div class="offcanvas-header bg-dark btn-warning">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              >
+                <input id="checkbox" />
+                <div for="checkbox" class="toggle">
+                  <div class="bars" id="bar1"></div>
+                  <div class="bars" id="bar2"></div>
+                  <div class="bars" id="bar3"></div>
+                </div>
+              </button>
+            </div>
+            <div class="offcanvas-body bg-dark">
+              <ul class="nav flex-column my-4">
+                <li class="nav-item" id="ListContentNav">
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="index.html"
+                    >Inicio</a
+                  >
+                </li>
+                <hr />
+                <li class="nav-item" id="ListContentNav">
+                  <a class="nav-link" href="AcercaDeNosotros.html">Nosotros</a>
+                </li>
+                <hr />
+                <li class="nav-item" id="ListContentNav">
+                  <a class="nav-link" href="contacto.html">Contacto</a>
+                </li>
+                <hr />
+                <li class="nav-item d-none" id="linkAdmin">
+                  <a class="nav-link" href="admin.html">Administrar pagina</a>
+                </li>
+                <li class="nav-item" id="ListContentNav" onclick="cerrarSesion()">
+                  <a class="nav-link" href="Register.html">Cerrar Sesión!</a>
+                </li>
+              </ul>
+            </div>
+            <div class="offcanvas-footer bg-dark">
+              <p class="text-white p-2">
+                © EnjoyTheGame Company. Todos los derechos reservados. Todas las
+                marcas registradas pertenecen a sus respectivos dueños en EE.
+                UU. y otros países.
+              </p>
+              <div class="d-flex justify-content-center iconsContent">
+                <a class="mx-2 my-4" href="Error404.html"
+                  ><i class="fa-brands fa-square-instagram iconsredes"></i
+                ></a>
+                <a class="mx-2 my-4" href="Error404.html"
+                  ><i class="fa-brands fa-square-x-twitter iconsredes"></i
+                ></a>
+                <a class="mx-2 my-4" href="Error404.html"
+                  ><i class="fa-brands fa-square-whatsapp iconsredes"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <a
+            class="navbar-brand rounded mx-auto d-block d-flex"
+            href="/index.html"
+          >
+            <img
+              src="assets/joystick-line-pop-removebg-preview.png"
+              alt="LOGO_Enjoy_The_Game"
+              width="100"
+              height="100"
+            />
+            <p class="align-self-center TitleNav">
+              ENJOY <span class="TitleNavThe">THE</span> GAME
+            </p>
+          </a>
+          <div class="d-none d-lg-block">
+            <button class="learn-more ms-auto">
+              <a href="register.html">
+                <span class="circle" aria-hidden="true">
+                  <span class="icon arrow"></span>
+                </span>
+                <span
+                  class="button-text text-white"
+                  id="CerrarSesion"
+                  onclick="cerrarSesion()"
+                  >Cerrar Sesión!</span
+                >
+              </a>
+            </button>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="showcase">
+        <div class="video-container">
+          <video src="/assets/video Acerca.mp4" autoplay muted loop></video>
+        </div>
+        <div class="container text-center">
+          <h1 class="fw-bold h1acercade">Acerca De Nosotros</h1>
+        </div>
+      </section>
+    </main>
+    
+    <script src="js/ComprobarusuarioLog.js"></script>
+
     <script src="js/bootstrap.min.js"></script>
     <script
       src="https://kit.fontawesome.com/7d2e342abf.js"

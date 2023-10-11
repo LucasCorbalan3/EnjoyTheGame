@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .TitleNav {
   font-family: "Pixelify Sans", cursive;
   color: #48e3f5ff;
@@ -79,6 +83,21 @@ body {
     rgba(155, 3, 124, 1) 73%,
     rgba(77, 2, 97, 1) 83%,
     rgba(77, 2, 97, 1) 100%
+  );
+}
+
+
+.table-responsive{
+  background: rgb(9, 0, 63);
+  background: linear-gradient(
+    180deg,
+    rgba(9, 0, 63, 1) 0%,
+    rgba(77, 2, 97, 1) 33%,
+    rgba(109, 3, 113, 1) 48%,
+    rgba(136, 4, 126, 1) 59%,
+    rgba(159, 4, 137, 1) 66%,
+    rgba(77, 2, 97, 1) 83%,
+    rgba(155, 3, 124, 1) 100%
   );
 }
 
@@ -410,6 +429,7 @@ label {
   width: 500px;
 }
 
+
 .escala {
   display: flex;
   width: 100%;
@@ -444,5 +464,58 @@ label {
   text-align: center;
   color: #0af7ff;
   font-size: 15px;
+=======
+.container404 {
+  margin: 0;
+  padding: 0;
+  font-family: "Pixelify Sans", cursive;
+  min-height: 100vh;
+  background-image: linear-gradient(
+    rgba(77, 2, 97, 1),
+    rgba(159, 4, 137, 1),
+    rgba(159, 2, 137, 1),
+    rgba(77, 2, 97, 1)
+  );
+}
+
+.m404 {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  color: #0af7ff;
+}
+
+.h1404 {
+  font-size: 200px;
+  margin: 0;
+  font-weight: 1200;
+  letter-spacing: 20px;
+  background: url(/assets/backgroundmMain.png) center no-repeat;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  
+}
+
+.a404 {
+  text-decoration: none;
+  background: #0af7ff;
+  color: #5d8384;
+  padding: 12px 24px;
+  display: inline-block;
+  border-radius: 25px;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: 0.4s;
+}
+
+.a404 :hover {
+  background: #b5ebed;
+}
+
+.cardJuegos{
+  width: 18rem;
 }
 
