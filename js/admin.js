@@ -24,6 +24,10 @@ let listaJuegos = JSON.parse(localStorage.getItem("Juegos")) || [];
 let listaCodigos = JSON.parse(localStorage.getItem("Codigos")) || [];
 let destacado = JSON.parse(localStorage.getItem("Destacado")) || [];
 
+if (destacado.length > 0) {
+  destacado.splice(0, 1);
+}
+
 campoNombreJuego.addEventListener("blur", () => {
   campoRequerido(campoNombreJuego);
 });
@@ -236,6 +240,7 @@ window.destacarJuego = function (claveUnica) {
   console.log(juegoBuscado);
   destacado.push(juegoBuscado);
   guardarDestacadoEnLocalStorage();
+  console.log(destacado);
   destacado.shift();
   Swal.fire({
     icon: "success",
