@@ -86,13 +86,18 @@
                   <a class="nav-link" href="contacto.html">Contacto</a>
                 </li>
                 <hr />
-                <li class="nav-item" id="ListContentNav">
-                  <a class="nav-link" href="Register.html">Inicia Sesion</a>
-                </li>
-                <hr />
                 <li class="nav-item d-none" id="linkAdmin">
                   <a class="nav-link" href="admin.html">Administrar pagina</a>
                 </li>
+                <li
+                  class="nav-item"
+                  id="ListContentNav"
+                  onclick="cerrarSesion()"
+                >
+                  <a class="nav-link" href="Register.html">Cerrar Sesión!</a>
+                  <hr />
+                </li>
+<hr>
               </ul>
             </div>
             <div class="offcanvas-footer bg-dark">
@@ -134,8 +139,11 @@
                 <span class="circle" aria-hidden="true">
                   <span class="icon arrow"></span>
                 </span>
-                <span class="button-text text-white" id="ItemLogin"
-                  >Inicia Sesion!</span
+                <span
+                  class="button-text text-white"
+                  id="CerrarSesion"
+                  onclick="cerrarSesion()"
+                  >Cerrar Sesión!</span
                 >
               </a>
             </button>

@@ -48,8 +48,6 @@ campoFormJuego.addEventListener("submit", agregarJuego);
 
 cargaInicial();
 
-//cerrarsesion.addEventListener("click", cerrarSesion);
-
 function limpiarForm() {
   campoFormJuego.reset();
   campoNombreJuego.className = "form-control";
@@ -212,19 +210,31 @@ function borrarTabla() {
 }
 
 window.eliminarJuego = function (claveUnica) {
-  let clave = claveUnica.toString();
-  let nuevaListaJuegos = listaJuegos.filter(
-    (itemJuego) => itemJuego.codigo !== clave
-  );
-  listaJuegos = [...nuevaListaJuegos];
-  guardarJuegosEnLocalStorage();
-  borrarTabla();
-  cargaInicial();
   Swal.fire({
-    icon: "success",
-    title: "Juego eliminado",
-    showConfirmButton: false,
-    timer: 1500,
+    title: "Seguro que desea eliminar este producto?",
+    text: "La acción no prodrá revertirse!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Confirmar",
+    cancelButtonText: "Cancelar",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      let clave = claveUnica.toString();
+      let nuevaListaJuegos = listaJuegos.filter(
+        (itemJuego) => itemJuego.codigo !== clave
+      );
+      listaJuegos = [...nuevaListaJuegos];
+      guardarJuegosEnLocalStorage();
+      borrarTabla();
+      cargaInicial();
+      Swal.fire(
+        "Producto eliminado!",
+        "El producto fue eliminado correctamente!",
+        "success"
+      );
+    }
   });
 };
 
