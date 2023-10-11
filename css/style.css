@@ -86,8 +86,7 @@ body {
   );
 }
 
-
-.table-responsive{
+.table-responsive {
   background: rgb(9, 0, 63);
   background: linear-gradient(
     180deg,
@@ -429,7 +428,6 @@ label {
   width: 500px;
 }
 
-
 .escala {
   display: flex;
   width: 100%;
@@ -454,18 +452,15 @@ label {
   align-items: center;
 }
 
-.btn404:hover{
+.btn404:hover {
   color: #f006b1ff;
   text-decoration: none;
 }
-
 
 .texto404 {
   text-align: center;
   color: #0af7ff;
   font-size: 15px;
-=======
-.container404 {
   margin: 0;
   padding: 0;
   font-family: "Pixelify Sans", cursive;
@@ -496,7 +491,6 @@ label {
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  
 }
 
 .a404 {
@@ -515,7 +509,6 @@ label {
   background: #b5ebed;
 }
 
-.cardJuegos{
+.cardJuegos {
   width: 18rem;
 }
-
