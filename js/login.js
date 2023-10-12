@@ -4,9 +4,13 @@ import {
   validarRepetirContrasena,
   generalValidation,
   cerrarSesion,
+  usuarioisAdmin,
 } from "./validations.js";
 
 import { Usuario } from "./UsuarioClass.js";
+cargarUsuario();
+
+// import { usuarioisAdmin } from "./ComprobarusuarioLog.js";
 
 let campoNombre = document.getElementById("Nombre");
 let campoApellido = document.getElementById("Apellido");
@@ -16,14 +20,11 @@ let campoRepetirContrasena = document.getElementById("Repetircontrasena");
 let campoCheckboxRobot = document.getElementById("checkboxRobot");
 let campoFormLogin = document.getElementById("FormLogin");
 let FormInicioSesion = document.getElementById("FormInicioSesion");
-let campoNombreApellido = document.getElementById("NombreApellido");
-let campoAsunto = document.getElementById("Asunto");
-let campoObservaciones = document.getElementById("Observaciones");
-let inquiryForm = document.getElementById("inquiryForm");
 
 let usuarioExistente = false;
 
 let listaUsuario = JSON.parse(localStorage.getItem("Usuarios")) || [];
+let usuarioLog = JSON.parse(localStorage.getItem("userLog")) || [];
 
 if (campoNombre) {
   campoNombre.addEventListener("blur", () => {
@@ -59,20 +60,6 @@ if (FormInicioSesion) {
   FormInicioSesion.addEventListener("submit", InicioSesion);
 }
 
-campoNombreApellido.addEventListener("blur", () => {
-  campoRequerido(campoNombreApellido);
-});
-
-campoAsunto.addEventListener("blur", () => {
-  campoRequerido(campoAsunto);
-});
-
-campoObservaciones.addEventListener("blur", () => {
-  campoRequerido(campoObservaciones);
-});
-
-inquiryForm.addEventListener("submit", generalValidation);
-
 function crearUsuario() {
   let usuarioNuevo = new Usuario(
     campoNombre.value,
@@ -80,6 +67,7 @@ function crearUsuario() {
     campoEmail.value,
     campoContrasena.value
   );
+
   listaUsuario.push(usuarioNuevo);
   clearForm();
   guadarLocalStorage();
@@ -98,6 +86,9 @@ function clearForm() {
 
 function guadarLocalStorage() {
   localStorage.setItem("Usuarios", JSON.stringify(listaUsuario));
+}
+function guardarUserLogLocalStorage() {
+  localStorage.setItem("userLog", JSON.stringify({ usuarioLog }));
 }
 
 function validarRegistro(e) {
@@ -123,25 +114,75 @@ function InicioSesion(e) {
   e.preventDefault();
   var emailInicioSesion = document.getElementById("UsuarioLog").value;
   var contrasenaInisionSesion = document.getElementById("ContrasenaLog").value;
-  var usuarioAdmin = "admin@enjoythegame.com";
-  var contrasenaAdmin = "admin2023";
-  var usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
+  let listaUsuario = JSON.parse(localStorage.getItem("Usuarios")) || [];
   if (
-    emailInicioSesion === usuarioAdmin &&
-    contrasenaInisionSesion === contrasenaAdmin
+    listaUsuario?.some(
+      (usuario) =>
+        usuario.email === emailInicioSesion &&
+        listaUsuario?.some(
+          (usuario) => usuario.contraseña === contrasenaInisionSesion
+        )
+    )
   ) {
     window.location.href = "admin.html";
+    usuarioisAdmin();
   } else {
-    var usuarioExiste = usuarios.find(function (usuario) {
-      return usuario.email === emailInicioSesion;
-    });
-    if (usuarioExiste) {
-      window.location.href = "index.html";
-    } else {
-      alert("El usuario debe ser aceptado por un administrador, te avisaremos por mail cuando este realizado.");
-    }
+    alert(
+      "El usuario no se encuentra registrado, porfavor registrate antes de iniciar sesion"
+    );
   }
 }
 
+function cargarUsuario() {
+  const datos = [
+    {
+      nombre: "Admin",
+      apellido: "Admin",
+      email: "admin@enjoythegame.com",
+      contraseña: "admin2023",
+      isAdmin: true,
+    },
+    {
+      nombre: "lucas",
+      apellido: "corbalan",
+      email: "lucas.corbalan.23@gmail.com",
+      contraseña: "luca2938",
+      isAdmin: false,
+    },
+    {
+      nombre: "nico",
+      apellido: "torregrosa",
+      email: "nico.torregrosa@gmail.com",
+      contraseña: "nico8383",
+      isAdmin: false,
+    },
+    {
+      nombre: "gerardo",
+      apellido: "rosales",
+      email: "gerardo.rosales@gmail.com",
+      contraseña: "gerardoasdqwd",
+      isAdmin: false,
+    },
+  ];
 
+  if (!localStorage.getItem("Usuarios")) {
+    localStorage.setItem("Usuarios", JSON.stringify(datos));
+    listaUsuario = datos;
+  }
+}
+function addcontainerNav() {
+  let containerNav = document.getElementById("containerNav");
+  containerNav.innerHTML += `<button class="learn-more ms-auto d-none">
+  <a href="register.html">
+    <span class="circle" aria-hidden="true">
+      <span class="icon arrow"></span>
+    </span>
+    <span
+      class="button-text text-white"
+      id="CerrarSesion"
+      onclick="cerrarSesion()"
+      >Administrar Pagina!</span
+    >
+  </a>
+</button>`;
+}
