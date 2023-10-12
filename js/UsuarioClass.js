@@ -9,6 +9,7 @@ export class Usuario {
     this.Apellido = parametroApellido;
     this.Email = parametroEmail;
     this.Contrasena = parametroContrasena;
+    this.isAdmin = false
   }
 
   get mostrarNombre() {
