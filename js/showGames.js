@@ -20,6 +20,58 @@ divMadre.innerHTML += `<h5 class="card-title my-4">${destacado[0].nombre}</h5>
 <p class="card-text my-3">${destacado[0].descripcion}</p>
 <a href="GameDetails.html" class="btn buttonDetails my-5">Ver más</a>`;
 
-/*for ( i = 0 ; i < listaJuegos.length ; i++) {
-    if( listaJuegos[i].categoria ===)
-}*/
+for (i = 0; i < listaJuegos.length; i++) {
+  if (listaJuegos[i].categoria === "Estrategia") {
+    divPadreEstrategia.innerHTML += `<div class="col-sm-12 col-md-3 col-lg-4 divs">
+        <div class="card bg-dark" style="width: 18rem">
+          <img
+            src="${listaJuegos[i].url}"
+            class="card-img-top my-2"
+            alt="img"
+          />
+          <div class="card-body">
+            <h5 class="card-title text-light mb-0">${listaJuegos[i].nombre}</h5>
+          </div>
+        </div>
+      </div>`;
+  } else if (listaJuegos[i].categoria === "Infantil") {
+    divPadreInfantil.innerHTML += `<div class="col-sm-12 col-md-3 col-lg-4 divs">
+        <div class="card bg-dark" style="width: 18rem">
+          <img
+            src="${listaJuegos[i].url}"
+            class="card-img-top my-2"
+            alt="img"
+          />
+          <div class="card-body">
+            <h5 class="card-title text-light mb-0">${listaJuegos[i].nombre}</h5>
+          </div>
+        </div>
+      </div>`;
+  } else if (listaJuegos[i].categoria === "Deportes") {
+    divPadreDeportes.innerHTML += `<div class="col-sm-12 col-md-3 col-lg-4 divs">
+        <div class="card bg-dark" style="width: 18rem">
+          <img
+            src="${listaJuegos[i].url}"
+            class="card-img-top my-2"
+            alt="img"
+          />
+          <div class="card-body">
+            <h5 class="card-title text-light mb-0">${listaJuegos[i].nombre}</h5>
+          </div>
+        </div>
+      </div>`;
+  } else {
+    divPadreNovedades.innerHTML += `<div class="col-sm-12 col-md-3 col-lg-4 divs">
+        <div class="card bg-dark" style="width: 18rem">
+          <img
+            src="${listaJuegos[i].url}"
+            class="card-img-top my-2"
+            alt="img"
+          />
+          <div class="card-body">
+            <h5 class="card-title text-light mb-0">${listaJuegos[i].nombre}</h5>
+          </div>
+        </div>
+      </div>`;
+  }
+}

@@ -298,15 +298,6 @@ function cargarDatosPrueba() {
       url: "https://i.ytimg.com/vi/XhP3Xh4LMA8/maxresdefault.jpg",
     },
     {
-      codigo: "27133",
-      nombre: "Counter Strike 2",
-      categoria: "Novedades",
-      descripcion:
-        "Counter-Strike 2, la secuela del clásico shooter en primera persona, sigue cautivando a los fanáticos de la acción. Los jugadores se enfrentan en dos equipos, terroristas y fuerzas especiales, en emocionantes partidas de estrategia y puntería. Los mapas son detallados y variados, desde estaciones de tren hasta instalaciones militares. La cooperación y la precisión son esenciales para el éxito en el combate en línea. Counter-Strike 2 mantiene la tensión y el equilibrio que hicieron famosa a la serie, con armas realistas y modos de juego dinámicos.",
-      publicado: "Si",
-      url: "https://cdn.cloudflare.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1696359298",
-    },
-    {
       codigo: "11111",
       nombre: "Minecraft",
       categoria: "Infantil",
