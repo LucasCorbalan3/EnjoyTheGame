@@ -243,61 +243,45 @@
               alt="joistick.png"
             />
             <h2 class="d-flex align-items-center TitleNav">
-              Destacados <span class="TitleNavThe">Del </span>Momento
+              Destacado <span class="TitleNavThe">Del </span>Momento
             </h2>
           </div>
-          <iframe
-            class="mx-auto d-block w-100 divs"
-            height="450"
-            src="https://www.youtube.com/embed/XhP3Xh4LMA8?si=mIfvbtLLjYBgsZiW"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
+          <div id="padre"></div>
         </div>
         <div
-          class="col-sm-12 col-md-6 col-lg-6 card-body bg-dark text-light text-center divs"
-        >
-          <h5 class="card-title">EA Sports FC</h5>
-          <p class="card-text">Disponible</p>
-          <img
-            class="w-100 mb-4"
-            src="/assets/EA-Sports-FC-24.jpg"
-            alt="EASports.jpg"
-          />
-          <p class="card-text">
-            EA Sports FC, el último lanzamiento de la exitosa franquicia,
-            redefine la simulación de fútbol. Con gráficos de vanguardia,
-            mecánicas de juego fluidas y una variedad de modos, desde carreras
-            de equipos hasta partidas en línea, ofrece una experiencia auténtica
-            y emocionante para los fanáticos del fútbol en todo el mundo.
-            Sumérgete en la acción y lleva a tu equipo a la victoria en este
-            emocionante simulador deportivo.
-          </p>
-          <a href="GameDetails.html" class="btn buttonDetails my-3">Ver más</a>
-        </div>
+          class="col-sm-12 col-md-6 col-lg-6 card-body bg-dark text-light text-center d-flex flex-column justify-content-center align-items-center my-5 divs"
+          id="madre"
+        ></div>
       </section>
       <section class="my-5 container-fluid">
-        <section class="row">
-          <h2 class="text-light my-2">Novedades</h2>
-          <div class="card bg-dark" style="width: 18rem">
-            <img
-              src="https://cdn.cloudflare.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1696359298"
-              class="card-img-top my-2"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title text-light mb-0">Counter-Strike 2</h5>
+        <section class="my-5">
+          <h2 class="text-light my-3 text-center">Novedades</h2>
+          <div id="padreNovedades" class="row">
+            <div class="col-sm-12 col-md-3 col-lg-4 divs">
+              <div class="card bg-dark" style="width: 18rem">
+                <img
+                  src="https://cdn.cloudflare.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1696359298"
+                  class="card-img-top my-2"
+                  alt="..."
+                />
+                <div class="card-body">
+                  <h5 class="card-title text-light mb-0">Counter-Strike 2</h5>
+                </div>
+              </div>
             </div>
           </div>
         </section>
-        <section class="row">
-          <h2 class="text-light my-2">Estrategia</h2>
+        <section>
+          <h2 class="text-light my-2 text-center">Estrategia</h2>
+          <div id="padreEstrategia" class="row"></div>
         </section>
-        <section class="row"><h2 class="text-light my-5">Infantil</h2></section>
-        <section class="row">
-          <h2 class="text-light my-2">Deportes y carreras</h2>
+        <section class="my-5">
+          <h2 class="text-light my-2 text-center">Infantil</h2>
+          <div id="padreInfantil" class="row"></div>
+        </section>
+        <section class="my-5">
+          <h2 class="text-light my-2 text-center">Deportes</h2>
+          <div id="padreDeportes" class="row"></div>
         </section>
       </section>
       <section class="container my-1">
@@ -315,7 +299,7 @@
         </div>
       </section>
     </main>
-    <script src="js/login.js" ></script>
+    <script src="js/showGames.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script
       src="https://kit.fontawesome.com/7d2e342abf.js"
