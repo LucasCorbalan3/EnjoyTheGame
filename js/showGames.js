@@ -22,7 +22,7 @@ divMadre.innerHTML += `<h5 class="card-title my-4">${destacado[0].nombre}</h5>
 
 for (i = 0; i < listaJuegos.length; i++) {
   if (listaJuegos[i].categoria === "Estrategia") {
-    divPadreEstrategia.innerHTML += `<div class="col-sm-12 col-md-3 col-lg-4 divs">
+    divPadreEstrategia.innerHTML += `<div class="col-sm-12 col-md-3 col-lg-4 divs2">
         <div class="card bg-dark" style="width: 18rem">
           <img
             src="${listaJuegos[i].url}"
@@ -35,7 +35,7 @@ for (i = 0; i < listaJuegos.length; i++) {
         </div>
       </div>`;
   } else if (listaJuegos[i].categoria === "Infantil") {
-    divPadreInfantil.innerHTML += `<div class="col-sm-12 col-md-3 col-lg-4 divs">
+    divPadreInfantil.innerHTML += `<div class="col-sm-12 col-md-3 col-lg-4 divs2">
         <div class="card bg-dark" style="width: 18rem">
           <img
             src="${listaJuegos[i].url}"
@@ -48,7 +48,7 @@ for (i = 0; i < listaJuegos.length; i++) {
         </div>
       </div>`;
   } else if (listaJuegos[i].categoria === "Deportes") {
-    divPadreDeportes.innerHTML += `<div class="col-sm-12 col-md-3 col-lg-4 divs">
+    divPadreDeportes.innerHTML += `<div class="col-sm-12 col-md-3 col-lg-4 divs2">
         <div class="card bg-dark" style="width: 18rem">
           <img
             src="${listaJuegos[i].url}"
@@ -61,7 +61,7 @@ for (i = 0; i < listaJuegos.length; i++) {
         </div>
       </div>`;
   } else {
-    divPadreNovedades.innerHTML += `<div class="col-sm-12 col-md-3 col-lg-4 divs">
+    divPadreNovedades.innerHTML += `<div class="col-sm-12 col-md-3 col-lg-4 divs2">
         <div class="card bg-dark" style="width: 18rem">
           <img
             src="${listaJuegos[i].url}"

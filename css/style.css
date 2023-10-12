@@ -232,6 +232,11 @@ button:hover .button-text {
   transition: 0.6s;
 }
 
+.divs2:hover {
+  transform: scale(1.1);
+  transition: 0.6s;
+}
+
 .btn-container {
   display: table-cell;
   vertical-align: middle;
@@ -540,8 +545,11 @@ label {
 .a404 :hover {
   background: #b5ebed;
 }
+<<<<<<< HEAD
 
 .cardJuegos {
   width: 18rem;
 }
 >>>>>>> a0e5383acc01df60dd8a27b05276988747d9e424
+=======
+>>>>>>> b9075ff (hover changes)
