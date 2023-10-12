@@ -245,10 +245,8 @@ window.destacarJuego = function (claveUnica) {
   let juegoBuscado = listaJuegos.find(
     (itemJuego) => itemJuego.codigo === clave
   );
-  console.log(juegoBuscado);
   destacado.push(juegoBuscado);
   guardarDestacadoEnLocalStorage();
-  console.log(destacado);
   destacado.shift();
   Swal.fire({
     icon: "success",
