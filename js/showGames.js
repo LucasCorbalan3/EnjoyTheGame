@@ -1,7 +1,13 @@
 let destacado = JSON.parse(localStorage.getItem("Destacado")) || [];
+let listaJuegos = JSON.parse(localStorage.getItem("Juegos")) || [];
 
 let divPadre = document.getElementById("padre");
 let divMadre = document.getElementById("madre");
+
+let divPadreNovedades = document.getElementById("padreNovedades");
+let divPadreEstrategia = document.getElementById("padreEstrategia");
+let divPadreInfantil = document.getElementById("padreInfantil");
+let divPadreDeportes = document.getElementById("padreDeportes");
 
 divPadre.innerHTML += `<img
 class="w-100 mb-4 divs"
