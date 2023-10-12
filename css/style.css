@@ -472,39 +472,6 @@ label {
   );
 }
 
-<<<<<<< HEAD
-.bodyacerca {
-  background-image: linear-gradient(
-    rgba(77, 2, 97, 1),
-    rgba(159, 4, 137, 1),
-    rgba(159, 2, 137, 1),
-    rgba(77, 2, 97, 1)
-    );
-}
-
- .pacerca {
-  font-family: "Pixelify Sans", cursive;
-  color: #48e3f5ff;
-  letter-spacing: 0.4vw;
-}
-
-.divacerca {
-  display: grid;
-  place-items: center;
-  margin: auto;
-}
-
- .pcolor {
-  color: black;
- }
-
- .hracerca {
-  border: 2px solid #48e3f5ff;
- }
- .hracerca1 {
-  border: 2px solid #f006b1ff;
- }
-=======
 .m404 {
   width: 100%;
   position: absolute;
@@ -544,4 +511,3 @@ label {
 .cardJuegos {
   width: 18rem;
 }
->>>>>>> a0e5383acc01df60dd8a27b05276988747d9e424
