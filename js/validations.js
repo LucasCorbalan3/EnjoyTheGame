@@ -32,26 +32,71 @@ const validarRepetirContrasena = (input) => {
   }
 };
 
-const validacionGeneral = (
-  campoNombre,
-  campoApellido,
-  campoEmail,
-  campoContrasena,
-  campoRepetirContrasena
-) => {
-  let alert = document.getElementById("mjsAlerta");
-  if (
-    campoRequerido(campoNombre) &&
-    campoRequerido(campoApellido) &&
-    validarEmail(campoEmail) &&
-    campoRequerido(campoContrasena) &&
-    validarRepetirContrasena(campoRepetirContrasena)
-  ) {
-    alert.className = "alert alert-danger my-3 d-none";
+const validarURL = (input) => {
+  let patron = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
+  if (patron.test(input.value)) {
+    input.className = "form-control is-valid";
     return true;
+  } else {
+    input.className = "form-control is-invalid";
+    return false;
+  }
+};
+
+const validarFormularioJuego = (nombre, categoria, descripcion, url) => {
+  if (
+    campoRequerido(nombre) &&
+    campoRequerido(categoria) &&
+    campoRequerido(descripcion) &&
+    validarURL(url)
+  ) {
+    alerta.className = "alert alert-danger my-3 d-none";
+    return true;
+  } else {
+    alerta.className = "alert alert-danger my-3";
+    return false;
+  }
+};
+
+const generalValidation = (
+  campoNombreApellido,
+  campoAsunto,
+  campoEmail,
+  campoObservaciones
+) => {
+  let alert = document.querySelector("#mensajeAlert");
+  Swal.fire(
+    "Bien Hecho!",
+    "Tu consulta fue enviada al administrador!",
+    "success"
+  );
+  if (
+    campoRequerido(campoNombreApellido) &&
+    campoRequerido(campoAsunto) &&
+    campoRequerido(campoObservaciones) &&
+    validarEmail(campoEmail)
+  ) {
   } else {
     alert.className = "alert alert-danger my-3";
     return false;
+  }
+};
+
+const cerrarSesion = () => {
+  localStorage.removeItem("usuario");
+  window.location.href = "login.html";
+}
+
+
+const usuarioisAdmin = () => {
+  let listaUsuario = JSON.parse(localStorage.getItem("Usuarios")) || [];
+  if (
+    listaUsuario &&
+    listaUsuario?.lenght > 0 &&
+    listaUsuario?.some((usuario) => usuario.isAdmin === true)
+  ) {
+    let linkAdmin = document.getElementById("linkAdmin");
+    linkAdmin.className = "nav-item";
   }
 };
 
@@ -59,5 +104,9 @@ export {
   campoRequerido,
   validarEmail,
   validarRepetirContrasena,
-  validacionGeneral,
+  validarURL,
+  validarFormularioJuego,
+  generalValidation,
+  cerrarSesion,
+  usuarioisAdmin,
 };

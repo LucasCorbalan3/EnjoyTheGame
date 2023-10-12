@@ -9,15 +9,17 @@
       name="keywords"
       content="Juegos Online, Web de Juegos, Juegos en linea"
     />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@600&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="css/style.css" />
     <link
       rel="icon"
       href="assets/joystick-line-pop-removebg-preview.png"
@@ -84,62 +86,11 @@
                 </li>
                 <hr />
                 <li class="nav-item" id="ListContentNav">
-                  <a class="nav-link" href="#">Nosotros</a>
+                  <a class="nav-link" href="#NuevoJuego">Nuevo Juego</a>
                 </li>
                 <hr />
-                <li class="nav-item" id="ListContentNav">
-                  <a class="nav-link" href="#">Contacto</a>
-                </li>
-                <hr />
-                <li class="nav-item" id="ListContentNav">
-                  <a class="nav-link" href="Register.html">Registrese</a>
-                </li>
-                <hr />
-                <li>
-                  <div class="btn-container">
-                    <svg
-                      viewBox="0 0 16 16"
-                      class="bi bi-sun-fill"
-                      fill="currentColor"
-                      width="23"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
-                        color="red"
-                      ></path>
-                    </svg>
-                    <label class="switch btn-color-mode-switch">
-                      <input
-                        value="1"
-                        id="color_mode"
-                        name="color_mode"
-                        type="checkbox"
-                      />
-                      <label
-                        class="btn-color-mode-switch-inner"
-                        data-off="Light"
-                        data-on="Dark"
-                        for="color_mode"
-                      ></label>
-                    </label>
-                    <svg
-                      viewBox="0 0 16 16"
-                      class="bi bi-moon-stars-fill"
-                      fill="currentColor"
-                      width="23"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"
-                        color="orange"
-                      ></path>
-                      <path
-                        d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"
-                        color="black"
-                      ></path>
-                    </svg>
-                  </div>
+                <li class="nav-item d-none" id="linkAdmin">
+                  <a class="nav-link" href="admin.html">Administrar pagina</a>
                 </li>
               </ul>
             </div>
@@ -150,13 +101,13 @@
                 UU. y otros países.
               </p>
               <div class="d-flex justify-content-center iconsContent">
-                <a class="mx-2 my-4" href="#"
+                <a class="mx-2 my-4" href="Error404.html"
                   ><i class="fa-brands fa-square-instagram iconsredes"></i
                 ></a>
-                <a class="mx-2 my-4" href="#"
+                <a class="mx-2 my-4" href="Error404.html"
                   ><i class="fa-brands fa-square-x-twitter iconsredes"></i
                 ></a>
-                <a class="mx-2 my-4" href="#"
+                <a class="mx-2 my-4" href="Error404.html"
                   ><i class="fa-brands fa-square-whatsapp iconsredes"></i
                 ></a>
               </div>
@@ -176,59 +127,20 @@
               ENJOY <span class="TitleNavThe">THE</span> GAME
             </p>
           </a>
-          <div class="d-none d-lg-block">
+          <div class="d-none d-lg-block containerNav">
             <button class="learn-more ms-auto">
               <a href="register.html">
                 <span class="circle" aria-hidden="true">
                   <span class="icon arrow"></span>
                 </span>
-                <span class="button-text text-white" id="Titulo">Regístrate!</span>
+                <span
+                  class="button-text text-white"
+                  id="CerrarSesion"
+                  onclick="cerrarSesion()"
+                  >Cerrar Sesión!</span
+                >
               </a>
             </button>
-            <div class="btn-container">
-              <svg
-                viewBox="0 0 16 16"
-                class="bi bi-sun-fill"
-                fill="currentColor"
-                width="23"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
-                  color="red"
-                ></path>
-              </svg>
-              <label class="switch btn-color-mode-switch">
-                <input
-                  value="1"
-                  id="color_mode"
-                  name="color_mode"
-                  type="checkbox"
-                />
-                <label
-                  class="btn-color-mode-switch-inner"
-                  data-off="Light"
-                  data-on="Dark"
-                  for="color_mode"
-                ></label>
-              </label>
-              <svg
-                viewBox="0 0 16 16"
-                class="bi bi-moon-stars-fill"
-                fill="currentColor"
-                width="23"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"
-                  color="orange"
-                ></path>
-                <path
-                  d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"
-                  color="black"
-                ></path>
-              </svg>
-            </div>
           </div>
         </div>
       </nav>
@@ -236,9 +148,20 @@
     <main>
       <section class="container-fluid text-center text-light mt-5">
         <h1 class="azul">Administrar Productos</h1>
-        <a href="newGame.html"
-          ><button class="btn buttonDetails my-5">Nuevo +</button></a
+        <button
+          class="btn buttonDetails my-5"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+          id="NuevoJuego"
         >
+          Nuevo +
+        </button>
+
+        <div>
+          <button class="btn buttonDetails mb-5" id="cargarDatos">
+            Cargar datos de prueba
+          </button>
+        </div>
       </section>
       <section class="mx-4 table-responsive">
         <table class="table mx-auto text-light text-center">
@@ -256,8 +179,125 @@
         </table>
       </section>
     </main>
-    <script src="js/loginGame.js" type="module"></script>
-    <script src="js/login.js" type="module"></script>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content BackgroundContainer">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="btn-close bg-light"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <section class="container-fluid ContentRegisterItems">
+              <div class="containerBtnLogin bg-dark my-5 px-5">
+                <form id="FormNewGame">
+                  <div class="my-3">
+                    <label for="NombreJuego" class="form-label text-light"
+                      >Nombre del juego *</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="NombreJuego"
+                      placeholder="Nombre"
+                      maxlength="20"
+                      required
+                    />
+                  </div>
+                  <div class="my-3">
+                    <label for="codigo" class="form-label text-light"
+                      >Código</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="codigo"
+                      disabled
+                      maxlength="10"
+                    />
+                  </div>
+                  <div class="my-3">
+                    <label for="Categoría" class="form-label text-light"
+                      >Categoría *</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="Categoría"
+                      placeholder="Categoría"
+                      maxlength="20"
+                      required
+                    />
+                  </div>
+                  <div class="my-3">
+                    <label for="Descripción" class="form-label text-light"
+                      >Descripción *</label
+                    >
+                    <textarea
+                      class="form-control"
+                      id="Descripcion"
+                      rows="6"
+                      placeholder="Descripción"
+                      maxlength="600"
+                      required
+                    ></textarea>
+                  </div>
+                  <div class="my-3">
+                    <label for="URL" class="form-label text-light">URL *</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="URL"
+                      placeholder="https://www.google.com.ar/?&bih=651&biw=1366&hl=es"
+                      maxlength="100"
+                      required
+                    />
+                  </div>
+                  <div class="my-3 form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      id="Publicado"
+                    />
+                    <label class="form-check-label text-light" for="Publicado"
+                      >Publicado</label
+                    >
+                  </div>
+                  <div class="text-center">
+                    <button
+                      id="botonAgregar"
+                      type="submit"
+                      class="btn element1 mt-5 mx-auto buttonDetails mb-5"
+                      data-bs-dismiss="modal"
+                    >
+                      Agregar
+                    </button>
+                  </div>
+                </form>
+                <div
+                  class="alert alert-danger d-none"
+                  role="alert"
+                  id="btnAlerta"
+                >
+                  Debe completar todos los campos requeridos
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/admin.js" type="module"></script>
+    <script src="js/ComprobarusuarioLog.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script
       src="https://kit.fontawesome.com/7d2e342abf.js"

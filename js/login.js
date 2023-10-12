@@ -2,10 +2,13 @@ import {
   campoRequerido,
   validarEmail,
   validarRepetirContrasena,
-  validacionGeneral,
+  generalValidation,
+  cerrarSesion,
+  usuarioisAdmin,
 } from "./validations.js";
 
 import { Usuario } from "./UsuarioClass.js";
+cargarUsuario();
 
 let campoNombre = document.getElementById("Nombre");
 let campoApellido = document.getElementById("Apellido");
@@ -14,38 +17,32 @@ let campoContrasena = document.getElementById("Contrasena");
 let campoRepetirContrasena = document.getElementById("Repetircontrasena");
 let campoCheckboxRobot = document.getElementById("checkboxRobot");
 let campoFormLogin = document.getElementById("FormLogin");
-
 let FormInicioSesion = document.getElementById("FormInicioSesion");
 
 let usuarioExistente = false;
 
 let listaUsuario = JSON.parse(localStorage.getItem("Usuarios")) || [];
+let usuarioLog = JSON.parse(localStorage.getItem("userLog")) || [];
 
-if (campoNombre) {
-  campoNombre.addEventListener("blur", () => {
-    campoRequerido(campoNombre);
-  });
-}
-if (campoApellido) {
-  campoApellido.addEventListener("blur", () => {
-    campoRequerido(campoApellido);
-  });
-}
-if (campoEmail) {
-  campoEmail.addEventListener("blur", () => {
-    validarEmail(campoEmail);
-  });
-}
-if (campoContrasena) {
-  campoContrasena.addEventListener("blur", () => {
-    campoRequerido(campoContrasena);
-  });
-}
-if (campoRepetirContrasena) {
-  campoRepetirContrasena.addEventListener("blur", () => {
-    validarRepetirContrasena(campoRepetirContrasena);
-  });
-}
+CampoNombre.addEventListener("blur", () => {
+  CampoRequerido(CampoNombre);
+});
+
+CampoApellido.addEventListener("blur", () => {
+  CampoRequerido(CampoApellido);
+});
+
+CampoEmail.addEventListener("blur", () => {
+  validarEmail(CampoEmail);
+});
+
+CampoContrasena.addEventListener("blur", () => {
+  CampoRequerido(CampoContrasena);
+});
+
+CampoRepetirContrasena.addEventListener("blur", () => {
+  ValidarRepetirContrasena(CampoRepetirContrasena);
+});
 
 if (campoFormLogin) {
   campoFormLogin.addEventListener("submit", RegisterUser);
@@ -55,28 +52,17 @@ if (FormInicioSesion) {
   FormInicioSesion.addEventListener("submit", InicioSesion);
 }
 
-function RegisterUser(e) {
-  e.preventDefault();
-  if (
-    validacionGeneral(
-      campoNombre,
-      campoApellido,
-      campoEmail,
-      campoContrasena,
-      campoRepetirContrasena
-    )
-  ) {
-    if (!usuarioExistente) {
-      clearForm();
-      crearUsuario();
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Verifica el usuario o contraseña ya que no coinciden una u otra !",
-      });
-    }
-  }
+function crearUsuario() {
+  let usuarioNuevo = new Usuario(
+    campoNombre.value,
+    campoApellido.value,
+    campoEmail.value,
+    campoContrasena.value
+  );
+
+  listaUsuario.push(usuarioNuevo);
+  clearForm();
+  guadarLocalStorage();
 }
 
 function clearForm() {
@@ -87,56 +73,92 @@ function clearForm() {
   campoContrasena.className = "form-control";
   campoRepetirContrasena.className = "form-control";
   campoCheckboxRobot.className = "form-check";
-}
-
-function crearUsuario() {
-  let usuarioNuevo = new Usuario(
-    campoNombre.value,
-    campoApellido.value,
-    campoEmail.value,
-    campoContrasena.value
-  );
-  listaUsuario.push(usuarioNuevo);
-  guadarLocalStorage();
-  Swal.fire("Bien Hecho!", "Creaste Correctamente tu usuario!", "success");
+  usuarioExistente = false;
 }
 
 function guadarLocalStorage() {
   localStorage.setItem("Usuarios", JSON.stringify(listaUsuario));
 }
+function guardarUserLogLocalStorage() {
+  localStorage.setItem("userLog", JSON.stringify({ usuarioLog }));
+}
+
+function validarRegistro(e) {
+  e.preventDefault();
+  var nombre = document.getElementById("Nombre").value;
+  var email = document.getElementById("Email").value;
+  var usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  var usuarioExiste = usuarios.find(function (usuario) {
+    return usuario.email === email && usuario.nombre === nombre;
+  });
+  if (usuarioExiste) {
+    alert("El usuario con este correo electrónico ya está registrado.");
+    return false;
+  }
+  crearUsuario();
+  guadarLocalStorage();
+  clearForm();
+  Swal.fire("Bien Hecho!", "Creaste Correctamente tu usuario!", "success");
+  return true;
+}
 
 function InicioSesion(e) {
   e.preventDefault();
-  const usuarioAdmin = "admin123@gmail";
-  const contrasenaAdmin = "123";
-  const email = document.getElementById("UsuarioLog").value;
-  const contrasena = document.getElementById("ContrasenaLog").value;
-  if (email === usuarioAdmin && contrasena === contrasenaAdmin) {
+  var emailInicioSesion = document.getElementById("UsuarioLog").value;
+  var contrasenaInisionSesion = document.getElementById("ContrasenaLog").value;
+  let listaUsuario = JSON.parse(localStorage.getItem("Usuarios")) || [];
+  if (
+    listaUsuario?.some(
+      (usuario) =>
+        usuario.email === emailInicioSesion &&
+        listaUsuario?.some(
+          (usuario) => usuario.contraseña === contrasenaInisionSesion
+        )
+    )
+  ) {
     window.location.href = "admin.html";
-    cambiarTitulo()
+    usuarioisAdmin();
   } else {
-    const usuariosGuardados =
-      JSON.parse(localStorage.getItem("Usuarios")) || [];
-    const usuarioExistente = usuariosGuardados.find(
-      (Usuario) =>
-        Usuario.email === usuario.email && usuario.contrasena === contrasena
+    alert(
+      "El usuario no se encuentra registrado, porfavor registrate antes de iniciar sesion"
     );
-    if (usuarioExistente) {
-      window.location.href = "index.html";
-    } else {
-      alert("Verifica los datos ingresados. Usuario no encontrado.");
-    }
   }
 }
 
-const cambiarTitulo = () => {
-  let Titulo = document.querySelector("#Titulo");
-  //   let btnCambiar = document.getElementById("btnCambiar");
-  if (Titulo.className === "text-white") {
-    Titulo.innerHTML = "Cerrar Sesion!";
-    Titulo.className = "text-light";
-  } else {
-    Titulo.innerHTML = "Cerrar Sesion!";
-    Titulo.className = "text-white";
+function cargarUsuario() {
+  const datos = [
+    {
+      nombre: "Admin",
+      apellido: "Admin",
+      email: "admin@enjoythegame.com",
+      contraseña: "admin2023",
+      isAdmin: true,
+    },
+    {
+      nombre: "lucas",
+      apellido: "corbalan",
+      email: "lucas.corbalan.23@gmail.com",
+      contraseña: "luca2938",
+      isAdmin: false,
+    },
+    {
+      nombre: "nico",
+      apellido: "torregrosa",
+      email: "nico.torregrosa@gmail.com",
+      contraseña: "nico8383",
+      isAdmin: false,
+    },
+    {
+      nombre: "gerardo",
+      apellido: "rosales",
+      email: "gerardo.rosales@gmail.com",
+      contraseña: "gerardoasdqwd",
+      isAdmin: false,
+    },
+  ];
+
+  if (!localStorage.getItem("Usuarios")) {
+    localStorage.setItem("Usuarios", JSON.stringify(datos));
+    listaUsuario = datos;
   }
-};
+}
